@@ -3,12 +3,12 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:param name="company"/>
-  <xsl:param name="supplier_id"/>
+  <xsl:param name="Supplier_ID"/>
   <xsl:param name="payment_term"/>
-  <xsl:param name="supplier_contract"/>
+  <xsl:param name="Supplier_Catergory_ID"/>
   <xsl:param name="currency"/>
   <xsl:param name="po_issue_option"/>
-  <xsl:param name="employee_id"/>
+  <xsl:param name="Employee_ID"/>
   <xsl:param name="snow_num"/>
   <xsl:param name="additional_details"/>
   <xsl:param name="prepaid"/>
@@ -34,7 +34,7 @@
 <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>
 </wd:Company_Reference>
 <wd:Supplier_Reference>
-<wd:ID wd:type="Supplier_ID"><xsl:value-of select="$supplier_id"/></wd:ID>
+<wd:ID wd:type="Supplier_ID"><xsl:value-of select="$Supplier_ID"/></wd:ID>
 </wd:Supplier_Reference>
 <wd:Document_Date>
 	<xsl:call-template name="stripTimeFromDate">
@@ -45,7 +45,7 @@
 <wd:ID wd:type="Payment_Terms_ID"><xsl:value-of select="$payment_term"/></wd:ID>
 </wd:Payment_Terms_Reference>
 <wd:Supplier_Contract_Reference>
-<wd:ID wd:type="Supplier_Contract_ID"><xsl:value-of select="$supplier_contract"/></wd:ID>
+<wd:ID wd:type="Supplier_Catergory_ID"><xsl:value-of select="$Supplier_Catergory_ID"/></wd:ID>
 </wd:Supplier_Contract_Reference>
 <wd:Currency_Reference>
 <wd:ID wd:type="Currency_ID"><xsl:value-of select="$currency"/></wd:ID>
@@ -54,7 +54,7 @@
 <wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$po_issue_option"/></wd:ID>
 </wd:Issue_Option_Reference>
 <wd:Buyer_Reference>
-<wd:ID wd:type="Employee_ID"><xsl:value-of select="$employee_id"/></wd:ID>
+<wd:ID wd:type="Employee_ID"><xsl:value-of select="$Employee_ID"/></wd:ID>
 </wd:Buyer_Reference>
 <wd:Memo><xsl:value-of select="$snow_num"/></wd:Memo>
 <wd:Internal_Memo><xsl:value-of select="$additional_details"/></wd:Internal_Memo>
