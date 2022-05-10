@@ -50,9 +50,9 @@
                     <cc:expression>props['item'] = parts[0].xpath('/root/data/results/data/item')</cc:expression>
                     <cc:expression>props['id'] = parts[0].xpath('/root/data/results/data/id')</cc:expression>
                     <cc:expression>props['unit_cost'] = parts[0].xpath('/root/data/results/data/unit_cost')</cc:expression>
-                    <cc:expression>props['Supplier_ID'] = parts[0].xpath('/root/data/results/data/manufacturer')</cc:expression>
+                    <cc:expression>props['manufacturer'] = parts[0].xpath('/root/data/results/data/manufacturer')</cc:expression>
                     <cc:expression>props['product_name'] = parts[0].xpath('/root/data/results/data/product_name')</cc:expression>
-                    <cc:expression>props['Supplier_Category_ID'] = parts[0].xpath('/root/data/results/data/description')</cc:expression>
+                    <cc:expression>props['description'] = parts[0].xpath('/root/data/results/data/description')</cc:expression>
                 </cc:eval>
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PutIntegrationMessage2"/>

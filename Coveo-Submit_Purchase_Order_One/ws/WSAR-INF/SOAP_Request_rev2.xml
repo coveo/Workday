@@ -2,8 +2,12 @@
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+
+
+  <xsl:param name="item"/>
   <xsl:param name="company"/>
   <xsl:param name="Supplier_ID"/>
+  <xsl:param name="document_date"/>
   <xsl:param name="payment_term"/>
   <xsl:param name="Supplier_Catergory_ID"/>
   <xsl:param name="currency"/>
@@ -16,7 +20,6 @@
   <xsl:param name="cost_center"/>
   <xsl:param name="description"/>
   <xsl:param name="spend_category"/>
-  <xsl:param name="document_date"/>
   <xsl:param name="location"/>
 
 <xsl:template match="/">
@@ -30,6 +33,9 @@
 <wd:Purchase_Order_Data>
 <wd:Submit>false</wd:Submit>
 <wd:Locked_in_Workday>false</wd:Locked_in_Workday>
+<wd:Item_Reference>
+<wd:ID wd:type="Item_Reference"><xsl:value-of select="$item"/></wd:ID>
+</wd:Item_Reference>
 <wd:Company_Reference>
 <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>
 </wd:Company_Reference>
