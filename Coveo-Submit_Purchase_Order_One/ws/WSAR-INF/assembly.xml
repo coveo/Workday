@@ -99,7 +99,7 @@
         <cc:async-mediation id="AsyncMediation0">
             <cc:steps>
                 <cc:copy id="Copy" input="message"/>
-                <cc:store id="StoreVar"/>
+                <cc:store id="Store"/>
             </cc:steps>
         </cc:async-mediation>
 	</cc:assembly>
