@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wdnm:Diagram xmlns:wdnm="http://workday.com/studio/editors/notation">
+  <element href="assembly.xml#WorkdayAssembly"/>
+  <visualProperties>
+    <element href="assembly.xml#StartHere"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#GetEventDocuments"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#GetRetrievedFile"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#//@beans/@mixed.1/@mixed.17"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage1"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#Convert_Data_To_XML"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage3"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage2"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#AsyncMediation"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage_simon"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#AsyncMediation10"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage_josianne"/>
+  </visualProperties>
+  <visualProperties x="49" y="355">
+    <element href="assembly.xml#Purch_ConvertData"/>
+  </visualProperties>
+  <visualProperties x="50" y="525">
+    <element href="assembly.xml#Purch_SendData"/>
+  </visualProperties>
+  <visualProperties x="46" y="721">
+    <element href="assembly.xml#Purch_SendData_Per"/>
+  </visualProperties>
+  <visualProperties x="466" y="140">
+    <element href="assembly.xml#Purch_ConvertData0"/>
+  </visualProperties>
+  <visualProperties x="1069" y="370">
+    <element href="assembly.xml#Purch_SendData0"/>
+  </visualProperties>
+  <visualProperties x="851" y="577">
+    <element href="assembly.xml#Purch_SendData_Per0"/>
+  </visualProperties>
+  <visualProperties x="618" y="702">
+    <element href="assembly.xml#AsyncMediation100"/>
+  </visualProperties>
+  <visualProperties x="791" y="702">
+    <element href="assembly.xml#PutIntegrationMessage_olivia"/>
+  </visualProperties>
+  <visualProperties x="997" y="702">
+    <element href="assembly.xml#AsyncMediation1000"/>
+  </visualProperties>
+  <visualProperties x="1170" y="702">
+    <element href="assembly.xml#PutIntegrationMessage_yazeed"/>
+  </visualProperties>
+  <connections type="routesTo" sourceAnchorX="0.5416666666666666" sourceAnchorY="1.0" targetAnchorX="0.06382978723404255" targetAnchorY="0.5135135135135135">
+    <source href="assembly.xml#StartHere"/>
+    <target href="assembly.xml#GetEventDocuments"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5319148936170213" sourceAnchorY="1.0" targetAnchorX="0.03636363636363636" targetAnchorY="0.11333333333333333">
+    <source href="assembly.xml#GetEventDocuments"/>
+    <target href="assembly.xml#GetRetrievedFile"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7078651685393258" sourceAnchorY="1.0" targetAnchorX="0.3548387096774194" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.17"/>
+    <target href="assembly.xml#PutIntegrationMessage1"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.22826086956521738" targetAnchorX="0.2" targetAnchorY="0.1891891891891892">
+    <source href="assembly.xml#Convert_Data_To_XML"/>
+    <target href="assembly.xml#PutIntegrationMessage3"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5806451612903226" sourceAnchorY="1.0" targetAnchorX="0.12258064516129032" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#PutIntegrationMessage3"/>
+    <target href="assembly.xml#PutIntegrationMessage2"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.18478260869565216" targetAnchorX="0.17419354838709677" targetAnchorY="0.2702702702702703">
+    <source href="assembly.xml#AsyncMediation"/>
+    <target href="assembly.xml#PutIntegrationMessage_simon"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.17391304347826086" targetAnchorX="0.26229508196721313" targetAnchorY="0.1891891891891892">
+    <source href="assembly.xml#AsyncMediation10"/>
+    <target href="assembly.xml#PutIntegrationMessage_josianne"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7372262773722628" sourceAnchorY="1.0" targetAnchorX="0.018556701030927835" targetAnchorY="0.10869565217391304">
+    <source href="assembly.xml#Purch_ConvertData"/>
+    <target href="assembly.xml#Convert_Data_To_XML"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.8015873015873016" sourceAnchorY="1.0" targetAnchorX="0.1095890410958904" targetAnchorY="0.16304347826086957">
+    <source href="assembly.xml#Purch_SendData"/>
+    <target href="assembly.xml#AsyncMediation"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.29411764705882354" targetAnchorX="0.2535211267605634" targetAnchorY="0.43243243243243246">
+    <source href="assembly.xml#//@beans/@mixed.1/@route.0/@subRoute.0"/>
+    <target href="assembly.xml#Purch_ConvertData0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.6774193548387096" sourceAnchorY="1.0" targetAnchorX="0.07633587786259542" targetAnchorY="0.43243243243243246">
+    <source href="assembly.xml#PutIntegrationMessage2"/>
+    <target href="assembly.xml#Purch_SendData0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7039106145251397" sourceAnchorY="1.0" targetAnchorX="0.12666666666666668" targetAnchorY="0.2702702702702703">
+    <source href="assembly.xml#PutIntegrationMessage_simon"/>
+    <target href="assembly.xml#Purch_SendData_Per0"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7310344827586207" sourceAnchorY="1.0" targetAnchorX="0.1870967741935484" targetAnchorY="0.06521739130434782">
+    <source href="assembly.xml#Purch_SendData_Per"/>
+    <target href="assembly.xml#AsyncMediation10"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.6507936507936508" sourceAnchorY="1.0" targetAnchorX="0.11188811188811189" targetAnchorY="0.10869565217391304">
+    <source href="assembly.xml#PutIntegrationMessage_josianne"/>
+    <target href="assembly.xml#AsyncMediation100"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.20652173913043478" targetAnchorX="0.18181818181818182" targetAnchorY="0.16216216216216217">
+    <source href="assembly.xml#AsyncMediation100"/>
+    <target href="assembly.xml#PutIntegrationMessage_olivia"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.75" sourceAnchorY="1.0" targetAnchorX="0.271523178807947" targetAnchorY="0.07608695652173914">
+    <source href="assembly.xml#PutIntegrationMessage_olivia"/>
+    <target href="assembly.xml#AsyncMediation1000"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.2608695652173913" targetAnchorX="0.15760869565217392" targetAnchorY="0.1891891891891892">
+    <source href="assembly.xml#AsyncMediation1000"/>
+    <target href="assembly.xml#PutIntegrationMessage_yazeed"/>
+  </connections>
+  <swimlanes name="GlobalErrorHandler" orientation="VERTICAL" topBorderColor="467382">
+    <elements href="assembly.xml#//@beans/@mixed.1/@mixed.17"/>
+    <elements href="assembly.xml#PutIntegrationMessage1"/>
+  </swimlanes>
+  <swimlanes name="Main Program" topBorderColor="8851980">
+    <elements href="assembly.xml#StartHere"/>
+    <elements href="assembly.xml#GetEventDocuments"/>
+    <elements href="assembly.xml#GetRetrievedFile"/>
+    <elements href="assembly.xml#Purch_ConvertData0"/>
+    <elements href="#//@swimlanes.0"/>
+  </swimlanes>
+  <swimlanes name="ConvertData" topBorderColor="15554362">
+    <elements href="assembly.xml#Purch_ConvertData"/>
+    <elements href="assembly.xml#Convert_Data_To_XML"/>
+    <elements href="assembly.xml#PutIntegrationMessage3"/>
+    <elements href="assembly.xml#PutIntegrationMessage2"/>
+    <elements href="assembly.xml#Purch_SendData0"/>
+  </swimlanes>
+  <swimlanes name="SendData_Temp" topBorderColor="4301039">
+    <elements href="assembly.xml#Purch_SendData"/>
+    <elements href="assembly.xml#AsyncMediation"/>
+    <elements href="assembly.xml#PutIntegrationMessage_simon"/>
+    <elements href="assembly.xml#Purch_SendData_Per0"/>
+  </swimlanes>
+  <swimlanes name="SendData_Perm">
+    <elements href="assembly.xml#Purch_SendData_Per"/>
+    <elements href="assembly.xml#AsyncMediation10"/>
+    <elements href="assembly.xml#PutIntegrationMessage_josianne"/>
+    <elements href="assembly.xml#AsyncMediation100"/>
+    <elements href="assembly.xml#PutIntegrationMessage_olivia"/>
+    <elements href="assembly.xml#AsyncMediation1000"/>
+    <elements href="assembly.xml#PutIntegrationMessage_yazeed"/>
+  </swimlanes>
+  <swimlanes x="24" y="13" name="CreateTaskPO" orientation="VERTICAL" elements="//@swimlanes.1 //@swimlanes.2 //@swimlanes.3 //@swimlanes.4" topBorderColor="1"/>
+</wdnm:Diagram>
