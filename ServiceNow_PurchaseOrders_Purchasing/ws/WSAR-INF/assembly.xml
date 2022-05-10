@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+     xmlns="http://www.springframework.org/schema/beans"
+     xmlns:beans="http://www.springframework.org/schema/beans"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:cc="http://www.capeclear.com/assembly/10"
+     xmlns:cloud="urn:com.workday/esb/cloud/10.0"
+     xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:pi="urn:com.workday/picof"
+     xmlns:wd="urn:com.workday/bsvc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<cc:assembly id="WorkdayAssembly" version="2021.47">
+        <cc:local-out id="PutIntegrationMessage_josianne" routes-response-to="AsyncMediation100" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Josianne'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.josianne'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.file.name" value="lp.getSequencedValue('Purch_File')"/>
+            <cc:set name="is.message.storage.enabled" value="true"/>
+            <cc:set name="is.document.owner.wid" value="'9824ca3ab85e013c185583bcc6001d87'"/>
+        </cc:local-out>
+        <cc:async-mediation id="AsyncMediation10" routes-to="PutIntegrationMessage_josianne">
+            <cc:steps>
+                <cc:store id="CreateDeliverableFile_josianne" output="variable" output-variable="deliver.josianne" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Purch_File')}.csv"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage_simon" routes-response-to="Purch_SendData_Per0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Simon'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.simon'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.file.name" value="lp.getSequencedValue('Purch_File')"/>
+            <cc:set name="is.message.storage.enabled" value="true"/>
+            <cc:set name="is.document.owner.wid" value="'f8fe1d2e54f8010c4ccda15e12013b0b'"/>
+        </cc:local-out>
+        <cc:async-mediation id="AsyncMediation" routes-to="PutIntegrationMessage_simon">
+            <cc:steps>
+                <cc:store id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Purch_File')}.csv"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage2" execute-when="props['data'] == empty" routes-response-to="Purch_SendData0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'No requisitions available'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.file'"/>
+        </cc:local-out>
+        <cc:local-out id="PutIntegrationMessage3" execute-when="props['data'] != empty" routes-response-to="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'ServiceNow requisitions have been found'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.file'"/>
+            <cc:set name="is.document.deliverable" value="'true'"/>
+        </cc:local-out>
+        <cc:async-mediation id="Convert_Data_To_XML" routes-to="PutIntegrationMessage3">
+            <cc:steps>
+                <cc:copy id="GetDataJSON" input="variable" input-variable="wd.retrieve.variable"/>
+                <cc:json-to-xml id="JsonToXml"/>
+                <cc:xslt-plus id="XsltPlus" output="message" url="Transform.xsl"/>
+                <cc:eval id="CreateParameter">
+                    <cc:expression>props['data'] = parts[0].xpath('/Root/Request/data/number')</cc:expression>
+                </cc:eval>
+                <cc:xml-to-csv id="XmlToCsv" input="message" writeHeaderLine="true"/>
+                <cc:copy id="Copy" output="variable" output-variable="deliver.data"/>
+                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Purch_File')}"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage1" endpoint="vm://wcc/PutIntegrationMessage">
+            <cc:set name="is.message.severity" value="'CRITICAL'"/>
+            <cc:set name="is.message.summary" value="'There is a critical error (Global Error Handler)'"/>
+            <cc:set name="is.message.detail" value="context.errorMessage"/>
+        </cc:local-out>
+        <cc:send-error id="GlobalError" routes-to="PutIntegrationMessage1"/>
+        <cc:route id="GetRetrievedFile">
+            <cc:doc-iterator/>
+            <cc:sub-route name="ProcessFile" routes-to="Purch_ConvertData0"/>
+        </cc:route>
+        <cc:local-out id="GetEventDocuments" routes-response-to="GetRetrievedFile" endpoint="vm://wcc/GetEventDocuments">
+            <cc:set name="ie.event.wid" value="lp.isSet() ? lp.getIntegrationEventWID() : null"/>
+        </cc:local-out>
+        <cc:workday-in id="StartHere" routes-to="GetEventDocuments">
+            <cc:integration-system name="ServiceNow_PurchaseOrders_Purchasing">
+        <cloud:sequence-generator-service name="PO_Purch_File">
+          <cloud:sequencer>Purch_File</cloud:sequencer>
+        </cloud:sequence-generator-service>
+      </cc:integration-system>
+        </cc:workday-in>
+        <cc:local-in id="Purch_ConvertData" routes-to="Convert_Data_To_XML"/>
+        <cc:local-in id="Purch_SendData" routes-to="AsyncMediation"/>
+        <cc:local-in id="Purch_SendData_Per" routes-to="AsyncMediation10"/>
+        <cc:local-out id="Purch_ConvertData0" endpoint="vm://ServiceNow_PurchaseOrders_Purchasing/Purch_ConvertData"/>
+        <cc:local-out id="Purch_SendData0" execute-when="props['data'] != empty" endpoint="vm://ServiceNow_PurchaseOrders_Purchasing/Purch_SendData"/>
+        <cc:local-out id="Purch_SendData_Per0" endpoint="vm://ServiceNow_PurchaseOrders_Purchasing/Purch_SendData_Per"/>
+        <cc:async-mediation id="AsyncMediation100" routes-to="PutIntegrationMessage_olivia">
+            <cc:steps>
+                <cc:store id="CreateDeliverableFile_olivia" output="variable" output-variable="deliver.olivia" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Purch_File')}.csv"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage_olivia" routes-response-to="AsyncMediation1000" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Olivia'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.olivia'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.file.name" value="lp.getSequencedValue('Purch_File')"/>
+            <cc:set name="is.message.storage.enabled" value="true"/>
+            <cc:set name="is.document.owner.wid" value="'9824ca3ab85e01c7d3b741bcc6004e86'"/>
+            <cc:set name="is.document.labels" value="'Olivia'"/>
+        </cc:local-out>
+        <cc:async-mediation id="AsyncMediation1000" routes-to="PutIntegrationMessage_yazeed">
+            <cc:steps>
+                <cc:store id="CreateDeliverableFile_yazeed" output="variable" output-variable="deliver.yazeed" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Purch_File')}.csv"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage_yazeed" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Yazeed'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.yazeed'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.file.name" value="lp.getSequencedValue('Purch_File')"/>
+            <cc:set name="is.message.storage.enabled" value="true"/>
+            <cc:set name="is.document.owner.wid" value="'2bf04e85eafc01018f5b66c976c10000'"/>
+            <cc:set name="is.document.labels" value="'Yazeed'"/>
+        </cc:local-out>
+	</cc:assembly>
+
+</beans>
