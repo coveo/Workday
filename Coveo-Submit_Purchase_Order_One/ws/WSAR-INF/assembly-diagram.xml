@@ -154,10 +154,6 @@
     <source href="assembly.xml#Supplier_RaaS"/>
     <target href="assembly.xml#GetInformationSupplier"/>
   </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.5431034482758621" sourceAnchorY="1.0" targetAnchorX="0.512" targetAnchorY="0.25203252032520324">
-    <source href="assembly.xml#DataMapping0"/>
-    <target href="assembly.xml#WriteSOAPMessage"/>
-  </connections>
   <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.2608695652173913" targetAnchorX="0.373015873015873" targetAnchorY="0.35135135135135137">
     <source href="assembly.xml#GetInformationSupplier"/>
     <target href="assembly.xml#Employee_RaaS"/>
@@ -165,6 +161,10 @@
   <connections type="routesResponseTo" sourceAnchorX="0.6111111111111112" sourceAnchorY="1.0" targetAnchorX="0.3783783783783784" targetAnchorY="0.5869565217391305">
     <source href="assembly.xml#Employee_RaaS"/>
     <target href="assembly.xml#AsyncMediation0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.6982758620689655" sourceAnchorY="1.0" targetAnchorX="0.256" targetAnchorY="0.44715447154471544">
+    <source href="assembly.xml#DataMapping0"/>
+    <target href="assembly.xml#WriteSOAPMessage"/>
   </connections>
   <swimlanes x="108" y="78" name="Main Program" topBorderColor="8851980">
     <elements href="assembly.xml#StartHere"/>

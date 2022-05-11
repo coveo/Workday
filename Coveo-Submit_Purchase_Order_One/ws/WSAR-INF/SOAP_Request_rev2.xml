@@ -8,13 +8,13 @@
   <xsl:param name="manufacturer"/>
   <xsl:param name="product_name"/>
   <xsl:param name="description"/>
-  <xsl:param name="supplier_id"/>
-  <xsl:param name="supplier_catergory_id"/>
-  <xsl:param name="payment_terms"/>
-  <xsl:param name="currency"/>
-  <xsl:param name="po_issue_option"/>
-  <xsl:param name="company_restrictions"/>
-  <xsl:param name="spend_category"/>
+  <xsl:param name="Supplier_ID"/>
+  <xsl:param name="Supplier_Catergory_ID"/>
+  <xsl:param name="Payment_Terms"/>
+  <xsl:param name="Currency"/>
+  <xsl:param name="PO_Issue_Option"/>
+  <xsl:param name="Company_Restrictions"/>
+  <xsl:param name="Spend_Category"/>
   <xsl:param name="bill_to_address"/>
   <xsl:param name="document_date"/>
   
@@ -48,25 +48,25 @@
 <wd:ID wd:type="description_Reference"><xsl:value-of select="$description"/></wd:ID>
 </wd:description_Reference>
 <wd:supplier_id_Reference>
-<wd:ID wd:type="supplier_ID"><xsl:value-of select="$supplier_id"/></wd:ID>
+<wd:ID wd:type="Supplier_ID"><xsl:value-of select="$Supplier_ID"/></wd:ID>
 </wd:supplier_id_Reference>
 <wd:supplier_catergory_id_Reference>
-<wd:ID wd:type="supplier_catergory_ID"><xsl:value-of select="$supplier_catergory_id"/></wd:ID>
+<wd:ID wd:type="Supplier_Catergory_ID"><xsl:value-of select="$Supplier_Catergory_ID"/></wd:ID>
 </wd:supplier_catergory_id_Reference>
 <wd:payment_terms_Reference>
-<wd:ID wd:type="payment_terms_ID"><xsl:value-of select="$payment_terms"/></wd:ID>
+<wd:ID wd:type="Payment_Terms_ID"><xsl:value-of select="$Payment_Terms"/></wd:ID>
 </wd:payment_terms_Reference>
 <wd:currency_Reference>
-<wd:ID wd:type="currency_ID"><xsl:value-of select="$currency"/></wd:ID>
+<wd:ID wd:type="Currency_ID"><xsl:value-of select="$Currency"/></wd:ID>
 </wd:currency_Reference>
 <wd:po_issue_option_Reference>
-<wd:ID wd:type="po_issue_option_ID"><xsl:value-of select="$po_issue_option"/></wd:ID>
+<wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$PO_Issue_Option"/></wd:ID>
 </wd:po_issue_option_Reference>
 <wd:company_restrictions_Reference>
-<wd:ID wd:type="company_restrictions_ID"><xsl:value-of select="$company_restrictions"/></wd:ID>
+<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$Company_Restrictions"/></wd:ID>
 </wd:company_restrictions_Reference>
 <wd:spend_category_Reference>
-<wd:ID wd:type="spend_category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
+<wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$Spend_Category"/></wd:ID>
 </wd:spend_category_Reference>
 <wd:bill_to_address_Reference>
 <wd:ID wd:type="bill_to_address_Reference_ID"><xsl:value-of select="$bill_to_address"/></wd:ID>

@@ -98,7 +98,6 @@
                     <cc:expression>props['Company_Restrictions'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
                     <cc:expression>props['Spend_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID/@wd:type')</cc:expression>
                 </cc:eval>
-                <cc:copy id="SaveData"/>
             </cc:steps>
         </cc:async-mediation>
         <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
@@ -110,7 +109,6 @@
                     <cc:expression>props['Employee_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Employee_ID')</cc:expression>
                     <cc:expression>props['Bill_to_Address'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Name')</cc:expression>
                 </cc:eval>
-                <cc:copy id="SaveData"/>
             </cc:steps>
         </cc:async-mediation>
 	</cc:assembly>
