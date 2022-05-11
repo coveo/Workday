@@ -14,8 +14,11 @@
                     select="wd:Report_Data/wd:Report_Entry/wd:Employee[@wd:Descriptor =$employee]/wd:ID[@wd:type ='Employee_ID']"
                 />
             </Employee_ID>
-            
-           
+            <Bill_to_Address>
+                <xsl:value-of
+                    select="wd:Report_Data/wd:Report_Entry/wd:Employee[@wd:Descriptor =$employee]/wd:ID[@wd:type ='Bill_to_Address']"
+                />
+            </Bill_to_Address>
 </Results>
             </xsl:template>
 

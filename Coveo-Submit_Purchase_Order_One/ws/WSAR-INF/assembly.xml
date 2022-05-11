@@ -92,6 +92,11 @@
                 <cc:eval id="SupplierParameters">
                     <cc:expression>props['Supplier_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID')</cc:expression>
                     <cc:expression>props['Supplier_Category_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['Payment_Terms'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['Currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['PO_Issue_Option'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['Company_Restrictions'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
+                    <cc:expression>props['Spend_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID/@wd:type')</cc:expression>
                 </cc:eval>
                 <cc:copy id="SaveData"/>
             </cc:steps>
@@ -103,6 +108,7 @@
                 <cc:xslt-plus id="XsltPlus" url="EmployeeSXLT.xsl"/>
                 <cc:eval id="Eval">
                     <cc:expression>props['Employee_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Employee_ID')</cc:expression>
+                    <cc:expression>props['Bill_to_Address'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Name')</cc:expression>
                 </cc:eval>
                 <cc:copy id="SaveData"/>
             </cc:steps>
