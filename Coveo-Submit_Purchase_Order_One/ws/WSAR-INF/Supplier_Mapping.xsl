@@ -21,6 +21,24 @@
                 />
         
             </Supplier_Category>
+              <payment_terms>
+            <xsl:value-of
+                    select="wd:Report_Data/wd:Report_Entry[wd:Supplier[@wd:Descriptor =$supplier]]/wd:Supplier_Category/wd:ID[@wd:type ='Supplier_Category_ID']"
+                />
+        
+            </payment_terms>
+              <currency>
+            <xsl:value-of
+                    select="wd:Report_Data/wd:Report_Entry[wd:Supplier[@wd:Descriptor =$supplier]]/wd:Supplier_Category/wd:ID[@wd:type ='Supplier_Category_ID']"
+                />
+        
+            </currency>
+              <po_issue_option>
+            <xsl:value-of
+                    select="wd:Report_Data/wd:Report_Entry[wd:Supplier[@wd:Descriptor =$supplier]]/wd:Supplier_Category/wd:ID[@wd:type ='Supplier_Category_ID']"
+                />
+        
+            </po_issue_option>
 </Results>
             </xsl:template>
 
