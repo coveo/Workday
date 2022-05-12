@@ -6,7 +6,6 @@
   <xsl:param name="snow_num"/>
   <xsl:param name="unit_cost"/>
   <xsl:param name="manufacturer"/>
-  <xsl:param name="product_name"/>
   <xsl:param name="description"/>
   <xsl:param name="Supplier_ID"/>
   <xsl:param name="Supplier_Catergory_ID"/>
@@ -31,57 +30,49 @@
 <wd:Submit>false</wd:Submit>
 <wd:Locked_in_Workday>false</wd:Locked_in_Workday>
 <wd:Item_Reference>
-<wd:ID wd:type="Item_ID"><xsl:value-of select="$item"/></wd:ID>
+<wd:ID wd:type="Purchase_Item_ID"><xsl:value-of select="$item"/></wd:ID>
 </wd:Item_Reference>
-<wd:snow_num_Reference>
-<wd:ID wd:type="snow_num_ID"><xsl:value-of select="$snow_num"/></wd:ID>
-</wd:snow_num_Reference>
-<wd:unit_cost_Reference>
-<wd:ID wd:type="unit_cost_ID"><xsl:value-of select="$unit_cost"/></wd:ID>
-</wd:unit_cost_Reference>
-<wd:manufacturer_Reference>
-<wd:ID wd:type="manufacturer_ID"><xsl:value-of select="$manufacturer"/></wd:ID>
-</wd:manufacturer_Reference>
-<wd:product_name_Reference>
-<wd:ID wd:type="product_name_ID"><xsl:value-of select="$product_name"/></wd:ID>
-</wd:product_name_Reference>
-<wd:description_Reference>
-<wd:ID wd:type="description_Reference"><xsl:value-of select="$description"/></wd:ID>
-</wd:description_Reference>
-<wd:supplier_id_Reference>
+<wd:Internal_Memo>
+<wd:ID wd:type="string"><xsl:value-of select="$snow_num"/></wd:ID>
+</wd:Internal_Memo>
+<wd:Unit_Cost>
+<wd:ID wd:type="decimal"><xsl:value-of select="$unit_cost"/></wd:ID>
+</wd:Unit_Cost>
+<wd:Manufacturer_Reference_ID>
+<wd:ID wd:type="Manufacturer_Reference_ID"><xsl:value-of select="$manufacturer"/></wd:ID>
+</wd:Manufacturer_Reference_ID>
+<wd:Item_Description>
+<wd:ID wd:type="string"><xsl:value-of select="$description"/></wd:ID>
+</wd:Item_Description>
+<wd:Supplier_Reference>
 <wd:ID wd:type="Supplier_ID"><xsl:value-of select="$Supplier_ID"/></wd:ID>
-</wd:supplier_id_Reference>
-<wd:supplier_catergory_id_Reference>
-<wd:ID wd:type="Supplier_Catergory_ID"><xsl:value-of select="$Supplier_Catergory_ID"/></wd:ID>
-</wd:supplier_catergory_id_Reference>
-<wd:payment_terms_Reference>
+</wd:Supplier_Reference>
+<wd:Supplier_Category_ID>
+<wd:ID wd:type="Supplier_Category_ID"><xsl:value-of select="$Supplier_Category_ID"/></wd:ID>
+</wd:Supplier_Category_ID>
+<wd:Payment_Terms_Reference>
 <wd:ID wd:type="Payment_Terms_ID"><xsl:value-of select="$Payment_Terms"/></wd:ID>
-</wd:payment_terms_Reference>
-<wd:currency_Reference>
-<wd:ID wd:type="Currency_ID"><xsl:value-of select="$Currency"/></wd:ID>
-</wd:currency_Reference>
-<wd:po_issue_option_Reference>
-<wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$PO_Issue_Option"/></wd:ID>
-</wd:po_issue_option_Reference>
-<wd:company_restrictions_Reference>
+</wd:Payment_Terms_Reference>
+<wd:Currency_Reference>
+<wd:ID wd:type="CurrencyObject"><xsl:value-of select="$Currency"/></wd:ID>
+</wd:Currency_Reference>
+<wd:Issue_Option_Reference>
+<wd:ID wd:type="Purchase_Order_Issue_OptionObject"><xsl:value-of select="$PO_Issue_Option"/></wd:ID>
+</wd:Issue_Option_Reference>
+<wd:Company_Reference_ID>
 <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$Company_Restrictions"/></wd:ID>
-</wd:company_restrictions_Reference>
-<wd:spend_category_Reference>
-<wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$Spend_Category"/></wd:ID>
-</wd:spend_category_Reference>
-<wd:employee_ID>
-<wd:ID wd:type="employee_ID"><xsl:value-of select="$employee_ID"/></wd:ID>
-</wd:employee_ID>
-<wd:bill_to_address_Reference>
-<wd:ID wd:type="bill_to_address_Reference_ID"><xsl:value-of select="$bill_to_address"/></wd:ID>
-</wd:bill_to_address_Reference>
-<wd:document_date_Reference>
-<wd:ID wd:type="document_date_Reference"><xsl:value-of select="$document_date"/></wd:ID>
-</wd:document_date_Reference>
+</wd:Company_Reference_ID>
+<wd:Resource_Category_Reference>
+<wd:ID wd:type="Spend_CategoryObject"><xsl:value-of select="$Spend_Category"/></wd:ID>
+</wd:Resource_Category_Reference>
+<wd:Employee_ID>
+<wd:ID wd:type="Employee_ID"><xsl:value-of select="$employee_ID"/></wd:ID>
+</wd:Employee_ID>
+<wd:Bill_To_Address_Data>
+<wd:ID wd:type="Bill_To_Address_Reference"><xsl:value-of select="$bill_to_address"/></wd:ID>
+</wd:Bill_To_Address_Data>
 <wd:Document_Date>
-	<xsl:call-template name="stripTimeFromDate">
-    	<xsl:with-param name="subjectDate" select="$document_date" />
-    </xsl:call-template>
+<wd:ID wd:type="date"><xsl:value-of select="$document_date"/></wd:ID>
 </wd:Document_Date>
 <wd:Service_Line_Replacement_Data>
 <wd:Due_Date/>
@@ -95,4 +86,5 @@
 </env:Body>
 </env:Envelope>
 </xsl:template>
+
 </xsl:stylesheet>
