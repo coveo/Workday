@@ -76,7 +76,7 @@
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PIM-FileAccess0"/>
         </cc:async-mediation>
-        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v37.2"/>
+        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v38"/>
         <cc:local-out id="PutIntegrationMessage0" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Integration completed. Purchase Order has been created'"/></cc:local-out>
         <cc:local-out id="PIM-FileAccess0" endpoint="vm://wcc/PutIntegrationMessage">
             <cc:set name="is.message.severity" value="'ERROR'"/>
@@ -95,7 +95,7 @@
                     <cc:expression>props['Payment_Terms'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID/@wd:type')</cc:expression>
                     <cc:expression>props['Currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID/@wd:type')</cc:expression>
                     <cc:expression>props['PO_Issue_Option'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID/@wd:type')</cc:expression>
-                    <cc:expression>props['Company_Restrictions'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
+                    <cc:expression>props['Supplier_Group'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
                     <cc:expression>props['Spend_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID/@wd:type')</cc:expression>
                 </cc:eval>
             </cc:steps>

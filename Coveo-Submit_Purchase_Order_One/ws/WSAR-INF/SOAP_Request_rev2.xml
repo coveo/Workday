@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
   <xsl:param name="item"/>
   <xsl:param name="snow_num"/>
   <xsl:param name="unit_cost"/>
@@ -12,17 +11,15 @@
   <xsl:param name="Payment_Terms"/>
   <xsl:param name="Currency"/>
   <xsl:param name="PO_Issue_Option"/>
-  <xsl:param name="Company_Restrictions"/>
+  <xsl:param name="Supplier_Group"/>
   <xsl:param name="Spend_Category"/>
   <xsl:param name="employee_ID"/>
   <xsl:param name="bill_to_address"/>
   <xsl:param name="document_date"/>
-  
 <xsl:template match="/">
-
 <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <env:Body>
-<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v37.2">
+<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v38">
 <wd:Business_Process_Parameters>
 <wd:Auto_Complete>false</wd:Auto_Complete>
 </wd:Business_Process_Parameters>
@@ -60,7 +57,7 @@
 <wd:ID wd:type="Purchase_Order_Issue_OptionObject"><xsl:value-of select="$PO_Issue_Option"/></wd:ID>
 </wd:Issue_Option_Reference>
 <wd:Company_Reference_ID>
-<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$Company_Restrictions"/></wd:ID>
+<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$Supplier_Group"/></wd:ID>
 </wd:Company_Reference_ID>
 <wd:Resource_Category_Reference>
 <wd:ID wd:type="Spend_CategoryObject"><xsl:value-of select="$Spend_Category"/></wd:ID>
@@ -86,5 +83,4 @@
 </env:Body>
 </env:Envelope>
 </xsl:template>
-
 </xsl:stylesheet>
