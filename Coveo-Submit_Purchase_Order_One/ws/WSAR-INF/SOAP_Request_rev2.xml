@@ -8,7 +8,7 @@
   <xsl:param name="manufacturer"/>
   <xsl:param name="description"/>
   <xsl:param name="Supplier_ID"/>
-  <xsl:param name="Supplier_Catergory_ID"/>
+  <xsl:param name="Supplier_Category_ID"/>
   <xsl:param name="Payment_Terms"/>
   <xsl:param name="Currency"/>
   <xsl:param name="PO_Issue_Option"/>
@@ -22,7 +22,7 @@
 
 <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <env:Body>
-<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v37.0">
+<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v37.2">
 <wd:Business_Process_Parameters>
 <wd:Auto_Complete>false</wd:Auto_Complete>
 </wd:Business_Process_Parameters>
