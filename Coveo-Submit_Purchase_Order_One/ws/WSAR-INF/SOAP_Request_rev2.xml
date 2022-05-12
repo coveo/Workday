@@ -19,7 +19,7 @@
 <xsl:template match="/">
 <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <env:Body>
-<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v38">
+<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v37.2">
 <wd:Business_Process_Parameters>
 <wd:Auto_Complete>false</wd:Auto_Complete>
 </wd:Business_Process_Parameters>

@@ -76,7 +76,7 @@
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PIM-FileAccess0"/>
         </cc:async-mediation>
-        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v38"/>
+        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v37.2"/>
         <cc:local-out id="PutIntegrationMessage0" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Integration completed. Purchase Order has been created'"/></cc:local-out>
         <cc:local-out id="PIM-FileAccess0" endpoint="vm://wcc/PutIntegrationMessage">
             <cc:set name="is.message.severity" value="'ERROR'"/>
