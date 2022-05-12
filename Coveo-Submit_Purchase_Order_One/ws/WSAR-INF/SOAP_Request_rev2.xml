@@ -15,6 +15,7 @@
   <xsl:param name="PO_Issue_Option"/>
   <xsl:param name="Company_Restrictions"/>
   <xsl:param name="Spend_Category"/>
+  <xsl:param name="employee_ID"/>
   <xsl:param name="bill_to_address"/>
   <xsl:param name="document_date"/>
   
@@ -68,6 +69,9 @@
 <wd:spend_category_Reference>
 <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$Spend_Category"/></wd:ID>
 </wd:spend_category_Reference>
+<wd:employee_ID>
+<wd:ID wd:type="employee_ID"><xsl:value-of select="$employee_ID"/></wd:ID>
+</wd:employee_ID>
 <wd:bill_to_address_Reference>
 <wd:ID wd:type="bill_to_address_Reference_ID"><xsl:value-of select="$bill_to_address"/></wd:ID>
 </wd:bill_to_address_Reference>
@@ -91,10 +95,4 @@
 </env:Body>
 </env:Envelope>
 </xsl:template>
-
-<xsl:template name="stripTimeFromDate">
-        <xsl:param name="subjectDate"/>
-        <xsl:value-of select="format-date($subjectDate, '[Y0001]/[M01]/[D01]')"/>
-    </xsl:template>
-    
 </xsl:stylesheet>

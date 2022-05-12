@@ -5,19 +5,19 @@
     <xsl:output indent="yes"/>
 
     <xsl:param name="employee"/>
-    <xsl:param name="employee"/>
+    <xsl:param name="bill_to_address"/>
  
     <xsl:template match="/">
 
 <Results>
             <Employee_ID>
                 <xsl:value-of
-                    select="wd:Report_Data/wd:Report_Entry/wd:Employee_ID[@wd:Descriptor =$employee]/wd:Employee_ID[@wd:type ='Employee_ID']"
+                    select="wd:Report_Data/wd:Report_Entry/wd:Employee_ID"
                 />
             </Employee_ID>
             <Bill_to_Address>
                 <xsl:value-of
-                    select="wd:Report_Data/wd:Report_Entry/wd:Employee[@wd:Descriptor =$employee]/wd:ID[@wd:type ='Bill_to_Address']"
+                    select="wd:Report_Data/wd:Report_Entry/wd:bill_to_address"
                 />
             </Bill_to_Address>
 </Results>
