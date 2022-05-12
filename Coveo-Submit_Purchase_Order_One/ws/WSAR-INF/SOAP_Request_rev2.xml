@@ -7,13 +7,13 @@
   <xsl:param name="manufacturer"/>
   <xsl:param name="description"/>
   <xsl:param name="Supplier_ID"/>
-  <xsl:param name="Supplier_Category_ID"/>
+  <xsl:param name="Supplier_Category"/>
   <xsl:param name="Payment_Terms"/>
   <xsl:param name="Currency"/>
   <xsl:param name="PO_Issue_Option"/>
-  <xsl:param name="Supplier_Group"/>
+  <xsl:param name="Company_Restrictions"/>
   <xsl:param name="Spend_Category"/>
-  <xsl:param name="employee_ID"/>
+  <xsl:param name="Employee_ID"/>
   <xsl:param name="bill_to_address"/>
   <xsl:param name="document_date"/>
 <xsl:template match="/">
@@ -45,7 +45,7 @@
 <wd:ID wd:type="Supplier_ID"><xsl:value-of select="$Supplier_ID"/></wd:ID>
 </wd:Supplier_Reference>
 <wd:Supplier_Category_ID>
-<wd:ID wd:type="Supplier_Category_ID"><xsl:value-of select="$Supplier_Category_ID"/></wd:ID>
+<wd:ID wd:type="Supplier_Category_ID"><xsl:value-of select="$Supplier_Category"/></wd:ID>
 </wd:Supplier_Category_ID>
 <wd:Payment_Terms_Reference>
 <wd:ID wd:type="Payment_Terms_ID"><xsl:value-of select="$Payment_Terms"/></wd:ID>
@@ -57,13 +57,13 @@
 <wd:ID wd:type="Purchase_Order_Issue_OptionObject"><xsl:value-of select="$PO_Issue_Option"/></wd:ID>
 </wd:Issue_Option_Reference>
 <wd:Company_Reference_ID>
-<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$Supplier_Group"/></wd:ID>
+<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$Company_Restrictions"/></wd:ID>
 </wd:Company_Reference_ID>
 <wd:Resource_Category_Reference>
 <wd:ID wd:type="Spend_CategoryObject"><xsl:value-of select="$Spend_Category"/></wd:ID>
 </wd:Resource_Category_Reference>
 <wd:Employee_ID>
-<wd:ID wd:type="Employee_ID"><xsl:value-of select="$employee_ID"/></wd:ID>
+<wd:ID wd:type="Employee_ID"><xsl:value-of select="$Employee_ID"/></wd:ID>
 </wd:Employee_ID>
 <wd:Bill_To_Address_Data>
 <wd:ID wd:type="Bill_To_Address_Reference"><xsl:value-of select="$bill_to_address"/></wd:ID>

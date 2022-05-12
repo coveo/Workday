@@ -88,27 +88,27 @@
         <cc:workday-out-rest id="Supplier_RaaS" routes-response-to="GetInformationSupplier" extra-path="@{intsys.reportService.getExtrapath('POSuppliers')}"/>
         <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
             <cc:steps>
-                <cc:xslt-plus id="SupplierXSLT" url="Supplier_Mapping.xsl"/>
                 <cc:eval id="SupplierParameters">
                     <cc:expression>props['Supplier_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID')</cc:expression>
-                    <cc:expression>props['Supplier_Category_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['Supplier_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID/@wd:type')</cc:expression>
                     <cc:expression>props['Payment_Terms'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID/@wd:type')</cc:expression>
                     <cc:expression>props['Currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID/@wd:type')</cc:expression>
                     <cc:expression>props['PO_Issue_Option'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID/@wd:type')</cc:expression>
-                    <cc:expression>props['Supplier_Group'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
+                    <cc:expression>props['Company_Restrictions'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
                     <cc:expression>props['Spend_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID/@wd:type')</cc:expression>
                 </cc:eval>
+                <cc:xslt-plus id="SupplierXSLT" url="Supplier_Mapping.xsl"/>
             </cc:steps>
         </cc:async-mediation>
         <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
         <cc:workday-out-rest id="Employee_RaaS" routes-response-to="AsyncMediation0" extra-path="@{intsys.reportService.getExtrapath('EmployeeID')}"/>
         <cc:async-mediation id="AsyncMediation0">
             <cc:steps>
-                <cc:xslt-plus id="XsltPlus" url="EmployeeSXLT.xsl"/>
                 <cc:eval id="Eval">
                     <cc:expression>props['Employee_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Employee_ID')</cc:expression>
                     <cc:expression>props['bill_to_address'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:bill_to_address')</cc:expression>
                 </cc:eval>
+                <cc:xslt-plus id="XsltPlus" url="EmployeeSXLT.xsl"/>
             </cc:steps>
         </cc:async-mediation>
 	</cc:assembly>
