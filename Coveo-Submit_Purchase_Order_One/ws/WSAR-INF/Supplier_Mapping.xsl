@@ -4,51 +4,51 @@
 
     <xsl:output indent="yes"/>
 
-    <xsl:param name="Supplier_ID"/>
-    <xsl:param name="Supplier_Category"/>
-    <xsl:param name="Payment_Terms"/>
-    <xsl:param name="Currency"/>
-    <xsl:param name="PO_Issue_Option"/>
-    <xsl:param name="Company_Restrictions"/>
-    <xsl:param name="Spend_Category"/>
+    <xsl:param name="supplier_id"/>
+    <xsl:param name="supplier_category"/>
+    <xsl:param name="payment_terms"/>
+    <xsl:param name="currency"/>
+    <xsl:param name="po_issue_option"/>
+    <xsl:param name="company_restrictions"/>
+    <xsl:param name="spend_category"/>
     
     <xsl:template match="/">
 <Results>
-            <Supplier_ID>
+            <supplier_id>
                 <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Supplier/wd:ID[@wd:type ='Supplier_ID']"
                 />
-            </Supplier_ID>
-            <Supplier_Category>
+            </supplier_id>
+            <supplier_category>
             <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID[@wd:type ='Supplier_Category_ID']"
                 />        
-            </Supplier_Category>
-              <Payment_Terms>
+            </supplier_category>
+              <payment_terms>
             <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID[@wd:type ='Payment_Terms_ID']"
                 />        
-            </Payment_Terms>
-              <Currency>
+            </payment_terms>
+              <currency>
             <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID[@wd:type ='Currency_ID']"
                 />        
-            </Currency>
-              <PO_Issue_Option>
+            </currency>
+              <po_issue_option>
             <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID[@wd:type ='Purchase_Order_Issue_Option_ID']"
                 />      
-            </PO_Issue_Option>
-             <Company_Restrictions>
+            </po_issue_option>
+             <company_restrictions>
             <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/wd:ID[@wd:type ='Company_Reference_ID']"
                 /> 
-            </Company_Restrictions>
-             <Spend_Category>
+            </company_restrictions>
+             <spend_category>
             <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID[@wd:type ='Spend_Category_ID']"
                 />        
-            </Spend_Category>
+            </spend_category>
 </Results>
             </xsl:template>
 

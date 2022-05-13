@@ -4,17 +4,17 @@
 
     <xsl:output indent="yes"/>
 
-    <xsl:param name="Employee_ID"/>
+    <xsl:param name="employee_id"/>
     <xsl:param name="bill_to_address"/>
  
     <xsl:template match="/">
 
 <Results>
-            <Employee_ID>
+            <employee_id>
                 <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:Employee_ID"
                 />
-            </Employee_ID>
+            </employee_id>
             <bill_to_address>
                 <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:bill_to_address"

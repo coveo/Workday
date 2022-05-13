@@ -76,7 +76,7 @@
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PIM-FileAccess0"/>
         </cc:async-mediation>
-        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v37.2"/>
+        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v38"/>
         <cc:local-out id="PutIntegrationMessage0" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Integration completed. Purchase Order has been created'"/></cc:local-out>
         <cc:local-out id="PIM-FileAccess0" endpoint="vm://wcc/PutIntegrationMessage">
             <cc:set name="is.message.severity" value="'ERROR'"/>
@@ -89,13 +89,13 @@
         <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
             <cc:steps>
                 <cc:eval id="SupplierParameters">
-                    <cc:expression>props['Supplier_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID')</cc:expression>
-                    <cc:expression>props['Supplier_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID/@wd:type')</cc:expression>
-                    <cc:expression>props['Payment_Terms'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID/@wd:type')</cc:expression>
-                    <cc:expression>props['Currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID/@wd:type')</cc:expression>
-                    <cc:expression>props['PO_Issue_Option'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID/@wd:type')</cc:expression>
-                    <cc:expression>props['Company_Restrictions'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
-                    <cc:expression>props['Spend_Category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['supplier_id'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID')</cc:expression>
+                    <cc:expression>props['supplier_category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['payment_terms'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['po_issue_option'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID/@wd:type')</cc:expression>
+                    <cc:expression>props['company_restrictions'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/@wd:Descriptor')</cc:expression>
+                    <cc:expression>props['spend_category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID/@wd:type')</cc:expression>
                 </cc:eval>
                 <cc:xslt-plus id="SupplierXSLT" url="Supplier_Mapping.xsl"/>
             </cc:steps>
@@ -105,7 +105,7 @@
         <cc:async-mediation id="AsyncMediation0">
             <cc:steps>
                 <cc:eval id="Eval">
-                    <cc:expression>props['Employee_ID'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Employee_ID')</cc:expression>
+                    <cc:expression>props['employee_id'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Employee_ID')</cc:expression>
                     <cc:expression>props['bill_to_address'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:bill_to_address')</cc:expression>
                 </cc:eval>
                 <cc:xslt-plus id="XsltPlus" url="EmployeeSXLT.xsl"/>
