@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:wd="urn:com.workday.report/INTSYS_Suppliers" exclude-result-prefixes="wd">
+    xmlns:wd="urn:com.workday.report/INTSYS_POSuppliers" exclude-result-prefixes="wd">
 
     <xsl:output indent="yes"/>
 

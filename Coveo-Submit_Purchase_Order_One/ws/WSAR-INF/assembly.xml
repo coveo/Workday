@@ -89,7 +89,7 @@
         <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
             <cc:steps>
                 <cc:eval id="SupplierParameters">
-                    <cc:expression>props['supplier_id'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Supplier_ID&quot;)</cc:expression>
+                    <cc:expression>props['supplier_id'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Supplier/wd:ID[@wd:type='Supplier_ID']&quot;)</cc:expression>
                     <cc:expression>props['supplier_category'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID[@wd:type='Supplier_Category_ID']&quot;)</cc:expression>
                     <cc:expression>props['payment_terms'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID[@wd:type='Payment_Terms_ID']&quot;)</cc:expression>
                     <cc:expression>props['currency'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID[@wd:type='Currency_ID']&quot;)</cc:expression>
@@ -111,6 +111,13 @@
                 <cc:xslt-plus id="XsltPlus" url="EmployeeSXLT.xsl"/>
             </cc:steps>
         </cc:async-mediation>
+        <cc:aggregator id="Aggregator" collate-when="props['collate'] == true" force-batch-when="props['force.batch'] == true">
+            <cc:size-batch-strategy batch-size="-1"/>
+            <cc:xml-message-content-collater>
+        <cc:header-text>&lt;wd:ReqLines xmlns:wd=&quot;urn:com.workday/bsvc&quot;></cc:header-text>
+        <cc:footer-text>&lt;/wd:ReqLines></cc:footer-text>
+      </cc:xml-message-content-collater>
+        </cc:aggregator>
 	</cc:assembly>
 
 </beans>
