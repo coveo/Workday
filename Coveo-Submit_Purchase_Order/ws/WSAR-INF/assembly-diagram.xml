@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wdnm:Diagram xmlns:wdnm="http://workday.com/studio/editors/notation">
+  <element href="assembly.xml#WorkdayAssembly"/>
+  <visualProperties x="321" y="204">
+    <element href="assembly.xml#StartHere"/>
+  </visualProperties>
+  <visualProperties x="393" y="210">
+    <element href="assembly.xml#GetEventDocuments"/>
+  </visualProperties>
+  <visualProperties x="568" y="204">
+    <element href="assembly.xml#GetRetrievedFile"/>
+  </visualProperties>
+  <visualProperties x="509" y="517">
+    <element href="assembly.xml#PIM-FileAccess"/>
+  </visualProperties>
+  <visualProperties x="169" y="645">
+    <element href="assembly.xml#GetExisitingData"/>
+  </visualProperties>
+  <visualProperties x="278" y="657">
+    <element href="assembly.xml#GetPurchaseOrders"/>
+  </visualProperties>
+  <visualProperties x="422" y="691">
+    <element href="assembly.xml#GetAllPurchaseOrders"/>
+  </visualProperties>
+  <visualProperties x="333" y="860">
+    <element href="assembly.xml#PIM-GetPOs"/>
+  </visualProperties>
+  <visualProperties x="645" y="147">
+    <element href="assembly.xml#GetExisitingData0"/>
+  </visualProperties>
+  <visualProperties x="140" y="1019">
+    <element href="assembly.xml#ProcessNewRequest"/>
+  </visualProperties>
+  <visualProperties x="287" y="1030">
+    <element href="assembly.xml#RetrieveSavedData"/>
+  </visualProperties>
+  <visualProperties x="831" y="124">
+    <element href="assembly.xml#ProcessNewRequest0"/>
+  </visualProperties>
+  <visualProperties x="1081" y="124">
+    <element href="assembly.xml#//@beans/@mixed.1/@mixed.25"/>
+  </visualProperties>
+  <visualProperties x="1074" y="168">
+    <element href="assembly.xml#PutIntegrationMessage1"/>
+  </visualProperties>
+  <visualProperties x="438" y="1082">
+    <element href="assembly.xml#Splitter"/>
+  </visualProperties>
+  <visualProperties x="559" y="1083">
+    <element href="assembly.xml#AsyncMediation"/>
+  </visualProperties>
+  <visualProperties x="649" y="1153">
+    <element href="assembly.xml#PutIntegrationMessage2"/>
+  </visualProperties>
+  <visualProperties x="926" y="1048">
+    <element href="assembly.xml#AsyncMediation0"/>
+  </visualProperties>
+  <visualProperties x="950" y="1154">
+    <element href="assembly.xml#PutIntegrationMessage3"/>
+  </visualProperties>
+  <visualProperties x="1164" y="1060">
+    <element href="assembly.xml#WriteSOAPMessage"/>
+  </visualProperties>
+  <visualProperties x="1193" y="1189">
+    <element href="assembly.xml#PutIntegrationMessage4"/>
+  </visualProperties>
+  <visualProperties x="569" y="404">
+    <element href="assembly.xml#AsyncMediation1"/>
+  </visualProperties>
+  <visualProperties x="144" y="320">
+    <element href="assembly.xml#ConvertFiles"/>
+  </visualProperties>
+  <visualProperties x="560" y="120">
+    <element href="assembly.xml#ConvertFiles0"/>
+  </visualProperties>
+  <visualProperties x="250" y="335">
+    <element href="assembly.xml#Convert_Data_To_XML"/>
+  </visualProperties>
+  <visualProperties x="151" y="1189">
+    <element href="assembly.xml#MissingParameters"/>
+  </visualProperties>
+  <visualProperties x="281" y="1201">
+    <element href="assembly.xml#AsyncMediation2"/>
+  </visualProperties>
+  <visualProperties x="789" y="975">
+    <element href="assembly.xml#MissingParameters0"/>
+  </visualProperties>
+  <visualProperties x="134" y="1369">
+    <element href="assembly.xml#DataMapping"/>
+  </visualProperties>
+  <visualProperties x="240" y="1366">
+    <element href="assembly.xml#Supplier_RaaS"/>
+  </visualProperties>
+  <visualProperties x="945" y="974">
+    <element href="assembly.xml#DataMapping0"/>
+  </visualProperties>
+  <visualProperties x="409" y="1401">
+    <element href="assembly.xml#GetInformationSupplier"/>
+  </visualProperties>
+  <visualProperties x="643" y="374">
+    <element href="assembly.xml#PutIntegrationMessage"/>
+  </visualProperties>
+  <visualProperties x="1542" y="974">
+    <element href="assembly.xml#WorkdayOutSoap"/>
+  </visualProperties>
+  <visualProperties x="1696" y="917">
+    <element href="assembly.xml#PutIntegrationMessage0"/>
+  </visualProperties>
+  <connections type="routesTo" sourceAnchorX="0.5416666666666666" sourceAnchorY="1.0" targetAnchorX="0.06382978723404255" targetAnchorY="0.5135135135135135">
+    <source href="assembly.xml#StartHere"/>
+    <target href="assembly.xml#GetEventDocuments"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5319148936170213" sourceAnchorY="1.0" targetAnchorX="0.03636363636363636" targetAnchorY="0.11333333333333333">
+    <source href="assembly.xml#GetEventDocuments"/>
+    <target href="assembly.xml#GetRetrievedFile"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.752" sourceAnchorY="1.0" targetAnchorX="0.016260162601626018" targetAnchorY="0.07262569832402235">
+    <source href="assembly.xml#GetExisitingData"/>
+    <target href="assembly.xml#GetPurchaseOrders"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.17318435754189945" targetAnchorX="0.0" targetAnchorY="0.40540540540540543">
+    <source href="assembly.xml#GetPurchaseOrders"/>
+    <target href="assembly.xml#GetAllPurchaseOrders"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.475" sourceAnchorY="1.0" targetAnchorX="0.02553191489361702" targetAnchorY="0.1956521739130435">
+    <source href="assembly.xml#//@beans/@mixed.1/@splitter.0/@subRoute.0"/>
+    <target href="assembly.xml#AsyncMediation"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7078651685393258" sourceAnchorY="1.0" targetAnchorX="0.3548387096774194" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.25"/>
+    <target href="assembly.xml#PutIntegrationMessage1"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.5985915492957746" sourceAnchorY="1.0" targetAnchorX="0.12396694214876033" targetAnchorY="0.15217391304347827">
+    <source href="assembly.xml#ProcessNewRequest"/>
+    <target href="assembly.xml#RetrieveSavedData"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.25" targetAnchorX="0.1935483870967742" targetAnchorY="0.11333333333333333">
+    <source href="assembly.xml#RetrieveSavedData"/>
+    <target href="assembly.xml#Splitter"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.35526315789473684" sourceAnchorY="1.0" targetAnchorX="0.3870967741935484" targetAnchorY="0.35135135135135137">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.31/@mixed.3"/>
+    <target href="assembly.xml#PutIntegrationMessage2"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7614678899082569" sourceAnchorY="1.0" targetAnchorX="0.3870967741935484" targetAnchorY="0.35135135135135137">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.35/@mixed.3"/>
+    <target href="assembly.xml#PutIntegrationMessage3"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.5338983050847458" sourceAnchorY="0.7333333333333333" targetAnchorX="0.3096774193548387" targetAnchorY="0.43243243243243246">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.39/@mixed.3"/>
+    <target href="assembly.xml#PutIntegrationMessage4"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.21951219512195122" targetAnchorX="0.08" targetAnchorY="0.08943089430894309">
+    <source href="assembly.xml#AsyncMediation0"/>
+    <target href="assembly.xml#WriteSOAPMessage"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.6" sourceAnchorY="1.0" targetAnchorX="0.23129251700680273" targetAnchorY="0.24324324324324326">
+    <source href="assembly.xml#GetExisitingData0"/>
+    <target href="assembly.xml#ProcessNewRequest0"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.5602836879432624" sourceAnchorY="1.0" targetAnchorX="0.5229357798165137" targetAnchorY="0.2972972972972973">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.11/@mixed.5"/>
+    <target href="assembly.xml#PIM-GetPOs"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7364864864864865" sourceAnchorY="1.0" targetAnchorX="0.018018018018018018" targetAnchorY="0.09782608695652174">
+    <source href="assembly.xml#GetAllPurchaseOrders"/>
+    <target href="assembly.xml#AsyncMediation1"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.47058823529411764" targetAnchorX="0.035398230088495575" targetAnchorY="0.3783783783783784">
+    <source href="assembly.xml#//@beans/@mixed.1/@route.0/@subRoute.0"/>
+    <target href="assembly.xml#ConvertFiles0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7345132743362832" sourceAnchorY="1.0" targetAnchorX="0.06923076923076923" targetAnchorY="0.3783783783783784">
+    <source href="assembly.xml#ConvertFiles0"/>
+    <target href="assembly.xml#GetExisitingData0"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7685185185185185" sourceAnchorY="1.0" targetAnchorX="0.08444444444444445" targetAnchorY="0.20652173913043478">
+    <source href="assembly.xml#ConvertFiles"/>
+    <target href="assembly.xml#Convert_Data_To_XML"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.762962962962963" sourceAnchorY="1.0" targetAnchorX="0.16477272727272727" targetAnchorY="0.16304347826086957">
+    <source href="assembly.xml#MissingParameters"/>
+    <target href="assembly.xml#AsyncMediation2"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.21951219512195122" targetAnchorX="0.12142857142857143" targetAnchorY="0.5135135135135135">
+    <source href="assembly.xml#AsyncMediation"/>
+    <target href="assembly.xml#MissingParameters0"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7927927927927928" sourceAnchorY="1.0" targetAnchorX="0.1016949152542373" targetAnchorY="0.2702702702702703">
+    <source href="assembly.xml#DataMapping"/>
+    <target href="assembly.xml#Supplier_RaaS"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7142857142857143" sourceAnchorY="1.0" targetAnchorX="0.15517241379310345" targetAnchorY="0.3783783783783784">
+    <source href="assembly.xml#MissingParameters0"/>
+    <target href="assembly.xml#DataMapping0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.6379310344827587" sourceAnchorY="1.0" targetAnchorX="0.15517241379310345" targetAnchorY="0.13008130081300814">
+    <source href="assembly.xml#DataMapping0"/>
+    <target href="assembly.xml#AsyncMediation0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5423728813559322" sourceAnchorY="1.0" targetAnchorX="0.054945054945054944" targetAnchorY="0.10869565217391304">
+    <source href="assembly.xml#Supplier_RaaS"/>
+    <target href="assembly.xml#GetInformationSupplier"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.30434782608695654" targetAnchorX="0.24666666666666667" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#Convert_Data_To_XML"/>
+    <target href="assembly.xml#PutIntegrationMessage"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.2601626016260163" targetAnchorX="0.1484375" targetAnchorY="0.1891891891891892">
+    <source href="assembly.xml#WriteSOAPMessage"/>
+    <target href="assembly.xml#WorkdayOutSoap"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.6015625" sourceAnchorY="1.0" targetAnchorX="0.12903225806451613" targetAnchorY="0.2972972972972973">
+    <source href="assembly.xml#WorkdayOutSoap"/>
+    <target href="assembly.xml#PutIntegrationMessage0"/>
+  </connections>
+  <swimlanes x="108" y="78" name="Main Program" topBorderColor="8851980">
+    <elements href="assembly.xml#StartHere"/>
+    <elements href="assembly.xml#GetEventDocuments"/>
+    <elements href="assembly.xml#GetRetrievedFile"/>
+    <elements href="assembly.xml#ConvertFiles0"/>
+    <elements href="assembly.xml#GetExisitingData0"/>
+    <elements href="assembly.xml#ProcessNewRequest0"/>
+    <elements href="#//@swimlanes.7"/>
+  </swimlanes>
+  <swimlanes x="124" y="303" name="Convert File" elements="//@swimlanes.2" topBorderColor="2143761"/>
+  <swimlanes x="335" y="346" name="Swimlane" orientation="VERTICAL">
+    <elements href="assembly.xml#PIM-FileAccess"/>
+  </swimlanes>
+  <swimlanes x="109" y="15" name="Submit Purchase Order" orientation="VERTICAL" elements="//@swimlanes.0 //@swimlanes.11 //@swimlanes.4 //@swimlanes.6 //@swimlanes.12 //@swimlanes.13" topBorderColor="1"/>
+  <swimlanes x="279" y="835" name="Get Existing Data" topBorderColor="2592742">
+    <elements href="assembly.xml#GetExisitingData"/>
+    <elements href="#//@swimlanes.5"/>
+    <elements href="assembly.xml#GetAllPurchaseOrders"/>
+    <elements href="assembly.xml#AsyncMediation1"/>
+  </swimlanes>
+  <swimlanes x="245" y="719" name="Swimlane" orientation="VERTICAL">
+    <elements href="assembly.xml#GetPurchaseOrders"/>
+    <elements href="assembly.xml#PIM-GetPOs"/>
+  </swimlanes>
+  <swimlanes x="305" y="958" name="ProcessData" topBorderColor="14214676">
+    <elements href="assembly.xml#ProcessNewRequest"/>
+    <elements href="assembly.xml#RetrieveSavedData"/>
+    <elements href="assembly.xml#Splitter"/>
+    <elements href="#//@swimlanes.8"/>
+    <elements href="assembly.xml#MissingParameters0"/>
+    <elements href="assembly.xml#DataMapping0"/>
+    <elements href="#//@swimlanes.9"/>
+    <elements href="#//@swimlanes.10"/>
+    <elements href="assembly.xml#WorkdayOutSoap"/>
+    <elements href="assembly.xml#PutIntegrationMessage0"/>
+  </swimlanes>
+  <swimlanes x="995" y="194" name="GlobalErrorHandler" orientation="VERTICAL" topBorderColor="467382">
+    <elements href="assembly.xml#//@beans/@mixed.1/@mixed.25"/>
+    <elements href="assembly.xml#PutIntegrationMessage1"/>
+  </swimlanes>
+  <swimlanes x="562" y="1101" name="CreateParameters" orientation="VERTICAL">
+    <elements href="assembly.xml#AsyncMediation"/>
+    <elements href="assembly.xml#PutIntegrationMessage2"/>
+  </swimlanes>
+  <swimlanes x="861" y="1092" name="ErrorifDuplicate" orientation="VERTICAL">
+    <elements href="assembly.xml#AsyncMediation0"/>
+    <elements href="assembly.xml#PutIntegrationMessage3"/>
+  </swimlanes>
+  <swimlanes x="1073" y="1187" name="PrepareSOAPRequest" orientation="VERTICAL">
+    <elements href="assembly.xml#WriteSOAPMessage"/>
+    <elements href="assembly.xml#PutIntegrationMessage4"/>
+  </swimlanes>
+  <swimlanes x="188" y="268" name="ConvertData" topBorderColor="1152804">
+    <elements href="assembly.xml#ConvertFiles"/>
+    <elements href="assembly.xml#Convert_Data_To_XML"/>
+    <elements href="assembly.xml#PutIntegrationMessage"/>
+  </swimlanes>
+  <swimlanes x="153" y="1141" name="FillMissingParameters">
+    <elements href="assembly.xml#MissingParameters"/>
+    <elements href="assembly.xml#AsyncMediation2"/>
+  </swimlanes>
+  <swimlanes x="222" y="1312" name="Map Data">
+    <elements href="assembly.xml#DataMapping"/>
+    <elements href="assembly.xml#Supplier_RaaS"/>
+    <elements href="assembly.xml#GetInformationSupplier"/>
+  </swimlanes>
+</wdnm:Diagram>

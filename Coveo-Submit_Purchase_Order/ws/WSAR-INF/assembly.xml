@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+     xmlns="http://www.springframework.org/schema/beans"
+     xmlns:beans="http://www.springframework.org/schema/beans"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:cc="http://www.capeclear.com/assembly/10"
+     xmlns:cloud="urn:com.workday/esb/cloud/10.0"
+     xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:pi="urn:com.workday/picof"
+     xmlns:wd="urn:com.workday/bsvc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<cc:assembly id="WorkdayAssembly" version="2021.34">
+        <cc:workday-in id="StartHere" routes-to="GetEventDocuments">
+            <cc:integration-system name="Coveo-Submit_Purchase_Order">
+        <cloud:report-service name="CoveoPO_SupplierList">
+          <cloud:report-alias description="List of all the suppliers in Workday, along with the supplier ID" name="Coveo-Submit_PO_Suppliers"/>
+        </cloud:report-service>
+      </cc:integration-system>
+        </cc:workday-in>
+        <cc:local-out id="GetEventDocuments" routes-response-to="GetRetrievedFile" endpoint="vm://wcc/GetEventDocuments"><cc:set name="ie.event.wid" value="lp.isSet() ? lp.getIntegrationEventWID() : null"/></cc:local-out>
+        <cc:route id="GetRetrievedFile">
+            <cc:doc-iterator/>
+            <cc:sub-route name="ProcessFile" routes-to="ConvertFiles0"/>
+        </cc:route>
+        <cc:local-out id="PIM-FileAccess" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'ERROR'"/><cc:set name="is.message.summary" value="'Error occured when trying to access the file.'"/><cc:set name="is.message.detail" value="context.errorMessage"/></cc:local-out>
+        <cc:local-in id="GetExisitingData" routes-to="GetPurchaseOrders" icon="Laptop Code @4x.png"/>
+        <cc:sync-mediation id="GetPurchaseOrders" routes-to="GetAllPurchaseOrders">
+            <cc:request-steps>
+                <cc:write id="PrepareWWSCall">
+                    <cc:message>
+                        <cc:text>&lt;?xml version=&quot;1.0&quot; ?>
+&lt;env:Envelope xmlns:env=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;>
+    &lt;env:Body>
+        &lt;wd:Get_Purchase_Orders_Request
+            xmlns:wd=&quot;urn:com.workday/bsvc&quot;
+            wd:version=&quot;v37.1&quot;>
+            &lt;wd:Response_Filter>
+                &lt;wd:Page>1&lt;/wd:Page>
+                &lt;wd:Count>100&lt;/wd:Count>
+            &lt;/wd:Response_Filter>
+        &lt;/wd:Get_Purchase_Orders_Request>
+    &lt;/env:Body>
+&lt;/env:Envelope></cc:text>
+                    </cc:message>
+                </cc:write>
+            </cc:request-steps>
+            <cc:response-steps>
+            </cc:response-steps>
+            <cc:send-error id="SendError" routes-to="PIM-GetPOs"/>
+        </cc:sync-mediation>
+        <cc:local-out id="GetAllPurchaseOrders" routes-response-to="AsyncMediation1" endpoint="vm://wcc/PagedGet"><cc:set name="is.paged.get.request.current.page.xpath" value="'/env:Envelope/env:Body/*/wd:Response_Filter/wd:Page'"/><cc:set name="is.paged.get.response.current.page.xpath" value="'/env:Envelope/env:Body/*/wd:Response_Results/wd:Page'"/><cc:set name="is.paged.get.response.total.pages.xpath" value="'/env:Envelope/env:Body/*/wd:Response_Results/wd:Total_Pages'"/><cc:set name="is.paged.get.response.total.results.xpath" value="'/env:Envelope/env:Body/*/wd:Response_Results/wd:Total_Results'"/><cc:set name="is.paged.get.aggregate.header" value="'&lt;Purchase_Orders>'"/><cc:set name="is.paged.get.aggregate.footer" value="'&lt;/Purchase_Orders>'"/><cc:set name="is.paged.get.process.endpoint"/><cc:set name="is.paged.get.application" value="'Resource_Management'"/><cc:set name="is.paged.get.version" value="'v37.1'"/><cc:set name="is.paged.get.page.zero" value="false"/><cc:set name="is.paged.get.store.requests" value="true"/><cc:set name="is.paged.get.aggregate.xpath" value="'/env:Envelope/env:Body/wd:Get_Purchase_Orders_Response/wd:Response_Data'"/></cc:local-out>
+        <cc:local-out id="PIM-GetPOs" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'ERROR'"/><cc:set name="is.message.summary" value="'Error retrieving purchase order data from tenant.'"/><cc:set name="is.message.detail" value="context.errorMessage"/></cc:local-out>
+        <cc:local-out id="GetExisitingData0" routes-response-to="ProcessNewRequest0" endpoint="vm://Coveo-Submit_Purchase_Order/GetExisitingData"/>
+        <cc:local-in id="ProcessNewRequest" routes-to="RetrieveSavedData" icon="Tools.png"/>
+        <cc:async-mediation id="RetrieveSavedData" routes-to="Splitter">
+            <cc:steps>
+                <cc:copy id="Copy" input="variable" input-variable="wd.retrieve.variable"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="ProcessNewRequest0" endpoint="vm://Coveo-Submit_Purchase_Order/ProcessNewRequest"/>
+        <cc:send-error id="GlobalError" routes-to="PutIntegrationMessage1"/>
+        <cc:local-out id="PutIntegrationMessage1" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'CRITICAL'"/><cc:set name="is.message.summary" value="'There is a critical error (Global Error Handler)'"/><cc:set name="is.message.detail" value="context.errorMessage"/></cc:local-out>
+        <cc:splitter id="Splitter">
+            <cc:sub-route name="SubRoute" routes-to="AsyncMediation"/>
+            <cc:xml-stream-splitter xpath="/root/data/results/"/>
+        </cc:splitter>
+        <cc:async-mediation id="AsyncMediation" routes-to="MissingParameters0" continue-after-error="recover">
+            <cc:steps>
+                <cc:eval id="CreateParameters">
+                    <cc:expression>props['snow_num'] = parts[0].xpath('/results/data/number')</cc:expression>
+                    <cc:expression>props['supplier'] = parts[0].xpath('/results/data/supplier_name')</cc:expression>
+                    <cc:expression>props['cost'] = parts[0].xpath('/results/data/cost')</cc:expression>
+                    <cc:expression>props['quantity'] = parts[0].xpath('/results/data/quantity')</cc:expression>
+                    <cc:expression>props['product_name'] = parts[0].xpath('/results/data/product_name')</cc:expression>
+                    <cc:expression>props['additional_details'] = parts[0].xpath('/results/data/additional_details')</cc:expression>
+                    <cc:expression>props['requester'] = parts[0].xpath('/results/data/requester')</cc:expression>
+                    <cc:expression>props['delivery_address'] = parts[0].xpath('/results/data/delivery_address')</cc:expression>
+                </cc:eval>
+            </cc:steps>
+            <cc:send-error id="SendError" routes-to="PutIntegrationMessage2"/>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary"/></cc:local-out>
+        <cc:async-mediation id="AsyncMediation0" routes-to="WriteSOAPMessage">
+            <cc:steps>
+                <cc:validate-exp id="CheckForDuplicates"/>
+            </cc:steps>
+            <cc:send-error id="SendError" routes-to="PutIntegrationMessage3"/>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage3" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary"/></cc:local-out>
+        <cc:async-mediation id="WriteSOAPMessage" routes-to="WorkdayOutSoap" handle-downstream-errors="true">
+            <cc:steps>
+                <cc:xslt-plus id="XsltPlus" url="SOAP_Request_rev2.xml"/>
+            </cc:steps>
+            <cc:send-error id="SendError" routes-to="PutIntegrationMessage4"/>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage4" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Something went wrong while calling the SOAP request. Check your parameters'"/></cc:local-out>
+        <cc:async-mediation id="AsyncMediation1">
+            <cc:steps>
+                <cc:copy id="WriteDataToVar" output="variable" output-variable="tenant.data"/>
+                <cc:store id="Store" input="variable" input-variable="tenant.data" createDocumentReference="true" title="TenantData.xml"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-in id="ConvertFiles" routes-to="Convert_Data_To_XML" icon="Box.png"/>
+        <cc:local-out id="ConvertFiles0" routes-response-to="GetExisitingData0" endpoint="vm://Coveo-Submit_Purchase_Order/ConvertFiles"/>
+        <cc:async-mediation id="Convert_Data_To_XML" routes-to="PutIntegrationMessage">
+            <cc:steps>
+                <cc:copy id="GetDataJSON" input="variable" input-variable="wd.retrieve.variable"/>
+                <cc:json-to-xml id="JsonToXml"/>
+                <cc:copy id="SaveData" output="variable" output-variable="wd.retrieve.variable"/>
+                <cc:xml-to-csv id="XmlToCsv" input="variable" input-variable="wd.retrieve.variable" writeHeaderLine="true"/>
+                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.data" input="message" createDocumentReference="false" title="data.csv"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-in id="MissingParameters" routes-to="AsyncMediation2" icon="TransformIcon.png"/>
+        <cc:async-mediation id="AsyncMediation2">
+            <cc:steps>
+                <cc:eval execute-when="props['supplier'] == empty" id="Supplier">
+                    <cc:expression>props['supplier']='DUMMY (DNU)'</cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['company'] == empty" id="Company">
+                    <cc:expression>props['company']='DUM'</cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['document_date'] == empty" id="Date">
+                    <cc:expression>props['document_date']= util.currentDateAsString()</cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['currency'] == empty" id="Currency">
+                    <cc:expression>props['currency']='CAD'</cc:expression>
+                </cc:eval>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="MissingParameters0" routes-response-to="DataMapping0" endpoint="vm://Coveo-Submit_Purchase_Order/MissingParameters"/>
+        <cc:local-in id="DataMapping" routes-to="Supplier_RaaS"/>
+        <cc:workday-out-rest id="Supplier_RaaS" routes-response-to="GetInformationSupplier" extra-path="@{intsys.reportService.getExtrapath('Coveo-Submit_PO_Suppliers')}"/>
+        <cc:local-out id="DataMapping0" routes-response-to="AsyncMediation0" endpoint="vm://Coveo-Submit_Purchase_Order/DataMapping"/>
+        <cc:async-mediation id="GetInformationSupplier">
+            <cc:steps>
+                <cc:xslt-plus id="SupplierXSLT" url="Supplier_Mapping.xsl"/>
+                <cc:eval id="SupplierParameters">
+                    <cc:expression>props['supplier_id'] = parts[0].xpath('/Results/Supplier_ID')</cc:expression>
+                </cc:eval>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Document created'"/><cc:set name="is.document.variable.name" value="'deliver.data'"/><cc:set name="is.document.deliverable" value="'true'"/></cc:local-out>
+        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" version="v37.0"/>
+        <cc:local-out id="PutIntegrationMessage0" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Integration completed. Purchase Order has been created'"/></cc:local-out>
+	</cc:assembly>
+
+</beans>

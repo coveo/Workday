@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:param name="company"/>
+  <xsl:param name="supplier_id"/>
+  <xsl:param name="document_date"/>
+  <xsl:param name="payment_term"/>
+  <xsl:param name="supplier_contract"/>
+  <xsl:param name="currency"/>
+  <xsl:param name="po_issue_option"/>
+  <xsl:param name="employee_id"/>
+  <xsl:param name="snow_num"/>
+  <xsl:param name="additional_details"/>
+  <xsl:param name="prepaid"/>
+  <xsl:param name="cost"/>
+  <xsl:param name="location"/>
+  <xsl:param name="cost_center"/>
+  <xsl:param name="description"/>
+  <xsl:param name="spend_category"/>
+
+<xsl:template match="/">
+
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<env:Body>
+<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v37.0">
+<wd:Business_Process_Parameters>
+<wd:Auto_Complete>false</wd:Auto_Complete>
+</wd:Business_Process_Parameters>
+<wd:Purchase_Order_Data>
+<wd:Submit>false</wd:Submit>
+<wd:Locked_in_Workday>false</wd:Locked_in_Workday>
+<wd:Company_Reference>
+<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>
+</wd:Company_Reference>
+<wd:Supplier_Reference>
+<wd:ID wd:type="Supplier_ID"><xsl:value-of select="$supplier_id"/></wd:ID>
+</wd:Supplier_Reference>
+<wd:Document_Date>
+	<xsl:call-template name="stripTimeFromDate">
+    	<xsl:with-param name="subjectDate" select="$document_date" />
+    </xsl:call-template>
+</wd:Document_Date>
+<wd:Payment_Terms_Reference>
+<wd:ID wd:type="Payment_Terms_ID"><xsl:value-of select="$payment_term"/></wd:ID>
+</wd:Payment_Terms_Reference>
+<wd:Supplier_Contract_Reference>
+<wd:ID wd:type="Supplier_Contract_ID"><xsl:value-of select="$supplier_contract"/></wd:ID>
+</wd:Supplier_Contract_Reference>
+<wd:Currency_Reference>
+<wd:ID wd:type="Currency_ID"><xsl:value-of select="$currency"/></wd:ID>
+</wd:Currency_Reference>
+<wd:Issue_Option_Reference>
+<wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$po_issue_option"/></wd:ID>
+</wd:Issue_Option_Reference>
+<wd:Buyer_Reference>
+<wd:ID wd:type="Employee_ID"><xsl:value-of select="$employee_id"/></wd:ID>
+</wd:Buyer_Reference>
+<wd:Memo><xsl:value-of select="$snow_num"/></wd:Memo>
+<wd:Internal_Memo><xsl:value-of select="$additional_details"/></wd:Internal_Memo>
+<wd:Prepaid><xsl:value-of select="$prepaid"/></wd:Prepaid>
+<wd:Service_Line_Replacement_Data>
+<wd:Line_Company_Reference>
+<wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>
+</wd:Line_Company_Reference>
+<wd:Description><xsl:value-of select="$description"/></wd:Description>
+<wd:Resource_Category_Reference>
+<wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
+</wd:Resource_Category_Reference>
+<wd:Extended_Amount><xsl:value-of select="$cost"/></wd:Extended_Amount>
+<wd:Due_Date/>
+<wd:Start_Date></wd:Start_Date>
+<wd:End_Date></wd:End_Date>
+<wd:Prepaid>false</wd:Prepaid>
+<wd:Retention>false</wd:Retention>
+<wd:Memo><xsl:value-of select="$snow_num"/></wd:Memo>
+<wd:Storage_Location_Reference>
+<wd:ID wd:type="Location_ID"><xsl:value-of select="$location"/></wd:ID>
+</wd:Storage_Location_Reference>
+<wd:Worktags_Reference>
+<wd:ID wd:type="Cost_Center_Reference_ID"><xsl:value-of select="$cost_center"/></wd:ID>
+</wd:Worktags_Reference>
+</wd:Service_Line_Replacement_Data>
+</wd:Purchase_Order_Data>
+</wd:Submit_Purchase_Order_Request>
+</env:Body>
+</env:Envelope>
+</xsl:template>
+
+<xsl:template name="stripTimeFromDate">
+        <xsl:param name="subjectDate"/>
+        <xsl:value-of select="format-date($subjectDate, '[Y0001]/[M01]/[D01]')"/>
+    </xsl:template>
+    
+</xsl:stylesheet>
