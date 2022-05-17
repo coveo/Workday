@@ -61,6 +61,11 @@
         <cc:async-mediation id="WriteSOAPMessage" routes-to="WorkdayOutSoap" handle-downstream-errors="true">
             <cc:steps>
                 <cc:xslt-plus id="XsltPlus" url="SOAP_Request_rev2.xml"/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PutIntegrationMessage4"/>
         </cc:async-mediation>
@@ -89,15 +94,20 @@
         <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
             <cc:steps>
                 <cc:eval id="SupplierParameters">
-                    <cc:expression>props['supplier_id'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Supplier/wd:ID[@wd:type='Supplier_ID']&quot;)</cc:expression>
-                    <cc:expression>props['supplier_category'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID[@wd:type='Supplier_Category_ID']&quot;)</cc:expression>
-                    <cc:expression>props['payment_terms'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID[@wd:type='Payment_Terms_ID']&quot;)</cc:expression>
-                    <cc:expression>props['currency'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID[@wd:type='Currency_ID']&quot;)</cc:expression>
-                    <cc:expression>props['po_issue_option'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID[@wd:type='Purchase_Order_Issue_Option_ID']&quot;)</cc:expression>
-                    <cc:expression>props['company_restrictions'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/wd:ID[@wd:type='Company_Reference_ID']&quot;)</cc:expression>
-                    <cc:expression>props['spend_category'] = parts[0].xpath(&quot;wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID[@wd:type='Spend_Category_ID']&quot;)</cc:expression>
+                    <cc:expression>props['supplier_id'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID')</cc:expression>
+                    <cc:expression>props['supplier_category'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category/wd:ID[@wd:type='Supplier_Category_ID']&quot;)</cc:expression>
+                    <cc:expression>props['payment_terms'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID[@wd:type='Payment_Terms_ID']&quot;)</cc:expression>
+                    <cc:expression>props['currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/@wd:Descriptor')</cc:expression>
+                    <cc:expression>props['po_issue_option'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID[@wd:type='Purchase_Order_Issue_Option_ID']&quot;)</cc:expression>
+                    <cc:expression>props['company_restrictions'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/wd:ID[@wd:type='Company_Reference_ID']&quot;)</cc:expression>
+                    <cc:expression>props['spend_category'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID[@wd:type='Spend_Category_ID']&quot;)</cc:expression>
                 </cc:eval>
                 <cc:xslt-plus id="SupplierXSLT" url="Supplier_Mapping.xsl"/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
             </cc:steps>
         </cc:async-mediation>
         <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
@@ -108,7 +118,12 @@
                     <cc:expression>props['employee_id'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Employee_ID')</cc:expression>
                     <cc:expression>props['bill_to_address'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:bill_to_address')</cc:expression>
                 </cc:eval>
-                <cc:xslt-plus id="XsltPlus" url="EmployeeSXLT.xsl"/>
+                <cc:xslt-plus id="EmployeeXSLT" url="EmployeeSXLT.xsl"/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
             </cc:steps>
         </cc:async-mediation>
         <cc:aggregator id="Aggregator" collate-when="props['collate'] == true" force-batch-when="props['force.batch'] == true">

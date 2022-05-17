@@ -3,21 +3,21 @@
 
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	
-  <xsl:param name="item"/>
   <xsl:param name="snow_num"/>
   <xsl:param name="company"/>
-  <xsl:param name="unit_cost"/>
-  <xsl:param name="manufacturer"/>
-  <xsl:param name="description"/>
   <xsl:param name="supplier_id"/>
-  <xsl:param name="supplier_category"/>
   <xsl:param name="payment_terms"/>
   <xsl:param name="currency"/>
   <xsl:param name="po_issue_option"/>
-  <xsl:param name="company_restrictions"/>
-  <xsl:param name="spend_category"/>
   <xsl:param name="employee_id"/>
   <xsl:param name="bill_to_address"/>
+  <xsl:param name="unit_cost"/>
+  <xsl:param name="manufacturer"/>
+  <xsl:param name="description"/>
+  <xsl:param name="item"/>
+  <xsl:param name="supplier_category"/>
+  <xsl:param name="company_restrictions"/>
+  <xsl:param name="spend_category"/>
   <xsl:param name="document_date"/>
 
 <xsl:template match="/">
@@ -27,7 +27,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <env:Body>
         <wd:Submit_Purchase_Order_Request
             xmlns:wd="urn:com.workday/bsvc"
-            wd:Add_Only="true"
+            wd:Add_Only="false"
             wd:version="v38.0">    
             <wd:Business_Process_Parameters>
                 <wd:Auto_Complete>false</wd:Auto_Complete>

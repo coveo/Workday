@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:wd="urn:com.workday.report/INTSYS_POSuppliers" exclude-result-prefixes="wd">
+    xmlns:wd="urn:com.workday.report/POSuppliers" exclude-result-prefixes="wd">
 
     <xsl:output indent="yes"/>
 
@@ -16,7 +16,7 @@
 <Results>
             <supplier_id>
                 <xsl:value-of
-                    select="wd:Report_Data/wd:Report_Entry/wd:Supplier/wd:ID[@wd:type ='Supplier_ID']"
+                    select="/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID"
                 />
             </supplier_id>
             <supplier_category>
@@ -31,7 +31,7 @@
             </payment_terms>
               <currency>
             <xsl:value-of
-                    select="wd:Report_Data/wd:Report_Entry/wd:Currency/wd:ID[@wd:type ='Currency_ID']"
+                    select="/wd:Report_Data/wd:Report_Entry/wd:Currency/@wd:Descriptor"
                 />        
             </currency>
               <po_issue_option>
