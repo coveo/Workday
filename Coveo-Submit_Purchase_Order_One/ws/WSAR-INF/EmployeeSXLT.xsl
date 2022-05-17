@@ -5,7 +5,7 @@
     <xsl:output indent="yes"/>
 
     <xsl:param name="employee_id"/>
-    <xsl:param name="bill_to_address"/>
+<!-- <xsl:param name="bill_to_address"/>   -->
  
     <xsl:template match="/">
 
@@ -15,12 +15,15 @@
                     select="wd:Report_Data/wd:Report_Entry/wd:Employee_ID"
                 />
             </employee_id>
-            <bill_to_address>
+   <!--          <bill_to_address>
                 <xsl:value-of
                     select="wd:Report_Data/wd:Report_Entry/wd:bill_to_address"
                 />
             </bill_to_address>
+   -->
 </Results>
             </xsl:template>
 
           </xsl:stylesheet>
+          
+          

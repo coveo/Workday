@@ -12,7 +12,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="employee_id"/>
   <xsl:param name="bill_to_address"/>
   <xsl:param name="unit_cost"/>
-  <xsl:param name="manufacturer"/>
+  <xsl:param name="cost_center"/>  
   <xsl:param name="description"/>
   <xsl:param name="item"/>
   <xsl:param name="supplier_category"/>
@@ -59,19 +59,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <wd:Bill_To_Contact_Reference>
                     <wd:ID wd:type="Contingent_Worker_ID"><xsl:value-of select="$employee_id"/></wd:ID>
                 </wd:Bill_To_Contact_Reference>
-                <wd:Bill_To_Address_Data>
-                    <wd:Bill_To_Address_Reference>
-                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
-                    </wd:Bill_To_Address_Reference>
-                </wd:Bill_To_Address_Data>
-                <wd:Ship_To_Contact_Reference>
-                    <wd:ID wd:type="Contingent_Worker_ID"><xsl:value-of select="$employee_id"/></wd:ID>
-                </wd:Ship_To_Contact_Reference>
-                <wd:Ship_To_Address_Data>
-                    <wd:Ship_To_Address_Reference>
-                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
-                    </wd:Ship_To_Address_Reference>
-                </wd:Ship_To_Address_Data>
                 <wd:Internal_Memo><xsl:value-of select="$snow_num"/></wd:Internal_Memo>
                 <wd:Prepaid>false</wd:Prepaid>
                 <wd:Goods_Line_Replacement_Data>
@@ -86,9 +73,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                     <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
                     </wd:Resource_Category_Reference>
                     <wd:Unit_Cost><xsl:value-of select="$unit_cost"/></wd:Unit_Cost>      
-                        <wd:Manufacturer_Reference>
-                       <wd:ID wd:type="Manufacturer_Name"><xsl:value-of select="$manufacturer"/></wd:ID>
-                        </wd:Manufacturer_Reference>
+                        <wd:Worktags_Reference>
+                       <wd:ID wd:type="Cost_Center_Reference_ID"><xsl:value-of select="$cost_center"/></wd:ID>
+                        </wd:Worktags_Reference>
                 </wd:Goods_Line_Replacement_Data>
             </wd:Purchase_Order_Data>
         </wd:Submit_Purchase_Order_Request>
