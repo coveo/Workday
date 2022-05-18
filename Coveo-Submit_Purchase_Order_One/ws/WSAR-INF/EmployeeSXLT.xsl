@@ -4,26 +4,15 @@
 
     <xsl:output indent="yes"/>
 
-    <xsl:param name="employee_id"/>
-<!-- <xsl:param name="bill_to_address"/>   -->
- 
+    <xsl:param name="employeeid"/>
+     
     <xsl:template match="/">
-
 <Results>
-            <employee_id>
-                <xsl:value-of
-                    select="wd:Report_Data/wd:Report_Entry/wd:Employee_ID"
+            <employeeid>
+                <xsl:copy-of
+                    select="wd:Report_Data/wd:Report_Entry[wd:Employee[@wd:Descriptor =$employeeid]]"
                 />
-            </employee_id>
-   <!--          <bill_to_address>
-                <xsl:value-of
-                    select="wd:Report_Data/wd:Report_Entry/wd:bill_to_address"
-                />
-            </bill_to_address>
-   -->
+            </employeeid>
 </Results>
             </xsl:template>
-
           </xsl:stylesheet>
-          
-          

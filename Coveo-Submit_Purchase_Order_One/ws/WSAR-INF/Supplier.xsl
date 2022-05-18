@@ -5,9 +5,7 @@
     <xsl:output indent="yes"/>
 
     <xsl:param name="supplier"/>
- 
-   
-       
+     
     <xsl:template match="/">
 <Results>
             <supplier>

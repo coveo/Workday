@@ -124,6 +124,33 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="9300-7243 Quebec Inc. (TermLynx Solutions Inc.)">
+            <wd:ID wd:type="WID">d3f57070014f01024e2eb1c3cea10000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000185</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>9300-7243 Quebec Inc. (TermLynx Solutions Inc.)</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000185</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Software">
+            <wd:ID wd:type="WID">d3f57070014f01022eb855d4a5470000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Software</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>461 rue Rosebourg&amp;#xa;Rosemère, QC J7A 4Z6&amp;#xa;Canada</wd:Remit_Address>
+        <wd:workdayID>d3f57070014f01024e2eb1c3cea10000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 45">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b677da6fcc30000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_45</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="9413-5845 Quebec inc. (Thé à Boire)">
             <wd:ID wd:type="WID">d3f57070014f01024e2ebd331ac30000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000186</wd:ID>
@@ -208,11 +235,6 @@
             <wd:ID wd:type="Currency_ID">USD</wd:ID>
             <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
         </wd:Currency>
-        <wd:Company_Restrictions wd:Descriptor="CSC Coveo Software Corp.">
-            <wd:ID wd:type="WID">f806c5b14f10015f2b6eedfbbc0064a0</wd:ID>
-            <wd:ID wd:type="Organization_Reference_ID">CSC</wd:ID>
-            <wd:ID wd:type="Company_Reference_ID">CSC</wd:ID>
-        </wd:Company_Restrictions>
     </wd:Report_Entry>
     <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Accelerate Media Inc.">
@@ -3349,6 +3371,41 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="CSU B.V.">
+            <wd:ID wd:type="WID">1eb932a687370109e800f9c463790000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000566</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>CSU B.V.</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000566</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Facilities and Utilities">
+            <wd:ID wd:type="WID">d3f57070014f01022eb84c348b900000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Facilities</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>Hoevenweg 11a&amp;#xa;5652 AW Eindhoven&amp;#xa;Netherlands</wd:Remit_Address>
+        <wd:workdayID>1eb932a687370109e800f9c463790000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 30">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b6781e4d0990000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_30</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="EUR">
+            <wd:ID wd:type="WID">eae312fc5152410cb4c8b452c26320a6</wd:ID>
+            <wd:ID wd:type="Currency_ID">EUR</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">978</wd:ID>
+        </wd:Currency>
+        <wd:PO_Issue_Option wd:Descriptor="Print">
+            <wd:ID wd:type="WID">6e0c241be08340e3a941f2a70f60bd31</wd:ID>
+            <wd:ID wd:type="Purchase_Order_Issue_Option_ID">PRINT</wd:ID>
+        </wd:PO_Issue_Option>
+        <wd:Spend_Category wd:Descriptor="Maintenance and repairs Corporate">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b53deb6e7710000</wd:ID>
+            <wd:ID wd:type="Spend_Category_ID">Maintenance_and_repairs_Corporate</wd:ID>
+        </wd:Spend_Category>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="CT Corporation">
             <wd:ID wd:type="WID">703c816afcac01218f515d979e350000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000513</wd:ID>
@@ -4412,6 +4469,37 @@
             <wd:ID wd:type="Currency_ID">USD</wd:ID>
             <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
         </wd:Currency>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Email on Acid, LLC">
+            <wd:ID wd:type="WID">1eb932a68737010a3f1743eb237d0000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000569</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Email on Acid, LLC</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000569</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Software">
+            <wd:ID wd:type="WID">d3f57070014f01022eb855d4a5470000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Software</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>112 E Pecan Street #1135&amp;#xa;San Antonio, TX 78205&amp;#xa;United States of America</wd:Remit_Address>
+        <wd:workdayID>1eb932a68737010a3f1743eb237d0000</wd:workdayID>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+        <wd:PO_Issue_Option wd:Descriptor="Print">
+            <wd:ID wd:type="WID">6e0c241be08340e3a941f2a70f60bd31</wd:ID>
+            <wd:ID wd:type="Purchase_Order_Issue_Option_ID">PRINT</wd:ID>
+        </wd:PO_Issue_Option>
+        <wd:Spend_Category wd:Descriptor="Licenses Team specific">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b514b08e2280000</wd:ID>
+            <wd:ID wd:type="Spend_Category_ID">Licenses_Team_specific</wd:ID>
+        </wd:Spend_Category>
     </wd:Report_Entry>
     <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Embarcadero Technologies">
@@ -7497,6 +7585,33 @@
         </wd:Company_Restrictions>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Josh Carson - HR Contractor (Inactive)">
+            <wd:ID wd:type="WID">1eb932a68737010997fce2a6718e0000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000563</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Josh Carson - HR Contractor</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000563</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Inactive">
+            <wd:ID wd:type="WID">dc755f5e446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">INACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Professional Services and Consulting">
+            <wd:ID wd:type="WID">d3f57070014f01022eb85d0c90660000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Professional_Services</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>Kenny Drews Vej 97 1th.&amp;#xa;2450 Copenhagen&amp;#xa;Denmark</wd:Remit_Address>
+        <wd:workdayID>1eb932a68737010997fce2a6718e0000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 30">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b6781e4d0990000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_30</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="GBP">
+            <wd:ID wd:type="WID">84c7000ecd1d4834a9bfa55ab2dad129</wd:ID>
+            <wd:ID wd:type="Currency_ID">GBP</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">826</wd:ID>
+        </wd:Currency>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Josh Carson [C]">
             <wd:ID wd:type="WID">7d684ada55e80100c7c1afa56bea0000</wd:ID>
             <wd:ID wd:type="Contingent_Worker_ID">CW000000001</wd:ID>
@@ -9029,6 +9144,29 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Minnesota Revenue">
+            <wd:ID wd:type="WID">1eb932a68737010a45e41a6147800000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000570</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Minnesota Revenue</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000570</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Professional Services and Consulting">
+            <wd:ID wd:type="WID">d3f57070014f01022eb85d0c90660000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Professional_Services</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>Mail Station 1275&amp;#xa;St Paul, MN 55145-1275&amp;#xa;United States of America</wd:Remit_Address>
+        <wd:workdayID>1eb932a68737010a45e41a6147800000</wd:workdayID>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Mishcon de Reya LLP">
             <wd:ID wd:type="WID">703c816afcac01214a83ef711cc40000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000510</wd:ID>
@@ -9508,6 +9646,41 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Neatro Technologies Inc.">
+            <wd:ID wd:type="WID">1eb932a6873701095bf780b2a9d70000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000562</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Neatro Technologies Inc.</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000562</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Software">
+            <wd:ID wd:type="WID">d3f57070014f01022eb855d4a5470000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Software</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>304-4141 Blvd Lasalle&amp;#xa;Verdun, QC H4G 0A9&amp;#xa;Canada</wd:Remit_Address>
+        <wd:workdayID>1eb932a6873701095bf780b2a9d70000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 60">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b67782e46750000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_60</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+        <wd:PO_Issue_Option wd:Descriptor="Print">
+            <wd:ID wd:type="WID">6e0c241be08340e3a941f2a70f60bd31</wd:ID>
+            <wd:ID wd:type="Purchase_Order_Issue_Option_ID">PRINT</wd:ID>
+        </wd:PO_Issue_Option>
+        <wd:Spend_Category wd:Descriptor="Licenses Team specific">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b514b08e2280000</wd:ID>
+            <wd:ID wd:type="Spend_Category_ID">Licenses_Team_specific</wd:ID>
+        </wd:Spend_Category>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Network Circle GmbH">
             <wd:ID wd:type="WID">d3f57070014f01024e2e2024fa4f0000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000172</wd:ID>
@@ -9715,6 +9888,33 @@
         </wd:Supplier_Category>
         <wd:Remit_Address>8800 Venice Blvd.&amp;#xa;Los Angeles, CA 90034&amp;#xa;United States of America</wd:Remit_Address>
         <wd:workdayID>28fbde5da8ab010a4eae125a5aa10000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 30">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b6781e4d0990000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_30</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Nsikak Tim">
+            <wd:ID wd:type="WID">1eb932a687370109ad267a5e62300000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000564</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Nsikak Tim</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000564</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Professional Services and Consulting">
+            <wd:ID wd:type="WID">d3f57070014f01022eb85d0c90660000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Professional_Services</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>18 Wellington Bassey Way&amp;#xa;Uyo 520103&amp;#xa;Akwa Ibom&amp;#xa;Nigeria</wd:Remit_Address>
+        <wd:workdayID>1eb932a687370109ad267a5e62300000</wd:workdayID>
         <wd:Payment_Terms wd:Descriptor="Net 30">
             <wd:ID wd:type="WID">dcc43ed0983b01000b6781e4d0990000</wd:ID>
             <wd:ID wd:type="Payment_Terms_ID">Net_30</wd:ID>
@@ -10913,6 +11113,33 @@
         </wd:Spend_Category>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Pureinsights Technology Corporation">
+            <wd:ID wd:type="WID">1eb932a68737010952620bb7c79a0000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000561</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Pureinsights Technology Corporation</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000561</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Professional Services and Consulting">
+            <wd:ID wd:type="WID">d3f57070014f01022eb85d0c90660000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Professional_Services</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>205 Van Buren St Ste 120&amp;#xa;Herndon, VA 20170&amp;#xa;United States of America</wd:Remit_Address>
+        <wd:workdayID>1eb932a68737010952620bb7c79a0000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 30">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b6781e4d0990000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_30</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="PUROLATOR INC.">
             <wd:ID wd:type="WID">b744ca0753c30110fb69d62f31620000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000446</wd:ID>
@@ -11002,6 +11229,33 @@
             <wd:ID wd:type="Organization_Reference_ID">CSI</wd:ID>
             <wd:ID wd:type="Company_Reference_ID">CSI</wd:ID>
         </wd:Company_Restrictions>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Quartz Management, LLC.">
+            <wd:ID wd:type="WID">1eb932a68737010a3dbacaec30170000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000568</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Quartz Management, LLC.</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000568</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Professional Services and Consulting">
+            <wd:ID wd:type="WID">d3f57070014f01022eb85d0c90660000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Professional_Services</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>2200 Pacific Coast Highway #307&amp;#xa;Hermosa Beach, CA 90254&amp;#xa;United States of America</wd:Remit_Address>
+        <wd:workdayID>1eb932a68737010a3dbacaec30170000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Net 30">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b6781e4d0990000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Net_30</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
         <wd:Supplier
@@ -13425,6 +13679,41 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="Staples">
+            <wd:ID wd:type="WID">1eb932a687370109e546f0b9fff90000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000565</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>Staples</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000565</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Office Supplies">
+            <wd:ID wd:type="WID">d3f57070014f01022eb852385fd80000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Office_Supplies</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>6 Staples Avenue&amp;#xa;Richmond Hill, ON L4B 4W3&amp;#xa;Canada</wd:Remit_Address>
+        <wd:workdayID>1eb932a687370109e546f0b9fff90000</wd:workdayID>
+        <wd:Payment_Terms wd:Descriptor="Immediate">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b679bfec66b0000</wd:ID>
+            <wd:ID wd:type="Payment_Terms_ID">Immediate</wd:ID>
+        </wd:Payment_Terms>
+        <wd:Currency wd:Descriptor="CAD">
+            <wd:ID wd:type="WID">37534b021f344c29852ee2161b5eb745</wd:ID>
+            <wd:ID wd:type="Currency_ID">CAD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">124</wd:ID>
+        </wd:Currency>
+        <wd:PO_Issue_Option wd:Descriptor="Print">
+            <wd:ID wd:type="WID">6e0c241be08340e3a941f2a70f60bd31</wd:ID>
+            <wd:ID wd:type="Purchase_Order_Issue_Option_ID">PRINT</wd:ID>
+        </wd:PO_Issue_Option>
+        <wd:Spend_Category wd:Descriptor="Office supplies">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b5150800ea00000</wd:ID>
+            <wd:ID wd:type="Spend_Category_ID">Office_supplies</wd:ID>
+        </wd:Spend_Category>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="StarCIO LLC">
             <wd:ID wd:type="WID">d3f57070014f01024e2f36bd42150000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000196</wd:ID>
@@ -13454,11 +13743,6 @@
             <wd:ID wd:type="WID">6e0c241be08340e3a941f2a70f60bd31</wd:ID>
             <wd:ID wd:type="Purchase_Order_Issue_Option_ID">PRINT</wd:ID>
         </wd:PO_Issue_Option>
-        <wd:Company_Restrictions wd:Descriptor="CSC Coveo Software Corp.">
-            <wd:ID wd:type="WID">f806c5b14f10015f2b6eedfbbc0064a0</wd:ID>
-            <wd:ID wd:type="Organization_Reference_ID">CSC</wd:ID>
-            <wd:ID wd:type="Company_Reference_ID">CSC</wd:ID>
-        </wd:Company_Restrictions>
         <wd:Spend_Category wd:Descriptor="Marketing Agencies">
             <wd:ID wd:type="WID">dcc43ed0983b01000b539ea925d10000</wd:ID>
             <wd:ID wd:type="Spend_Category_ID">Marketing_Agencies</wd:ID>
@@ -13861,6 +14145,37 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
+        <wd:Supplier wd:Descriptor="SureSwift Capital Inc.">
+            <wd:ID wd:type="WID">1eb932a687370109fd8a964d4d4b0000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000567</wd:ID>
+        </wd:Supplier>
+        <wd:Supplier_Name>SureSwift Capital Inc.</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000567</wd:Supplier_ID>
+        <wd:Supplier_Status wd:Descriptor="Active">
+            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
+            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
+        </wd:Supplier_Status>
+        <wd:Supplier_Category wd:Descriptor="Software">
+            <wd:ID wd:type="WID">d3f57070014f01022eb855d4a5470000</wd:ID>
+            <wd:ID wd:type="Supplier_Category_ID">Software</wd:ID>
+        </wd:Supplier_Category>
+        <wd:Remit_Address>5201 Eden Avenue&amp;#xa;Ste 300&amp;#xa;Edina, MN 55436&amp;#xa;United States of America</wd:Remit_Address>
+        <wd:workdayID>1eb932a687370109fd8a964d4d4b0000</wd:workdayID>
+        <wd:Currency wd:Descriptor="USD">
+            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
+            <wd:ID wd:type="Currency_ID">USD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
+        </wd:Currency>
+        <wd:PO_Issue_Option wd:Descriptor="Print">
+            <wd:ID wd:type="WID">6e0c241be08340e3a941f2a70f60bd31</wd:ID>
+            <wd:ID wd:type="Purchase_Order_Issue_Option_ID">PRINT</wd:ID>
+        </wd:PO_Issue_Option>
+        <wd:Spend_Category wd:Descriptor="Licenses Team specific">
+            <wd:ID wd:type="WID">dcc43ed0983b01000b514b08e2280000</wd:ID>
+            <wd:ID wd:type="Spend_Category_ID">Licenses_Team_specific</wd:ID>
+        </wd:Spend_Category>
+    </wd:Report_Entry>
+    <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Svanaco, Inc. DBA Americaneagle.com">
             <wd:ID wd:type="WID">4e816574d54601019c398d3132350000</wd:ID>
             <wd:ID wd:type="Supplier_ID">S-000529</wd:ID>
@@ -14226,39 +14541,12 @@
         </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
-        <wd:Supplier wd:Descriptor="TermLynx Solutions Inc.">
-            <wd:ID wd:type="WID">d3f57070014f01024e2eb1c3cea10000</wd:ID>
-            <wd:ID wd:type="Supplier_ID">S-000185</wd:ID>
+        <wd:Supplier wd:Descriptor="test (Inactive)">
+            <wd:ID wd:type="WID">88d24fb8bc6f01075000cb500c7f0000</wd:ID>
+            <wd:ID wd:type="Supplier_ID">S-000571</wd:ID>
         </wd:Supplier>
-        <wd:Supplier_Name>TermLynx Solutions Inc.</wd:Supplier_Name>
-        <wd:Supplier_ID>S-000185</wd:Supplier_ID>
-        <wd:Supplier_Status wd:Descriptor="Active">
-            <wd:ID wd:type="WID">dc755d56446c11de98360015c5e6daf6</wd:ID>
-            <wd:ID wd:type="Business_Entity_Status_Value_ID">ACTIVE</wd:ID>
-        </wd:Supplier_Status>
-        <wd:Supplier_Category wd:Descriptor="Software">
-            <wd:ID wd:type="WID">d3f57070014f01022eb855d4a5470000</wd:ID>
-            <wd:ID wd:type="Supplier_Category_ID">Software</wd:ID>
-        </wd:Supplier_Category>
-        <wd:Remit_Address>461 rue Rosebourg&amp;#xa;Rosemère, QC J7A 4Z6&amp;#xa;Canada</wd:Remit_Address>
-        <wd:workdayID>d3f57070014f01024e2eb1c3cea10000</wd:workdayID>
-        <wd:Payment_Terms wd:Descriptor="Net 45">
-            <wd:ID wd:type="WID">dcc43ed0983b01000b677da6fcc30000</wd:ID>
-            <wd:ID wd:type="Payment_Terms_ID">Net_45</wd:ID>
-        </wd:Payment_Terms>
-        <wd:Currency wd:Descriptor="USD">
-            <wd:ID wd:type="WID">9e996ffdd3e14da0ba7275d5400bafd4</wd:ID>
-            <wd:ID wd:type="Currency_ID">USD</wd:ID>
-            <wd:ID wd:type="Currency_Numeric_Code">840</wd:ID>
-        </wd:Currency>
-    </wd:Report_Entry>
-    <wd:Report_Entry>
-        <wd:Supplier wd:Descriptor="Test (Inactive)">
-            <wd:ID wd:type="WID">b513866843320105aede439adbc30000</wd:ID>
-            <wd:ID wd:type="Supplier_ID">S-000561</wd:ID>
-        </wd:Supplier>
-        <wd:Supplier_Name>Test</wd:Supplier_Name>
-        <wd:Supplier_ID>S-000561</wd:Supplier_ID>
+        <wd:Supplier_Name>test</wd:Supplier_Name>
+        <wd:Supplier_ID>S-000571</wd:Supplier_ID>
         <wd:Supplier_Status wd:Descriptor="Inactive">
             <wd:ID wd:type="WID">dc755f5e446c11de98360015c5e6daf6</wd:ID>
             <wd:ID wd:type="Business_Entity_Status_Value_ID">INACTIVE</wd:ID>
@@ -14267,7 +14555,13 @@
             <wd:ID wd:type="WID">d3f57070014f01022eb860a75e840000</wd:ID>
             <wd:ID wd:type="Supplier_Category_ID">Benefits</wd:ID>
         </wd:Supplier_Category>
-        <wd:workdayID>b513866843320105aede439adbc30000</wd:workdayID>
+        <wd:Remit_Address>1234 rue test&amp;#xa;QC G1W 2K7&amp;#xa;Canada</wd:Remit_Address>
+        <wd:workdayID>88d24fb8bc6f01075000cb500c7f0000</wd:workdayID>
+        <wd:Currency wd:Descriptor="CAD">
+            <wd:ID wd:type="WID">37534b021f344c29852ee2161b5eb745</wd:ID>
+            <wd:ID wd:type="Currency_ID">CAD</wd:ID>
+            <wd:ID wd:type="Currency_Numeric_Code">124</wd:ID>
+        </wd:Currency>
     </wd:Report_Entry>
     <wd:Report_Entry>
         <wd:Supplier wd:Descriptor="Texas Controller of Public Accounts">
