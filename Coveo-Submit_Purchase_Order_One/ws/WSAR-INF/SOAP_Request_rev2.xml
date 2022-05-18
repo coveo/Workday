@@ -70,26 +70,43 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                     
                 <wd:Internal_Memo><xsl:value-of select="$snow_num"/></wd:Internal_Memo>
                 
-             
+                  <wd:Bill_To_Address_Data>
+                    <wd:Bill_To_Address_Reference>
+                        <wd:ID wd:type="IID">Placeholder Bill to address</wd:ID>
+                    </wd:Bill_To_Address_Reference>
+                </wd:Bill_To_Address_Data>
+                
+                <wd:Ship_To_Address_Data>
+                    <wd:Ship_To_Address_Reference>
+                        <wd:ID wd:type="IID">Placeholder Ship to address</wd:ID>
+                    </wd:Ship_To_Address_Reference>
+                </wd:Ship_To_Address_Data>
                  
+                 <wd:Unit_of_Measure_Reference>
+                        <wd:ID wd:type="UN_CEFACT_Common_Code_ID">Placeholder Unit of Measure Reference</wd:ID>
+                    </wd:Unit_of_Measure_Reference>
+                    
+                    
                 <wd:Prepaid>false</wd:Prepaid>
                 <wd:Goods_Line_Replacement_Data>
-      <!--          
+    <!--            
                     <wd:Item_Description>
                         <wd:ID wd:type="Item_Description"><xsl:value-of select="$item"/></wd:ID>
                     </wd:Item_Description>
+     -->               
                     <wd:Line_Company_Reference>
                 <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company_restrictions"/></wd:ID>
                     </wd:Line_Company_Reference>
-       -->
+    
          <!--            
                 <wd:Item_Description><xsl:value-of select="$description"/></wd:Item_Description>
                  -->
-     <!--                <wd:Resource_Category_Reference>                  
-                    <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
-                    </wd:Resource_Category_Reference>
-       -->              
-                    <wd:Unit_Cost><xsl:value-of select="$unit_cost"/></wd:Unit_Cost>      
+               <wd:Resource_Category_Reference>                  
+                   <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
+                </wd:Resource_Category_Reference>
+                  
+                    <wd:Unit_Cost><xsl:value-of select="$unit_cost"/></wd:Unit_Cost> 
+                         
                         <wd:Worktags_Reference>
                        <wd:ID wd:type="Cost_Center_Reference_ID"><xsl:value-of select="$cost_center"/></wd:ID>
                         </wd:Worktags_Reference>
