@@ -8,7 +8,7 @@
 <Results>
             <employee_id>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/wd:Employee/wd:ID[@wd:type ='Employee_ID']"
+                     select="Results/employeeid/wd:Report_Entry/wd:employee_id"
                 />
             </employee_id>
             <cost_center>

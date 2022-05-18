@@ -52,7 +52,7 @@
                     <cc:expression>props['unit_cost'] = parts[0].xpath('/root/data/results/data/unit_cost')</cc:expression>
                     <cc:expression>props['supplier'] = 'Adobe Inc.'</cc:expression>
                     <cc:expression>props['product_name'] = parts[0].xpath('/root/data/results/data/product_name')</cc:expression>
-                    <cc:expression>props['employeeid'] = 'Fawad Saadat'</cc:expression>
+                    <cc:expression>props['employeeid'] = '000000005'</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>

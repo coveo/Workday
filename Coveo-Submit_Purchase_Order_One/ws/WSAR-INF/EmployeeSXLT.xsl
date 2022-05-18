@@ -10,7 +10,7 @@
 <Results>
             <employeeid>
                 <xsl:copy-of
-                    select="wd:Report_Data/wd:Report_Entry[wd:Employee[@wd:Descriptor =$employeeid]]"
+                    select="wd:Report_Data/wd:Report_Entry[wd:employee_id =$employeeid]"
                 />
             </employeeid>
 </Results>
