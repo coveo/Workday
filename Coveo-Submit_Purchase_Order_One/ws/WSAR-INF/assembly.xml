@@ -98,15 +98,16 @@
         <cc:workday-out-rest id="Supplier_RaaS" routes-response-to="GetInformationSupplier" extra-path="@{intsys.reportService.getExtrapath('POSuppliers')}"/>
         <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
             <cc:steps>
-                <cc:xslt-plus id="SupplierXSLT" url="Supplier_Mapping.xsl"/>
+                <cc:xslt-plus id="SupplierXSLT" url="Supplier.xsl"/>
+                <cc:xslt-plus id="SupplierP2" url="Supplier_MappingV2.xsl"/>
                 <cc:eval id="SupplierParameters">
-                    <cc:expression>props['supplier'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_ID')</cc:expression>
-                    <cc:expression>props['supplier_category'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Supplier_Category_ID')</cc:expression>
-                    <cc:expression>props['payment_terms'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Payment_Terms/wd:ID[@wd:type='Payment_Terms_ID']&quot;)</cc:expression>
-                    <cc:expression>props['currency'] = parts[0].xpath('/wd:Report_Data/wd:Report_Entry/wd:Currency/@wd:Descriptor')</cc:expression>
-                    <cc:expression>props['po_issue_option'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:PO_Issue_Option/wd:ID[@wd:type='Purchase_Order_Issue_Option_ID']&quot;)</cc:expression>
-                    <cc:expression>props['company_restrictions'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Company_Restrictions/wd:ID[@wd:type='Company_Reference_ID']&quot;)</cc:expression>
-                    <cc:expression>props['spend_category'] = parts[0].xpath(&quot;/wd:Report_Data/wd:Report_Entry/wd:Spend_Category/wd:ID[@wd:type='Spend_Category_ID']&quot;)</cc:expression>
+                    <cc:expression>props['supplier'] = parts[0].xpath('/Results/supplier')</cc:expression>
+                    <cc:expression>props['supplier_category'] = parts[0].xpath('/Results/supplier_category')</cc:expression>
+                    <cc:expression>props['payment_terms'] = parts[0].xpath('/Results/payment_terms')</cc:expression>
+                    <cc:expression>props['currency'] = parts[0].xpath('/Results/currency')</cc:expression>
+                    <cc:expression>props['po_issue_option'] = parts[0].xpath('/Results/po_issue_option')</cc:expression>
+                    <cc:expression>props['company_restrictions'] = parts[0].xpath('Results/company_restrictions')</cc:expression>
+                    <cc:expression>props['spend_category'] = parts[0].xpath('Results/spend_category')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>

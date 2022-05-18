@@ -181,7 +181,7 @@
   <swimlanes x="335" y="346" name="Swimlane" orientation="VERTICAL">
     <elements href="assembly.xml#PIM-FileAccess"/>
   </swimlanes>
-  <swimlanes x="-670" y="77" name="Submit Purchase Order" orientation="VERTICAL" elements="//@swimlanes.0 //@swimlanes.8 //@swimlanes.4 //@swimlanes.10" topBorderColor="1"/>
+  <swimlanes x="-556" y="76" name="Submit Purchase Order" orientation="VERTICAL" elements="//@swimlanes.0 //@swimlanes.8 //@swimlanes.4 //@swimlanes.10" topBorderColor="1"/>
   <swimlanes x="305" y="958" name="ProcessData" topBorderColor="14214676">
     <elements href="assembly.xml#ProcessNewRequest"/>
     <elements href="assembly.xml#RetrieveSavedData"/>
