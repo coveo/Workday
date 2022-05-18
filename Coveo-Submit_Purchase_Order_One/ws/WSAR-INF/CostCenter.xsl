@@ -16,6 +16,11 @@
                      select="Results/employeeid/wd:Report_Entry/wd:Cost_Center/wd:ID[@wd:type ='Cost_Center_Reference_ID']"
                 />
             </cost_center>
+            <bill_to_address>
+                <xsl:value-of
+                     select="Results/employeeid/wd:Report_Entry/wd:bill_to_address"
+                />
+            </bill_to_address>
 </Results>
       </xsl:template>
           </xsl:stylesheet>

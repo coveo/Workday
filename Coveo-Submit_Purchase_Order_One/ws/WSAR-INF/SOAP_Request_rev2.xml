@@ -10,7 +10,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="currency"/>
   <xsl:param name="po_issue_option"/>
   <xsl:param name="employee_id"/>
-<!--   <xsl:param name="bill_to_address"/>  -->
+  <xsl:param name="bill_to_address"/> 
+<!--   <xsl:param name="ship_to_address"/>  -->
   <xsl:param name="unit_cost"/>
   <xsl:param name="cost_center"/>  
 <!--  <xsl:param name="description"/>   -->
@@ -72,16 +73,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 
                   <wd:Bill_To_Address_Data>
                     <wd:Bill_To_Address_Reference>
-                        <wd:ID wd:type="IID">Placeholder Bill to address</wd:ID>
+                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data>
-                
+          <!--       
                 <wd:Ship_To_Address_Data>
                     <wd:Ship_To_Address_Reference>
-                        <wd:ID wd:type="IID">Placeholder Ship to address</wd:ID>
+                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Ship_To_Address_Reference>
                 </wd:Ship_To_Address_Data>
-                 
+                -->  
                  <wd:Unit_of_Measure_Reference>
                         <wd:ID wd:type="UN_CEFACT_Common_Code_ID">Placeholder Unit of Measure Reference</wd:ID>
                     </wd:Unit_of_Measure_Reference>
