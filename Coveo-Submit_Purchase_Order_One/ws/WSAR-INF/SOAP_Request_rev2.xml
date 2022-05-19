@@ -3,6 +3,7 @@
 
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	
+	
   <xsl:param name="snow_num"/>
 <!--   <xsl:param name="company"/> -->
   <xsl:param name="supplier"/>
@@ -19,8 +20,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="supplier_category"/>
   <xsl:param name="company_restrictions"/>
   <xsl:param name="spend_category"/>
-<!--  <xsl:param name="document_date"/>  -->
+<!-- <xsl:param name="document_date"/>    -->
 
+
+        
 <xsl:template match="/">
 <env:Envelope
     xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
@@ -73,7 +76,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 
                   <wd:Bill_To_Address_Data>
                     <wd:Bill_To_Address_Reference>
-                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
+                        <wd:ID wd:type="WID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data>
           <!--       
@@ -82,11 +85,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Ship_To_Address_Reference>
                 </wd:Ship_To_Address_Data>
-                -->  
+              
+              -->  
+              <!-- 
                  <wd:Unit_of_Measure_Reference>
-                        <wd:ID wd:type="UN_CEFACT_Common_Code_ID">Placeholder Unit of Measure Reference</wd:ID>
+                        <wd:ID wd:type="WID">Placeholder Unit of Measure Reference</wd:ID>
                     </wd:Unit_of_Measure_Reference>
-                    
+                 -->
                     
                 <wd:Prepaid>false</wd:Prepaid>
                 <wd:Goods_Line_Replacement_Data>
@@ -112,9 +117,27 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                        <wd:ID wd:type="Cost_Center_Reference_ID"><xsl:value-of select="$cost_center"/></wd:ID>
                         </wd:Worktags_Reference>
                 </wd:Goods_Line_Replacement_Data>
+                
+
+                <wd:Document_Date>
+	         <xsl:variable name="CurrDate" select="current-date()" /> 
+          </wd:Document_Date>      
+                
             </wd:Purchase_Order_Data>
         </wd:Submit_Purchase_Order_Request>
+        
+      
+    
+    
     </env:Body>
 </env:Envelope>
 </xsl:template>
 </xsl:stylesheet>
+
+
+
+
+
+
+
+
