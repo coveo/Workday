@@ -18,7 +18,7 @@
             </cost_center>
             <bill_to_address>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/Addresses_group/wd:bill_to_address"
+                     select="Results/employeeid/wd:Report_Entry/wd:bill_to_address"
                 />
             </bill_to_address>
 </Results>
