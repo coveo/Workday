@@ -76,7 +76,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 
                   <wd:Bill_To_Address_Data>
                     <wd:Bill_To_Address_Reference>
-                        <wd:ID wd:type="WID"><xsl:value-of select="$bill_to_address"/></wd:ID>
+                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data>
           <!--       
@@ -89,7 +89,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
               -->  
               <!-- 
                  <wd:Unit_of_Measure_Reference>
-                        <wd:ID wd:type="WID">Placeholder Unit of Measure Reference</wd:ID>
+                        <wd:ID wd:type="WID">Unit</wd:ID>
                     </wd:Unit_of_Measure_Reference>
                  -->
                     
