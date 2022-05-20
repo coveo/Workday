@@ -130,7 +130,7 @@
                 <cc:eval id="CostCenterParam">
                     <cc:expression>props['employee_id'] = parts[0].xpath('/Results/employee_id')</cc:expression>
                     <cc:expression>props['cost_center'] = parts[0].xpath('/Results/cost_center')</cc:expression>
-                    <cc:expression>props['bill_to_address'] = parts[0].xpath('/Results/bill_to_address')</cc:expression>
+                    <cc:expression>props['bill_to_address'] = parts[0].xpath('/Results/bill_to_address_group/bill_to_address')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>

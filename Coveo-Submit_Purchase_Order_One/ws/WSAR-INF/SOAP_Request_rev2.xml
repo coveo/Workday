@@ -9,13 +9,14 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="supplier"/>
   <xsl:param name="payment_terms"/>
   <xsl:param name="currency"/>
+ <!--  <xsl:param name="payment_type"/> -->
   <xsl:param name="po_issue_option"/>
   <xsl:param name="employee_id"/>
   <xsl:param name="bill_to_address"/> 
 <!--   <xsl:param name="ship_to_address"/>  -->
   <xsl:param name="unit_cost"/>
   <xsl:param name="cost_center"/>  
-<!--  <xsl:param name="description"/>   -->
+  <xsl:param name="product_name"/>   
   <xsl:param name="item"/>
   <xsl:param name="supplier_category"/>
   <xsl:param name="company_restrictions"/>
@@ -46,7 +47,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 </wd:Invoice_Status_Reference>
             
                 <wd:Company_Reference>
-                    <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>
+                    <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>  
                 </wd:Company_Reference>
            --> 
                 <wd:Supplier_Reference>
@@ -58,6 +59,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <wd:Currency_Reference>
                     <wd:ID wd:type="Currency_ID"><xsl:value-of select="$currency"/></wd:ID>
                 </wd:Currency_Reference>
+                <wd:Override_Payment_Type_Reference>
+                    <wd:ID wd:type="Payment_Type_ID"><xsl:value-of select="$company_restrictions"/></wd:ID>
+                </wd:Override_Payment_Type_Reference>
        <!--          
                 <wd:Issue_Option_Reference>
                     <wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$po_issue_option"/></wd:ID>
@@ -89,17 +93,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
               -->  
               <!-- 
                  <wd:Unit_of_Measure_Reference>
-                        <wd:ID wd:type="WID">Unit</wd:ID>
+                        <wd:ID wd:type="WID">'Unit'</wd:ID>
                     </wd:Unit_of_Measure_Reference>
-                 -->
+               -->
                     
                 <wd:Prepaid>false</wd:Prepaid>
                 <wd:Goods_Line_Replacement_Data>
-    <!--            
+             
                     <wd:Item_Description>
-                        <wd:ID wd:type="Item_Description"><xsl:value-of select="$item"/></wd:ID>
+                        <wd:ID wd:type="Item_Description"><xsl:value-of select="$product_name"/></wd:ID>
                     </wd:Item_Description>
-     -->               
+                  
                     <wd:Line_Company_Reference>
                 <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company_restrictions"/></wd:ID>
                     </wd:Line_Company_Reference>
