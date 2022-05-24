@@ -46,14 +46,15 @@
         <cc:async-mediation id="AsyncMediation" routes-to="DataMapping0" continue-after-error="recover">
             <cc:steps>
                 <cc:eval id="CreateParameters">
-                    <cc:expression>props['number'] = parts[0].xpath('/root/data/results/data/number')</cc:expression>
-                    <cc:expression>props['item'] = parts[0].xpath('/root/data/results/data/item')</cc:expression>
-                    <cc:expression>props['snow_num'] = parts[0].xpath('/root/data/results/data/id')</cc:expression>
-                    <cc:expression>props['unit_cost'] = '5'</cc:expression>
+                    <cc:expression>props['number'] = parts[0].xpath('/data/number')</cc:expression>
+                    <cc:expression>props['item'] = parts[0].xpath('/data/item')</cc:expression>
+                    <cc:expression>props['snow_num'] = parts[0].xpath('/data/id')</cc:expression>
+                    <cc:expression>props['unit_cost'] = parts[0].xpath('/data/unit_cost')</cc:expression>
                     <cc:expression>props['supplier'] = 'Publicité JL'</cc:expression>
-                    <cc:expression>props['product_name'] = parts[0].xpath('/root/data/results/data/product_name')</cc:expression>
+                    <cc:expression>props['product_name'] = parts[0].xpath('/data/product_name')</cc:expression>
                     <cc:expression>props['employeeid'] = '000000005'</cc:expression>
                 </cc:eval>
+                <cc:store id="Store"/>
                 <cc:log id="Log">
                     <cc:log-message>
                         <cc:message-content/>
