@@ -40,7 +40,12 @@
             <xsl:value-of
                     select="Results/supplier/wd:Report_Entry/wd:Spend_Category/wd:ID[@wd:type ='Spend_Category_ID']"
                 />
-            </spend_category>   
+            </spend_category> 
+            <default_payment_type>
+            <xsl:value-of
+                    select="Results/supplier/wd:Report_Entry/wd:Default_Payment_Type/wd:ID[@wd:type ='Payment_Type_ID']"
+                />
+            </default_payment_type>   
 </Results>
             </xsl:template>
 

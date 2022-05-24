@@ -18,10 +18,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="unit_cost"/>
   <xsl:param name="cost_center"/>  
   <xsl:param name="product_name"/>   
+   <xsl:param name="default_payment_type"/>  
  <!--  <xsl:param name="item"/> 
   <xsl:param name="supplier_category"/>   -->
   <xsl:param name="spend_category"/>
 <!-- <xsl:param name="document_date"/>    -->
+
+
 
 <xsl:template match="/">
 <env:Envelope
@@ -44,14 +47,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 </wd:Invoice_Status_Reference>
             --> 
                 <wd:Company_Reference>
-                    <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company"/></wd:ID>  
+                    <wd:ID wd:type="Company_Reference_ID"><xsl:value-of select="$company_restrictions"/></wd:ID>  
                 </wd:Company_Reference>
                 <wd:Supplier_Reference>
                     <wd:ID wd:type="Supplier_ID"><xsl:value-of select="$supplier"/></wd:ID>
                 </wd:Supplier_Reference>
-                <wd:Document_Date>
-	         <xsl:variable name="CurrDate" select="current-date()" /> 
-          </wd:Document_Date>   
+                
+                       <wd:Document_Date>
+                
+                     <xsl:value-of select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
+                     
+             </wd:Document_Date>
+             
+             
                 <wd:Payment_Terms_Reference>
                     <wd:ID wd:type="Payment_Terms_ID"><xsl:value-of select="$payment_terms"/></wd:ID>
                 </wd:Payment_Terms_Reference>
@@ -59,7 +67,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                     <wd:ID wd:type="Currency_ID"><xsl:value-of select="$currency"/></wd:ID>
                 </wd:Currency_Reference>
                 <wd:Override_Payment_Type_Reference>
-                    <wd:ID wd:type="Payment_Type_ID"><xsl:value-of select="$company_restrictions"/></wd:ID>
+                    <wd:ID wd:type="Payment_Type_ID"><xsl:value-of select="$default_payment_type"/></wd:ID>
                 </wd:Override_Payment_Type_Reference>
                  <wd:Buyer_Reference>
                     <wd:ID wd:type="Employee_ID"><xsl:value-of select="$employee_id"/></wd:ID>
@@ -96,17 +104,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                        <wd:ID wd:type="Cost_Center_Reference_ID"><xsl:value-of select="$cost_center"/></wd:ID>
                         </wd:Worktags_Reference>
                  
-                    <wd:Item_Description>
+  <!--                   <wd:Item_Description>
                         <wd:ID wd:type="Item_Description"><xsl:value-of select="$product_name"/></wd:ID>
                     </wd:Item_Description>
-                 
+       -->           
                <wd:Resource_Category_Reference>                  
                    <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
                 </wd:Resource_Category_Reference>
+                
+              
                   
                                           
                            <wd:Unit_of_Measure_Reference>
-                        <wd:ID wd:type="UN_CEFACT_Common_Code_ID">'Unit'</wd:ID>
+                        <wd:ID wd:type="UN_CEFACT_Common_Code_ID">Unit</wd:ID>
                     </wd:Unit_of_Measure_Reference>
                     
                     
