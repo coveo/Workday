@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+     xmlns="http://www.springframework.org/schema/beans"
+     xmlns:beans="http://www.springframework.org/schema/beans"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:cc="http://www.capeclear.com/assembly/10"
+     xmlns:cloud="urn:com.workday/esb/cloud/10.0"
+     xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:pi="urn:com.workday/picof"
+     xmlns:wd="urn:com.workday/bsvc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<cc:assembly id="WorkdayAssembly" version="2021.34">
+        <cc:workday-in id="StartHere" routes-to="GetEventDocuments">
+            <cc:integration-system name="Coveo-Submit_Purchase_Order_One">
+        <cloud:report-service name="CoveoPO_SupplierList">
+          <cloud:report-alias description="List of all the suppliers in Workday" name="Submit"/>
+          <cloud:report-alias description="POSuppliers" name="POSuppliers">
+            <cloud:report-reference description="POSuppliers" type="WID">f04f2960a26e0107cdeacc22da240000</cloud:report-reference>
+          </cloud:report-alias>
+          <cloud:report-alias description="EmployeeID" name="EmployeeID">
+            <cloud:report-reference description="EmployeeID" type="WID">b5138668433201050cca6b2a14300000</cloud:report-reference>
+          </cloud:report-alias>
+        </cloud:report-service>
+      </cc:integration-system>
+        </cc:workday-in>
+        <cc:local-out id="GetEventDocuments" routes-response-to="GetRetrievedFile" endpoint="vm://wcc/GetEventDocuments"><cc:set name="ie.event.wid" value="lp.isSet() ? lp.getIntegrationEventWID() : null"/></cc:local-out>
+        <cc:route id="GetRetrievedFile">
+            <cc:doc-iterator/>
+            <cc:sub-route name="ProcessFile" routes-to="ConvertFiles0"/>
+        </cc:route>
+        <cc:local-out id="PIM-FileAccess" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'ERROR'"/><cc:set name="is.message.summary" value="'Error occured when trying to access the file.'"/><cc:set name="is.message.detail" value="context.errorMessage"/></cc:local-out>
+        <cc:local-in id="ProcessNewRequest" routes-to="RetrieveSavedData" icon="Tools.png"/>
+        <cc:async-mediation id="RetrieveSavedData" routes-to="Splitter">
+            <cc:steps>
+                <cc:copy id="Copy" input="variable" input-variable="wd.retrieve.variable"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="ProcessNewRequest0" endpoint="vm://Coveo-Submit_Purchase_Order_One/ProcessNewRequest"/>
+        <cc:send-error id="GlobalError" routes-to="PutIntegrationMessage1"/>
+        <cc:local-out id="PutIntegrationMessage1" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'CRITICAL'"/><cc:set name="is.message.summary" value="'There is a critical error (Global Error Handler)'"/><cc:set name="is.message.detail" value="context.errorMessage"/></cc:local-out>
+        <cc:splitter id="Splitter">
+            <cc:sub-route name="SubRoute" routes-to="AsyncMediation"/>
+            <cc:xml-stream-splitter xpath="/root/data/results/"/>
+        </cc:splitter>
+        <cc:async-mediation id="AsyncMediation" routes-to="DataMapping0" continue-after-error="recover">
+            <cc:steps>
+                <cc:eval id="CreateParameters">
+                    <cc:expression>props['item'] = parts[0].xpath('/results/data/item')</cc:expression>
+                    <cc:expression>props['snow_num'] = parts[0].xpath('/results/data/number')</cc:expression>
+                    <cc:expression>props['unit_cost'] = parts[0].xpath('/results/data/unit_cost')</cc:expression>
+                    <cc:expression>props['supplier'] = parts[0].xpath('/results/data/manufacturer')</cc:expression>
+                    <cc:expression>props['product_name'] = parts[0].xpath('/results/data/product_name')</cc:expression>
+                    <cc:expression>props['employeeid'] = parts[0].xpath('/results/data/employee_ID')</cc:expression>
+                </cc:eval>
+                <cc:store id="Store"/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+            </cc:steps>
+            <cc:send-error id="SendError" routes-to="PutIntegrationMessage2"/>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary"/></cc:local-out>
+        <cc:async-mediation id="WriteSOAPMessage" routes-to="WorkdayOutSoap" handle-downstream-errors="true">
+            <cc:steps>
+                <cc:xslt-plus id="XsltPlus" url="SOAP_Request_rev2.xml"/>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+            </cc:steps>
+            <cc:send-error id="SendError" routes-to="PutIntegrationMessage4"/>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage4" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Something went wrong while calling the SOAP request. Check your parameters'"/></cc:local-out>
+        <cc:local-in id="ConvertFiles" routes-to="Convert_Data_To_XML" icon="Box.png"/>
+        <cc:local-out id="ConvertFiles0" routes-response-to="ProcessNewRequest0" endpoint="vm://Coveo-Submit_Purchase_Order_One/ConvertFiles"/>
+        <cc:async-mediation id="Convert_Data_To_XML" routes-to="PutIntegrationMessage">
+            <cc:steps>
+                <cc:copy id="GetDataJSON" input="variable" input-variable="wd.retrieve.variable"/>
+                <cc:json-to-xml id="JsonToXml"/>
+                <cc:copy id="SaveData" output="variable" output-variable="wd.retrieve.variable"/>
+                <cc:store id="Store" input="variable" input-variable="wd.retrieve.variable" createDocumentReference="false"/>
+            </cc:steps>
+            <cc:send-error id="SendError" routes-to="PIM-FileAccess0"/>
+        </cc:async-mediation>
+        <cc:workday-out-soap id="WorkdayOutSoap" routes-response-to="PutIntegrationMessage0" application="Resource_Management" replace-with-soap-fault="true" version="v38.0"/>
+        <cc:local-out id="PutIntegrationMessage0" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Integration completed. Purchase Order has been created'"/></cc:local-out>
+        <cc:local-out id="PIM-FileAccess0" endpoint="vm://wcc/PutIntegrationMessage">
+            <cc:set name="is.message.severity" value="'ERROR'"/>
+            <cc:set name="is.message.summary" value="'File not found'"/>
+            <cc:set name="is.message.detail" value="context.errorMessage"/>
+        </cc:local-out>
+        <cc:local-out id="PutIntegrationMessage" endpoint="vm://wcc/PutIntegrationMessage"><cc:set name="is.message.severity" value="'INFO'"/><cc:set name="is.message.summary" value="'Data retrieved'"/></cc:local-out>
+        <cc:local-in id="DataMapping" routes-to="Supplier_RaaS"/>
+        <cc:workday-out-rest id="Supplier_RaaS" routes-response-to="GetInformationSupplier" extra-path="@{intsys.reportService.getExtrapath('POSuppliers')}"/>
+        <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
+            <cc:steps>
+                <cc:xslt-plus id="SupplierXSLT" url="Supplier.xsl"/>
+                <cc:xslt-plus id="SupplierP2" url="Supplier_MappingV2.xsl"/>
+                <cc:eval id="SupplierParameters">
+                    <cc:expression>props['supplier'] = parts[0].xpath('/Results/supplier')</cc:expression>
+                    <cc:expression>props['supplier_category'] = parts[0].xpath('/Results/supplier_category')</cc:expression>
+                    <cc:expression>props['payment_terms'] = parts[0].xpath('/Results/payment_terms')</cc:expression>
+                    <cc:expression>props['currency'] = parts[0].xpath('/Results/currency')</cc:expression>
+                    <cc:expression>props['po_issue_option'] = parts[0].xpath('/Results/po_issue_option')</cc:expression>
+                    <cc:expression>props['company_restrictions'] = 'CSI'</cc:expression>
+                    <cc:expression>props['spend_category'] = 'Computer_equipment'</cc:expression>
+                    <cc:expression>props['default_payment_type'] = parts[0].xpath('Results/default_payment_type')</cc:expression>
+                </cc:eval>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
+        <cc:workday-out-rest id="Employee_RaaS" routes-response-to="AsyncMediation0" extra-path="@{intsys.reportService.getExtrapath('EmployeeID')}"/>
+        <cc:async-mediation id="AsyncMediation0">
+            <cc:steps>
+                <cc:xslt-plus id="EmployeeXSLT" input="message" url="EmployeeSXLT.xsl"/>
+                <cc:log id="Log0">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+                <cc:xslt-plus id="CostCenterXSLT" input="message" url="CostCenter.xsl"/>
+                <cc:eval id="CostCenterParam">
+                    <cc:expression>props['employee_id'] = parts[0].xpath('/Results/employee_id')</cc:expression>
+                    <cc:expression>props['cost_center'] = parts[0].xpath('/Results/cost_center')</cc:expression>
+                    <cc:expression>props['bill_to_address'] = parts[0].xpath('/Results/bill_to_address_group/bill_to_address')</cc:expression>
+                </cc:eval>
+                <cc:log id="Log">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+            </cc:steps>
+        </cc:async-mediation>
+	</cc:assembly>
+
+</beans>

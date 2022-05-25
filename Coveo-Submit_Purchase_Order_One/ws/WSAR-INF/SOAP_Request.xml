@@ -1,0 +1,60 @@
+<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:etv="urn:com.workday/etv">
+<env:Body>
+<wd:Submit_Purchase_Order_Request xmlns:wd="urn:com.workday/bsvc" wd:Add_Only="true" wd:version="v37.0">
+<wd:Business_Process_Parameters>
+<wd:Auto_Complete>false</wd:Auto_Complete>
+</wd:Business_Process_Parameters>
+<wd:Purchase_Order_Data>
+<wd:Submit>false</wd:Submit>
+<wd:Locked_in_Workday>false</wd:Locked_in_Workday>
+<wd:Company_Reference>
+<wd:ID wd:type="Company_Reference_ID">@{props['company']}</wd:ID>
+</wd:Company_Reference>
+<wd:Supplier_Reference>
+<wd:ID wd:type="Supplier_ID" xmlns:etv="urn:com.workday/etv" etv:map="mSupplier">@{props['supplier']}</wd:ID>
+</wd:Supplier_Reference>
+<wd:Document_Date>@{props['document_date']}</wd:Document_Date>
+<wd:Payment_Terms_Reference>
+<wd:ID wd:type="Payment_Terms_ID">@{props['payment_term']}</wd:ID>
+</wd:Payment_Terms_Reference>
+<wd:Supplier_Contract_Reference>
+<wd:ID wd:type="Supplier_Contract_ID">@{props['supplier_contract']}</wd:ID>
+</wd:Supplier_Contract_Reference>
+<wd:Currency_Reference>
+<wd:ID wd:type="Currency_ID">@{props['currency']}</wd:ID>
+</wd:Currency_Reference>
+<wd:Issue_Option_Reference>
+<wd:ID wd:type="Purchase_Order_Issue_Option_ID">@{props['po_issue_option']}</wd:ID>
+</wd:Issue_Option_Reference>
+<wd:Buyer_Reference>
+<wd:ID wd:type="Employee_ID">@{props['employee_id']}</wd:ID>
+</wd:Buyer_Reference>
+<wd:Memo>@{props['snow_num']}</wd:Memo>
+<wd:Internal_Memo>@{props['additional_details']}</wd:Internal_Memo>
+<wd:Prepaid>@{props['prepaid']}</wd:Prepaid>
+<wd:Service_Line_Replacement_Data>
+<wd:Line_Company_Reference>
+<wd:ID wd:type="Company_Reference_ID">@{props['company']}</wd:ID>
+</wd:Line_Company_Reference>
+<wd:Description>@{props['description']}</wd:Description>
+<wd:Resource_Category_Reference>
+<wd:ID wd:type="Spend_Category_ID">@{props['spend_category']}</wd:ID>
+</wd:Resource_Category_Reference>
+<wd:Extended_Amount>@{props['cost']}</wd:Extended_Amount>
+<wd:Due_Date/>
+<wd:Start_Date></wd:Start_Date>
+<wd:End_Date></wd:End_Date>
+<wd:Prepaid>false</wd:Prepaid>
+<wd:Retention>false</wd:Retention>
+<wd:Memo>@{props['snow_num']}</wd:Memo>
+<wd:Storage_Location_Reference>
+<wd:ID wd:type="Location_ID">@{props['location']}</wd:ID>
+</wd:Storage_Location_Reference>
+<wd:Worktags_Reference>
+<wd:ID wd:type="Cost_Center_Reference_ID">@{props['cost_center']}</wd:ID>
+</wd:Worktags_Reference>
+</wd:Service_Line_Replacement_Data>
+</wd:Purchase_Order_Data>
+</wd:Submit_Purchase_Order_Request>
+</env:Body>
+</env:Envelope>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?><root>
+  <data>
+    <results>
+      <data>
+        <number>RITM0000000</number>
+        <item>Graveur portatif LG</item>
+        <id>0025969b1b42b010f6d82f81b24bcbb8</id>
+        <unit_cost>200</unit_cost>
+        <manufacturer>Amazon.com.ca, Inc.</manufacturer>
+        <product_name>Graveur portatif LG</product_name>
+        <description>Graveur portatif LG</description>
+        <employee_ID>000001221</employee_ID>
+      </data>
+    </results>
+    <results>
+      <data>
+        <number>RITM0000001</number>
+        <item>SSD Samsung 850 PRO 256GB</item>
+        <id>0025969b1b42b010f6d82f81b24bcbb9</id>
+        <unit_cost>500</unit_cost>
+        <manufacturer>Amazon.com, Inc.</manufacturer>
+        <product_name>SSD Samsung 850 PRO 256GB</product_name>
+        <description>SSD Samsung 850 PRO 256GB</description>
+      </data>
+    </results>
+  </data>
+</root>
