@@ -74,12 +74,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data>
-              
-                <wd:Ship_To_Address_Data>
-                    <wd:Ship_To_Address_Reference>
-                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
-                    </wd:Ship_To_Address_Reference>
-                </wd:Ship_To_Address_Data>
+            
               
               -->  
          
