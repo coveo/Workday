@@ -42,7 +42,7 @@
         </cc:async-mediation>
         <cc:local-out id="PutIntegrationMessage2" execute-when="props['data'] == empty" routes-response-to="DataAnthony0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
-            <cc:set name="is.message.summary" value="'No requisitions available for Shawn'"/>
+            <cc:set name="is.message.summary" value="'No requisitions available'"/>
             <cc:set name="is.document.deliverable" value="'false'"/>
             <cc:set name="is.document.variable.name" value="'deliver.file'"/>
         </cc:local-out>
