@@ -61,6 +61,15 @@
   <visualProperties x="534" y="629">
     <element href="assembly.xml#DataAnthony20"/>
   </visualProperties>
+  <visualProperties x="747" y="765">
+    <element href="assembly.xml#Send_Data_Olivia_2"/>
+  </visualProperties>
+  <visualProperties x="824" y="784">
+    <element href="assembly.xml#AsyncMediation100"/>
+  </visualProperties>
+  <visualProperties x="997" y="811">
+    <element href="assembly.xml#PutIntegrationMessage_olivia"/>
+  </visualProperties>
   <connections type="routesTo" sourceAnchorX="0.5416666666666666" sourceAnchorY="1.0" targetAnchorX="0.06382978723404255" targetAnchorY="0.5135135135135135">
     <source href="assembly.xml#StartHere"/>
     <target href="assembly.xml#GetEventDocuments"/>
@@ -121,6 +130,14 @@
     <source href="assembly.xml#PutIntegrationMessage_simon"/>
     <target href="assembly.xml#DataAnthony20"/>
   </connections>
+  <connections type="routesTo" sourceAnchorX="0.8714285714285714" sourceAnchorY="1.0" targetAnchorX="0.3916083916083916" targetAnchorY="0.5869565217391305">
+    <source href="assembly.xml#Send_Data_Olivia_2"/>
+    <target href="assembly.xml#AsyncMediation100"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.29347826086956524" targetAnchorX="0.36363636363636365" targetAnchorY="0.40540540540540543">
+    <source href="assembly.xml#AsyncMediation100"/>
+    <target href="assembly.xml#PutIntegrationMessage_olivia"/>
+  </connections>
   <swimlanes name="GlobalErrorHandler" orientation="VERTICAL" topBorderColor="467382">
     <elements href="assembly.xml#//@beans/@mixed.1/@mixed.21"/>
     <elements href="assembly.xml#PutIntegrationMessage1"/>
@@ -152,5 +169,11 @@
     <elements href="assembly.xml#AsyncMediation1000"/>
     <elements href="assembly.xml#PutIntegrationMessage_anthony"/>
   </swimlanes>
-  <swimlanes x="49" y="28" name="CreateTaskPO" orientation="VERTICAL" elements="//@swimlanes.1 //@swimlanes.2 //@swimlanes.3 //@swimlanes.4" topBorderColor="1"/>
+  <swimlanes x="49" y="28" name="CreateTaskPO" orientation="VERTICAL" elements="//@swimlanes.1 //@swimlanes.2 //@swimlanes.3 //@swimlanes.6" topBorderColor="1"/>
+  <swimlanes x="871" y="725" name="Swimlane" elements="//@swimlanes.4 //@swimlanes.7"/>
+  <swimlanes x="629" y="776" name="SendData_Perm">
+    <elements href="assembly.xml#Send_Data_Olivia_2"/>
+    <elements href="assembly.xml#AsyncMediation100"/>
+    <elements href="assembly.xml#PutIntegrationMessage_olivia"/>
+  </swimlanes>
 </wdnm:Diagram>
