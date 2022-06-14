@@ -11,19 +11,19 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  
 	<cc:assembly id="WorkdayAssembly" version="2022.10">
-        <cc:local-out id="PutIntegrationMessage_anthony" execute-when="props['assignee']== 'afederico@coveo.com'" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage_olivia" execute-when="props['assignee']== 'otraore@coveo.com'" routes-response-to="DataAnthony30" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
-            <cc:set name="is.message.summary" value="'Document sent to Anthony'"/>
-            <cc:set name="is.document.variable.name" value="'deliver.anthony'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Olivia'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.olivia'"/>
             <cc:set name="is.document.deliverable" value="'false'"/>
             <cc:set name="is.document.file.name" value="lp.getSequencedValue('Proc_File')"/>
             <cc:set name="is.message.storage.enabled" value="true"/>
-            <cc:set name="is.document.owner.wid" value="'8694b25999e60101a2dd673264450000'"/>
-            <cc:set name="is.document.labels" value="'Anthony'"/>
+            <cc:set name="is.document.owner.wid" value="'9824ca3ab85e01c7d3b741bcc6004e86'"/>
+            <cc:set name="is.document.labels" value="'Olivia'"/>
         </cc:local-out>
-        <cc:async-mediation id="AsyncMediation1000" routes-to="PutIntegrationMessage_anthony">
+        <cc:async-mediation id="AsyncMediation1000" routes-to="PutIntegrationMessage_olivia">
             <cc:steps>
-                <cc:store execute-when="props['assignee']== 'afederico@coveo.com'" id="CreateDeliverableFile_anthony" output="variable" output-variable="deliver.anthony" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+                <cc:store execute-when="props['assignee']== 'otraore@coveo.com'" id="CreateDeliverableFile_olivia" output="variable" output-variable="deliver.olivia" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
             </cc:steps>
         </cc:async-mediation>
         <cc:local-out id="PutIntegrationMessage_simon" routes-response-to="DataAnthony20" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
@@ -46,7 +46,7 @@
             <cc:set name="is.document.deliverable" value="'false'"/>
             <cc:set name="is.document.variable.name" value="'deliver.file'"/>
         </cc:local-out>
-        <cc:local-out id="PutIntegrationMessage3" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'afederico@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com')" routes-response-to="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage3" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'sgordon@coveo.com')" routes-response-to="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
             <cc:set name="is.message.summary" value="'ServiceNow requisitions have been found'"/>
             <cc:set name="is.document.variable.name" value="'deliver.file'"/>
@@ -98,24 +98,25 @@
         <cc:local-in id="DataAnthony" routes-to="AsyncMediation"/>
         <cc:local-in id="DataAnthony2" routes-to="AsyncMediation1000"/>
         <cc:local-out id="ConvertAnthony0" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/ConvertAnthony"/>
-        <cc:local-out id="DataAnthony0" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'afederico@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com')" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony"/>
+        <cc:local-out id="DataAnthony0" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'sgordon@coveo.com')" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony"/>
         <cc:local-out id="DataAnthony20" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony2"/>
-        <cc:local-in id="Send_Data_Olivia_2" routes-to="AsyncMediation100"/>
-        <cc:async-mediation id="AsyncMediation100" routes-to="PutIntegrationMessage_olivia">
+        <cc:async-mediation id="AsyncMediation10000" routes-to="PutIntegrationMessage_anthony0">
             <cc:steps>
-                <cc:store execute-when="props['assignee']== 'otraore@coveo.com'" id="CreateDeliverableFile_olivia" output="variable" output-variable="deliver.olivia" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+                <cc:store execute-when="props['assignee']== 'sgordon@coveo.com'" id="CreateDeliverableFile_anthony " output="variable" output-variable="deliver.anthony" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
             </cc:steps>
         </cc:async-mediation>
-        <cc:local-out id="PutIntegrationMessage_olivia" execute-when="props['assignee']== 'otraore@coveo.com'" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage_anthony0" execute-when="props['assignee']== 'sgordon@coveo.com'" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
-            <cc:set name="is.message.summary" value="'Document sent to Olivia'"/>
-            <cc:set name="is.document.variable.name" value="'deliver.olivia'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Anthony'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.anthony'"/>
             <cc:set name="is.document.deliverable" value="'false'"/>
             <cc:set name="is.document.file.name" value="lp.getSequencedValue('Proc_File')"/>
             <cc:set name="is.message.storage.enabled" value="true"/>
-            <cc:set name="is.document.owner.wid" value="'9824ca3ab85e01c7d3b741bcc6004e86'"/>
-            <cc:set name="is.document.labels" value="'Olivia'"/>
+            <cc:set name="is.document.owner.wid" value="'9824ca3ab85e01b69aec89bdc600598a'"/>
+            <cc:set name="is.document.labels" value="'Anthony'"/>
         </cc:local-out>
+        <cc:local-out id="DataAnthony30" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony3"/>
+        <cc:local-in id="DataAnthony3" routes-to="AsyncMediation10000"/>
 	</cc:assembly>
 
 </beans>
