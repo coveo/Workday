@@ -26,18 +26,18 @@
                 <cc:store execute-when="props['assignee']== 'otraore@coveo.com'" id="CreateDeliverableFile_olivia" output="variable" output-variable="deliver.olivia" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
             </cc:steps>
         </cc:async-mediation>
-        <cc:local-out id="PutIntegrationMessage_simon" execute-when="props['assignee']== 'sgordon@coveo.com'" routes-response-to="DataOlivia20" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage_simon" routes-response-to="AsyncMediation0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
             <cc:set name="is.message.summary" value="'Document sent to Simon'"/>
             <cc:set name="is.document.variable.name" value="'deliver.simon'"/>
-            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.deliverable" value="'true'"/>
             <cc:set name="is.document.file.name" value="lp.getSequencedValue('Proc_File')"/>
             <cc:set name="is.message.storage.enabled" value="true"/>
             <cc:set name="is.document.owner.wid" value="'6d498ebb996601008f7a538c7e1f0001'"/>
         </cc:local-out>
         <cc:async-mediation id="AsyncMediation" routes-to="PutIntegrationMessage_simon">
             <cc:steps>
-                <cc:store execute-when="props['assignee']== 'sgordon@coveo.com'" id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+                <cc:store id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
             </cc:steps>
         </cc:async-mediation>
         <cc:local-out id="PutIntegrationMessage2" execute-when="props['data'] == empty" routes-response-to="DataOlivia0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
@@ -89,6 +89,24 @@
         </cc:local-out>
         <cc:workday-in id="StartHere" routes-to="GetEventDocuments">
             <cc:integration-system name="ServiceNow_POs_Procurement_Anthony">
+        <cloud:attribute-map-service name="EmailOutEndpoint">
+          <cloud:attribute name="Password">
+            <cloud:type>
+              <cloud:simple-type>text</cloud:simple-type>
+            </cloud:type>
+            <cloud:display-option>display-as-password</cloud:display-option>
+          </cloud:attribute>
+          <cloud:attribute name="Port">
+            <cloud:type>
+              <cloud:simple-type>number</cloud:simple-type>
+            </cloud:type>
+          </cloud:attribute>
+          <cloud:attribute name="userid">
+            <cloud:type>
+              <cloud:simple-type>text</cloud:simple-type>
+            </cloud:type>
+          </cloud:attribute>
+        </cloud:attribute-map-service>
         <cloud:sequence-generator-service name="PO_Proc_File">
           <cloud:sequencer>Proc_File</cloud:sequencer>
         </cloud:sequence-generator-service>
@@ -98,8 +116,8 @@
         <cc:local-in id="DataOlivia" routes-to="AsyncMediation"/>
         <cc:local-in id="DataOlivia2" routes-to="AsyncMediation10"/>
         <cc:local-out id="ConvertAnthony0" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/ConvertAnthony"/>
-        <cc:local-out id="DataOlivia0" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'sgordon@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mmalenfant@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mvanespen@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'afederico@coveo.com')" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia"/>
-        <cc:local-out id="DataOlivia20" execute-when="props['assignee']== 'sgordon@coveo.com'" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia2"/>
+        <cc:local-out id="DataOlivia0" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'sgordon@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mmalenfant@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mvanespen@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'afederico@coveo.com')" routes-response-to="EmailOut0" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia"/>
+        <cc:local-out id="DataOlivia20" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia2"/>
         <cc:async-mediation id="AsyncMediation100" routes-to="PutIntegrationMessage_shawn">
             <cc:steps>
                 <cc:store execute-when="props['assignee']== 'sgordon@coveo.com'" id="CreateDeliverableFile_shawn" output="variable" output-variable="deliver.shawn" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
@@ -168,6 +186,15 @@
         <cc:local-out id="DataShawn40" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataMichele4"/>
         <cc:local-out id="DataMarion60" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony6"/>
         <cc:local-out id="DataMichele50" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataMarion5"/>
+        <cc:email-out id="EmailOut" routes-response-to="DataOlivia20" endpoint="mailto:fsaadat@coveo.com" from="fsaadat@coveo.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="TEST PRO" user="@{props['userid']}"><cc:custom-headers/></cc:email-out>
+        <cc:email-out id="EmailOut0" endpoint="mailto:fsaadat@coveo.com" from="fsaadat@coveo.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="TEST PRO" user="@{props['userid']}">
+            <cc:custom-headers/>
+        </cc:email-out>
+        <cc:async-mediation id="AsyncMediation0" routes-to="EmailOut">
+            <cc:steps>
+                <cc:copy id="Copy" output="attachment" output-attachment-index="21" input="variable" input-variable="deliver.simon"/>
+            </cc:steps>
+        </cc:async-mediation>
 	</cc:assembly>
 
 </beans>

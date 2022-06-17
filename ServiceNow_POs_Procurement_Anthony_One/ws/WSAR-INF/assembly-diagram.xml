@@ -109,6 +109,15 @@
   <visualProperties x="652" y="1330">
     <element href="assembly.xml#DataMichele50"/>
   </visualProperties>
+  <visualProperties x="705" y="582">
+    <element href="assembly.xml#EmailOut"/>
+  </visualProperties>
+  <visualProperties x="1412" y="400">
+    <element href="assembly.xml#EmailOut0"/>
+  </visualProperties>
+  <visualProperties x="578" y="584">
+    <element href="assembly.xml#AsyncMediation0"/>
+  </visualProperties>
   <connections type="routesTo" sourceAnchorX="0.5416666666666666" sourceAnchorY="1.0" targetAnchorX="0.06382978723404255" targetAnchorY="0.5135135135135135">
     <source href="assembly.xml#StartHere"/>
     <target href="assembly.xml#GetEventDocuments"/>
@@ -161,14 +170,6 @@
     <source href="assembly.xml#//@beans/@mixed.1/@route.0/@subRoute.0"/>
     <target href="assembly.xml#ConvertAnthony0"/>
   </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.6387096774193548" sourceAnchorY="1.0" targetAnchorX="0.17391304347826086" targetAnchorY="0.16216216216216217">
-    <source href="assembly.xml#PutIntegrationMessage2"/>
-    <target href="assembly.xml#DataOlivia0"/>
-  </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.7597765363128491" sourceAnchorY="1.0" targetAnchorX="0.23333333333333334" targetAnchorY="0.05405405405405406">
-    <source href="assembly.xml#PutIntegrationMessage_simon"/>
-    <target href="assembly.xml#DataOlivia20"/>
-  </connections>
   <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.40217391304347827" targetAnchorX="0.5027624309392266" targetAnchorY="0.2972972972972973">
     <source href="assembly.xml#AsyncMediation100"/>
     <target href="assembly.xml#PutIntegrationMessage_shawn"/>
@@ -217,6 +218,26 @@
     <source href="assembly.xml#AsyncMediation100000"/>
     <target href="assembly.xml#PutIntegrationMessage_anthony70"/>
   </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7225806451612903" sourceAnchorY="1.0" targetAnchorX="0.23076923076923078" targetAnchorY="0.4864864864864865">
+    <source href="assembly.xml#PutIntegrationMessage2"/>
+    <target href="assembly.xml#DataOlivia0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7653631284916201" sourceAnchorY="1.0" targetAnchorX="0.42342342342342343" targetAnchorY="0.43478260869565216">
+    <source href="assembly.xml#PutIntegrationMessage_simon"/>
+    <target href="assembly.xml#AsyncMediation0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5473684210526316" sourceAnchorY="1.0" targetAnchorX="0.5871559633027523" targetAnchorY="0.43243243243243246">
+    <source href="assembly.xml#EmailOut"/>
+    <target href="assembly.xml#DataOlivia20"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.7307692307692307" sourceAnchorY="1.0" targetAnchorX="0.24" targetAnchorY="0.43243243243243246">
+    <source href="assembly.xml#DataOlivia0"/>
+    <target href="assembly.xml#EmailOut0"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.25" targetAnchorX="0.49473684210526314" targetAnchorY="0.21621621621621623">
+    <source href="assembly.xml#AsyncMediation0"/>
+    <target href="assembly.xml#EmailOut"/>
+  </connections>
   <swimlanes name="GlobalErrorHandler" orientation="VERTICAL" topBorderColor="467382">
     <elements href="assembly.xml#//@beans/@mixed.1/@mixed.21"/>
     <elements href="assembly.xml#PutIntegrationMessage1"/>
@@ -236,11 +257,14 @@
     <elements href="assembly.xml#PutIntegrationMessage3"/>
     <elements href="assembly.xml#PutIntegrationMessage2"/>
     <elements href="assembly.xml#DataOlivia0"/>
+    <elements href="assembly.xml#EmailOut0"/>
   </swimlanes>
   <swimlanes name="SendData_Temp" topBorderColor="4301039">
     <elements href="assembly.xml#DataOlivia"/>
     <elements href="assembly.xml#AsyncMediation"/>
     <elements href="assembly.xml#PutIntegrationMessage_simon"/>
+    <elements href="assembly.xml#AsyncMediation0"/>
+    <elements href="assembly.xml#EmailOut"/>
     <elements href="assembly.xml#DataOlivia20"/>
   </swimlanes>
   <swimlanes name="SendData_Perm">
