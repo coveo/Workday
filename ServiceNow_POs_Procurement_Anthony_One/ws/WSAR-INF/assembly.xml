@@ -37,11 +37,8 @@
         </cc:local-out>
         <cc:async-mediation id="AsyncMediation" routes-to="PutIntegrationMessage_simon">
             <cc:steps>
-                <cc:store id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="true" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
-                <cc:eval id="Eval">
-                    <cc:expression>message.setRootPartAsText(props['subject'] + ' are attached', 'text/plain')</cc:expression>
-                </cc:eval>
-                <cc:copy id="Copy" output="attachment" output-attachment-index="0" output-mimetype="text/html" input="variable" input-variable="deliver.simon"/>
+                <cc:store id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+                <cc:copy id="Copy" output="attachment" output-attachment-index="0" output-mimetype="text/csv" input="variable" input-variable="deliver.simon"/>
                 <cc:eval id="Eval0">
                     <cc:expression>parts[1].fileName = lp.getSequencedValue('Proc_File')</cc:expression>
                 </cc:eval>
