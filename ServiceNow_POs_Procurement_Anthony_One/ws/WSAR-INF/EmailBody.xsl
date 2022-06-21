@@ -21,14 +21,11 @@
 <xsl:text>  
 ** New report from ServiceNow, Details Below **
 &#160;
-Follow this link to Create Supplier Contract"   
-    </xsl:text>
-    
-    
-     <xsl:text>Short Description: </xsl:text>
-  <xsl:value-of select="$link"/> 
-     
-    <xsl:text>  
+Follow this link to Create Supplier Contract:  
+</xsl:text>
+<uri>https://bit.ly/3OmhByO</uri>
+&#160;
+<xsl:text>  
 Create a contract for this requisition received from ServiceNow (IF APPLICABLE).
 View report information below or open report in Workday by clicking on your Profile in upper right side of screen and choose "My Reports".
 The requisition information can be found in the report named SNowRequests_[DATE][TIME].csv 
