@@ -26,7 +26,7 @@
                 <cc:store execute-when="props['assignee']== 'otraore@coveo.com'" id="CreateDeliverableFile_olivia" output="variable" output-variable="deliver.olivia" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
             </cc:steps>
         </cc:async-mediation>
-        <cc:local-out id="PutIntegrationMessage_simon" routes-response-to="EmailOut" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage_simon" routes-response-to="DataOlivia20" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
             <cc:set name="is.message.summary" value="'Document sent to Simon'"/>
             <cc:set name="is.document.variable.name" value="'deliver.simon'"/>
@@ -38,15 +38,12 @@
         <cc:async-mediation id="AsyncMediation" routes-to="PutIntegrationMessage_simon">
             <cc:steps>
                 <cc:store id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
-                <cc:copy id="Copy0" output="attachment" output-attachment-index="0" output-mimetype="text/csv" input="variable" input-variable="deliver.file"/>
                 <cc:eval id="Eval0">
                     <cc:expression>parts[1].fileName = lp.getSequencedValue('Proc_File')</cc:expression>
                 </cc:eval>
-                <cc:text-excel id="TextExcel" output-mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" excelstyle="sheet" style="text2excel"/>
-                <cc:xslt id="Xslt" url="EmailBody1.xsl"/>
             </cc:steps>
         </cc:async-mediation>
-        <cc:local-out id="PutIntegrationMessage2" execute-when="props['data'] == empty" routes-response-to="DataOlivia0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage2" execute-when="props['data'] == empty" routes-response-to="EmailOut0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
             <cc:set name="is.message.summary" value="'No requisitions available'"/>
             <cc:set name="is.document.deliverable" value="'false'"/>
@@ -61,11 +58,40 @@
         <cc:async-mediation id="AsyncMediation2" routes-to="PutIntegrationMessage3">
             <cc:steps>
                 <cc:eval id="CreateParameter">
-                    <cc:expression>props['data'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['assignee'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
+                    <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['parent'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
+                    <cc:expression>props['requester'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['requester_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['description'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['assigned_to'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
                 </cc:eval>
                 <cc:xml-to-csv id="XmlToCsv" output="variable" output-variable="deliver.data" input="message" writeHeaderLine="true"/>
                 <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}"/>
+                <cc:eval id="Eval">
+                    <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['parent'] = parts[0].xpath('/Request/data/parent')</cc:expression>
+                    <cc:expression>props['requester'] = parts[0].xpath('/Request/data/requester')</cc:expression>
+                    <cc:expression>props['requester_email'] = parts[0].xpath('/Request/data/requester_email')</cc:expression>
+                    <cc:expression>props['assigned_to'] = parts[0].xpath('/Request/data/assigned_to')</cc:expression>
+                    <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
+                    <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/short_description')</cc:expression>
+                    <cc:expression>props['description'] = parts[0].xpath('/Request/data/description')</cc:expression>
+                    <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/customer_provided_info')</cc:expression>
+                </cc:eval>
+                <cc:log id="Log1">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+                <cc:xslt id="Xslt" url="EmailBody1.xsl"/>
+                <cc:log id="Log0">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
             </cc:steps>
         </cc:async-mediation>
         <cc:splitter id="Splitter">
@@ -191,7 +217,9 @@
         <cc:local-out id="DataShawn40" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataMichele4"/>
         <cc:local-out id="DataMarion60" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony6"/>
         <cc:local-out id="DataMichele50" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataMarion5"/>
-        <cc:email-out id="EmailOut" routes-response-to="DataOlivia20" endpoint="mailto:fsaadat@coveo.com" from="fsaadat@coveo.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="TEST PRO" user="@{props['userid']}"><cc:custom-headers/></cc:email-out>
+        <cc:email-out id="EmailOut0" routes-response-to="DataOlivia0" endpoint="mailto:fsaadat@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="Create Contract for SNow" user="@{props['userid']}">
+            <cc:custom-headers/>
+        </cc:email-out>
 	</cc:assembly>
 
 </beans>
