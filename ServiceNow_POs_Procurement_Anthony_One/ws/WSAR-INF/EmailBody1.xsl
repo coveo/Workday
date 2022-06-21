@@ -12,19 +12,26 @@
 	<xsl:param name="description"/>
 	<xsl:param name="assigned_to"/>
 	<xsl:param name="assigned_to_email"/>
-	
+	<xsl:param name="google.ca"/>
 	
 	<xsl:template match="/">
-
-
-			
+	
+	
+		
 <xsl:text>  
-** A new report from ServiceNow, Details Below **
+** New report from ServiceNow, Details Below **
 &#160;
+Follow this link to Create Supplier Contract"   
     </xsl:text>
+    
+    
+     <xsl:text>Short Description: </xsl:text>
+     <xsl>  <a href="www.privacy.com">Read our </a>  </xsl>
+     
+     
     <xsl:text>  
-Please create a contract for this requisition received from ServiceNow (IF APPLICABLE).
-View the report information below or open the report in Workday by clicking on your Profile in the upper right side of the screen and choose "My Reports".
+Create a contract for this requisition received from ServiceNow (IF APPLICABLE).
+View report information below or open report in Workday by clicking on your Profile in upper right side of screen and choose "My Reports".
 The requisition information can be found in the report named SNowRequests_[DATE][TIME].csv 
 &#160;
     </xsl:text>

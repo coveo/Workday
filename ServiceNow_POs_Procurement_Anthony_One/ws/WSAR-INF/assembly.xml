@@ -81,17 +81,7 @@
                     <cc:expression>props['description'] = parts[0].xpath('/Request/data/description')</cc:expression>
                     <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/customer_provided_info')</cc:expression>
                 </cc:eval>
-                <cc:log id="Log1">
-                    <cc:log-message>
-                        <cc:message-content/>
-                    </cc:log-message>
-                </cc:log>
-                <cc:xslt id="Xslt" url="EmailBody1.xsl"/>
-                <cc:log id="Log0">
-                    <cc:log-message>
-                        <cc:message-content/>
-                    </cc:log-message>
-                </cc:log>
+                <cc:xslt-plus id="XsltPlus" url="EmailBody.xsl"/>
             </cc:steps>
         </cc:async-mediation>
         <cc:splitter id="Splitter">
