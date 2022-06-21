@@ -16,14 +16,13 @@
 	
 	<xsl:template match="/">
 	
-	
 		
 <xsl:text>  
 ** New report from ServiceNow, Details Below **
 &#160;
 Follow this link to Create Supplier Contract:  
 </xsl:text>
-<uri>https://bit.ly/3OmhByO</uri>
+<uri>https://www.myworkday.com/coveo/d/task/2997$904.htmld</uri>
 &#160;
 <xsl:text>  
 Create a contract for this requisition received from ServiceNow (IF APPLICABLE).
