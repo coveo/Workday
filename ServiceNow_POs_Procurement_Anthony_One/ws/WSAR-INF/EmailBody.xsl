@@ -48,14 +48,14 @@ The requisition information can be found in the report named SNowRequests_[DATE]
      &#160;
      <xsl:text>Description: </xsl:text>
      <xsl:value-of select="$description"/> 
-     &#160;
+  
      <xsl:text>Customer Provided Info: </xsl:text>
-     <xsl:value-of select="$customer_provided_info"/>           
-     &#160;
-     <xsl:text>assigned to: </xsl:text>
+     <xsl:value-of select="$customer_provided_info"/>    
+          &#160;  
+     <xsl:text>Assigned to: </xsl:text>
      <xsl:value-of select="$assigned_to"/>      
      &#160;
-     <xsl:text>assigned to email: </xsl:text>
+     <xsl:text>Assigned to email: </xsl:text>
      <xsl:value-of select="$assigned_to_email"/>      
      
      
