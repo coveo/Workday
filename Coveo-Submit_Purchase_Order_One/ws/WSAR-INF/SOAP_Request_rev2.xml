@@ -65,9 +65,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                   <wd:Buyer_Reference>
                     <wd:ID wd:type="Employee_ID"><xsl:value-of select="$buyer_employee_ID"/></wd:ID>
                 </wd:Buyer_Reference>   
-                 <wd:Buyer_Reference>
+                 <wd:Req_Reference>
                     <wd:ID wd:type="Employee_ID"><xsl:value-of select="$req_employee_ID"/></wd:ID>
-                </wd:Buyer_Reference> 
+                </wd:Req_Reference> 
        <!--          
                 <wd:Issue_Option_Reference>
                     <wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$po_issue_option"/></wd:ID>
@@ -77,7 +77,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
               
                   <wd:Bill_To_Address_Data>
                     <wd:Bill_To_Address_Reference>
-                        <wd:ID wd:type="IID"><xsl:value-of select="$bill_to_address"/></wd:ID>
+                        <wd:ID wd:type="Address_Reference"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data>
             
