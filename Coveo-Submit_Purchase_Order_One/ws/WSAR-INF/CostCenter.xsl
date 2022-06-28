@@ -8,7 +8,7 @@
 <Results>
             <employee_id>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/wd:employee_id"
+                     select="Results/employeeid/wd:Report_Entry/wd:req_employee_ID"
                 />
             </employee_id>
             <cost_center>
@@ -18,7 +18,7 @@
             </cost_center>
             <bill_to_address>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/wd:bill_to_address_group/wd:bill_to_address/wd:ID[@wd:type ='WID']"
+                     select="Results/employeeid/wd:Report_Entry/wd:Worker_group/wd:bill_to_address"
                 />
             </bill_to_address>
 </Results>

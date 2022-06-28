@@ -69,7 +69,7 @@
                     <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
                 </cc:eval>
                 <cc:xml-to-csv id="XmlToCsv" output="variable" output-variable="deliver.data" input="message" writeHeaderLine="true"/>
-                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}"/>
+                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
                 <cc:eval id="Eval">
                     <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
                     <cc:expression>props['parent'] = parts[0].xpath('/Request/data/parent')</cc:expression>

@@ -4,13 +4,13 @@
 
     <xsl:output indent="yes"/>
 
-    <xsl:param name="employeeid"/>
+    <xsl:param name="req_employee_ID"/>
      
     <xsl:template match="/">
 <Results>
             <employeeid>
                 <xsl:copy-of
-                    select="wd:Report_Data/wd:Report_Entry[wd:employee_id =$employeeid]"
+                    select="wd:Report_Data/wd:Report_Entry[wd:req_employee_ID =$req_employee_ID]"
                 />
             </employeeid>
 </Results>

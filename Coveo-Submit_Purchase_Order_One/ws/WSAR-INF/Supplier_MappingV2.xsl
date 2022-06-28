@@ -31,11 +31,13 @@
                     select="Results/supplier/wd:Report_Entry/wd:PO_Issue_Option/wd:ID[@wd:type ='Purchase_Order_Issue_Option_ID']"
                 />
             </po_issue_option>
+            <!-- 
              <company_restrictions>
             <xsl:value-of
                     select="Results/supplier/wd:Report_Entry/wd:Company_Restrictions/wd:ID[@wd:type ='Company_Reference_ID']"
                 />
             </company_restrictions>
+             -->
              <spend_category>
             <xsl:value-of
                     select="Results/supplier/wd:Report_Entry/wd:Spend_Category/wd:ID[@wd:type ='Spend_Category_ID']"
