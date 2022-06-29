@@ -109,8 +109,8 @@
                     <cc:expression>props['payment_terms'] = parts[0].xpath('/Results/payment_terms')</cc:expression>
                     <cc:expression>props['currency'] = parts[0].xpath('/Results/currency')</cc:expression>
                     <cc:expression>props['po_issue_option'] = parts[0].xpath('/Results/po_issue_option')</cc:expression>
-                    <cc:expression>props['spend_category'] = 'Computer_equipment'</cc:expression>
-                    <cc:expression>props['default_payment_type'] = parts[0].xpath('Results/dpayment_type')</cc:expression>
+                    <cc:expression>props['spend_category'] = parts[0].xpath('/Results/spend_category')</cc:expression>
+                    <cc:expression>props['default_payment_type'] = parts[0].xpath('Results/default_payment_type')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>
