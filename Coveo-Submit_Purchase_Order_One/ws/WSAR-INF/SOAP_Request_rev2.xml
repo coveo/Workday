@@ -13,6 +13,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:param name="po_issue_option"/>  -->
   <xsl:param name="buyer_employee_ID"/>
   <xsl:param name="req_employee_ID"/>
+  <xsl:param name="location"/>
   <xsl:param name="bill_to_address"/>
    <xsl:param name="ship_to_address"/>
   <xsl:param name="unit_cost"/>
@@ -74,14 +75,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 </wd:Issue_Option_Reference>
              
               -->  
-              
+               <wd:Deliver_To_Location_Reference>
+                          <wd:ID wd:type="Location_ID"><xsl:value-of select="$location"/></wd:ID>
+                    </wd:Deliver_To_Location_Reference>
+                    
+                    
                   <wd:Bill_To_Address_Data>
                     <wd:Bill_To_Address_Reference>
                         <wd:ID wd:type="WID"><xsl:value-of select="$bill_to_address"/></wd:ID>
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data>
-            
-            
+
          
                 <wd:Goods_Line_Replacement_Data>         
                          
