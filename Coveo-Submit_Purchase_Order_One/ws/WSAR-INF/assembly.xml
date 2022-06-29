@@ -54,6 +54,7 @@
                     <cc:expression>props['description'] = parts[0].xpath('/results/data/description')</cc:expression>
                     <cc:expression>props['buyer_employee_ID'] = parts[0].xpath('/results/data/buyer_employee_ID')</cc:expression>
                     <cc:expression>props['req_employee_ID'] = parts[0].xpath('/results/data/req_employee_ID')</cc:expression>
+                    <cc:expression>props['location'] = parts[0].xpath('/results/data/location')</cc:expression>
                 </cc:eval>
                 <cc:store id="Store"/>
                 <cc:log id="Log">
@@ -109,15 +110,21 @@
                     <cc:expression>props['currency'] = parts[0].xpath('/Results/currency')</cc:expression>
                     <cc:expression>props['po_issue_option'] = parts[0].xpath('/Results/po_issue_option')</cc:expression>
                     <cc:expression>props['spend_category'] = 'Computer_equipment'</cc:expression>
-                    <cc:expression>props['default_payment_type'] = parts[0].xpath('Results/default_payment_type')</cc:expression>
+                    <cc:expression>props['default_payment_type'] = parts[0].xpath('Results/dpayment_type')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>
                         <cc:message-content/>
                     </cc:log-message>
                 </cc:log>
-                <cc:eval id="Eval">
-                    <cc:expression>props['company_restrictions'] = 'CSI' {props['currency'] = 'CAD'}</cc:expression>
+                <cc:eval execute-when="props['currency'] == 'CAD'" id="Eval">
+                    <cc:expression>props['company_restrictions'] = 'CSI' </cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['currency'] == 'USD' &amp;&amp; props['default_payment_type'] == 'Credit Card'" id="Eval0">
+                    <cc:expression>props['company_restrictions'] = 'CSC' </cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['default_payment_type'] == 'Manual Wire'" id="Eval1">
+                    <cc:expression>props['company_restrictions'] = 'CEBV' </cc:expression>
                 </cc:eval>
                 <cc:log id="Log0">
                     <cc:log-message>
@@ -139,7 +146,6 @@
                 <cc:xslt-plus id="CostCenterXSLT" input="message" url="CostCenter.xsl"/>
                 <cc:eval id="CostCenterParam">
                     <cc:expression>props['cost_center'] = parts[0].xpath('/Results/cost_center')</cc:expression>
-                    <cc:expression>props['bill_to_address'] = parts[0].xpath('/Results/Worker_group/bill_to_address')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>

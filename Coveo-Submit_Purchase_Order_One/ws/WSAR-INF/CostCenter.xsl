@@ -16,11 +16,16 @@
                      select="Results/employeeid/wd:Report_Entry/wd:Cost_Center/wd:ID[@wd:type ='Cost_Center_Reference_ID']"
                 />
             </cost_center>
+            
+            <!-- 
             <bill_to_address>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/wd:Worker_group/wd:bill_to_address"
+                     select="Results/employeeid/wd:Report_Entry/wd:All_Work_Addresses_group/wd:workdayID"
                 />
             </bill_to_address>
+            
+             -->
+             
 </Results>
       </xsl:template>
           </xsl:stylesheet>
