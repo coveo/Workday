@@ -50,5 +50,4 @@
             </default_payment_type>   
 </Results>
             </xsl:template>
-
           </xsl:stylesheet>

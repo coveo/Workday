@@ -21,6 +21,9 @@
           <cloud:report-alias description="EmployeeID" name="EmployeeID">
             <cloud:report-reference description="EmployeeID" type="WID">b5138668433201050cca6b2a14300000</cloud:report-reference>
           </cloud:report-alias>
+          <cloud:report-alias description="LocationID" name="LocationID">
+            <cloud:report-reference description="LocationID" type="WID">1491a10d09431001b20619dbee5f0000</cloud:report-reference>
+          </cloud:report-alias>
         </cloud:report-service>
       </cc:integration-system>
         </cc:workday-in>
@@ -101,51 +104,61 @@
         <cc:workday-out-rest id="Supplier_RaaS" routes-response-to="GetInformationSupplier" extra-path="@{intsys.reportService.getExtrapath('POSuppliers')}"/>
         <cc:async-mediation id="GetInformationSupplier" routes-to="Employee_RaaS">
             <cc:steps>
-                <cc:xslt-plus id="SupplierXSLT" url="Supplier.xsl"/>
+                <cc:xslt-plus id="Supplier" url="Supplier.xsl"/>
                 <cc:xslt-plus id="SupplierP2" url="Supplier_MappingV2.xsl"/>
-                <cc:eval id="SupplierParameters">
+                <cc:eval id="SupplierParm">
                     <cc:expression>props['supplier'] = parts[0].xpath('/Results/supplier')</cc:expression>
                     <cc:expression>props['supplier_category'] = parts[0].xpath('/Results/supplier_category')</cc:expression>
                     <cc:expression>props['payment_terms'] = parts[0].xpath('/Results/payment_terms')</cc:expression>
                     <cc:expression>props['currency'] = parts[0].xpath('/Results/currency')</cc:expression>
                     <cc:expression>props['po_issue_option'] = parts[0].xpath('/Results/po_issue_option')</cc:expression>
-                    <cc:expression>props['spend_category'] = parts[0].xpath('/Results/spend_category')</cc:expression>
+                    <cc:expression>props['spend_category'] = 'Office_supplies'</cc:expression>
                     <cc:expression>props['default_payment_type'] = parts[0].xpath('Results/default_payment_type')</cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['default_payment_type'] == 'credit_card' &amp;&amp; props['currency'] == 'CAD'" id="Eval">
+                    <cc:expression>props['company_restrictions'] = 'CSI' </cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['default_payment_type'] == 'credit_card' &amp;&amp; props['currency'] == 'USD'" id="Eval0">
+                    <cc:expression>props['company_restrictions'] = 'CSC' </cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['default_payment_type'] == 'Manual Wire'" id="Eval1">
+                    <cc:expression>props['company_restrictions'] = 'CEBV' </cc:expression>
+                </cc:eval>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
+        <cc:workday-out-rest id="Employee_RaaS" routes-response-to="AsyncMediation0" extra-path="@{intsys.reportService.getExtrapath('EmployeeID')}"/>
+        <cc:async-mediation id="AsyncMediation0" routes-to="Location_RaaS">
+            <cc:steps>
+                <cc:xslt-plus id="Employee" input="message" url="EmployeeSXLT.xsl"/>
+                <cc:xslt-plus id="EmployeeP2" input="message" url="CostCenter.xsl"/>
+                <cc:eval id="CostCenterParam">
+                    <cc:expression>props['cost_center'] = parts[0].xpath('/Results/cost_center')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>
                         <cc:message-content/>
                     </cc:log-message>
                 </cc:log>
-                <cc:eval execute-when="props['currency'] == 'CAD'" id="Eval">
-                    <cc:expression>props['company_restrictions'] = 'CSI' </cc:expression>
-                </cc:eval>
-                <cc:eval execute-when="props['currency'] == 'USD' &amp;&amp; props['default_payment_type'] == 'Credit Card'" id="Eval0">
-                    <cc:expression>props['company_restrictions'] = 'CSC' </cc:expression>
-                </cc:eval>
-                <cc:eval execute-when="props['default_payment_type'] == 'Manual Wire'" id="Eval1">
-                    <cc:expression>props['company_restrictions'] = 'CEBV' </cc:expression>
-                </cc:eval>
-                <cc:log id="Log0">
-                    <cc:log-message>
-                        <cc:message-content/>
-                    </cc:log-message>
-                </cc:log>
             </cc:steps>
         </cc:async-mediation>
-        <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
-        <cc:workday-out-rest id="Employee_RaaS" routes-response-to="AsyncMediation0" extra-path="@{intsys.reportService.getExtrapath('EmployeeID')}"/>
-        <cc:async-mediation id="AsyncMediation0">
+        <cc:workday-out-rest id="Location_RaaS" routes-response-to="AsyncMediation1" extra-path="@{intsys.reportService.getExtrapath('LocationID')}"/>
+        <cc:async-mediation id="AsyncMediation1">
             <cc:steps>
-                <cc:xslt-plus id="EmployeeXSLT" input="message" url="EmployeeSXLT.xsl"/>
+                <cc:xslt-plus id="Location" url="Location.xsl"/>
+                <cc:log id="Log1">
+                    <cc:log-message>
+                        <cc:message-content/>
+                    </cc:log-message>
+                </cc:log>
+                <cc:xslt-plus id="LocationP2" url="LocationP2.xsl"/>
                 <cc:log id="Log0">
                     <cc:log-message>
                         <cc:message-content/>
                     </cc:log-message>
                 </cc:log>
-                <cc:xslt-plus id="CostCenterXSLT" input="message" url="CostCenter.xsl"/>
-                <cc:eval id="CostCenterParam">
-                    <cc:expression>props['cost_center'] = parts[0].xpath('/Results/cost_center')</cc:expression>
+                <cc:eval id="Eval">
+                    <cc:expression>props['location'] = parts[0].xpath('/Results/location')</cc:expression>
                 </cc:eval>
                 <cc:log id="Log">
                     <cc:log-message>

@@ -12,7 +12,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
  <!--  <xsl:param name="payment_type"/> 
   <xsl:param name="po_issue_option"/>  -->
   <xsl:param name="buyer_employee_ID"/>
-  <xsl:param name="req_employee_ID"/>
   <xsl:param name="location"/>
   <xsl:param name="bill_to_address"/>
    <xsl:param name="ship_to_address"/>
@@ -66,9 +65,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                   <wd:Buyer_Reference>
                     <wd:ID wd:type="Employee_ID"><xsl:value-of select="$buyer_employee_ID"/></wd:ID>
                 </wd:Buyer_Reference>   
-                 <wd:Req_Reference>
-                    <wd:ID wd:type="Employee_ID"><xsl:value-of select="$req_employee_ID"/></wd:ID>
-                </wd:Req_Reference> 
+                
        <!--          
                 <wd:Issue_Option_Reference>
                     <wd:ID wd:type="Purchase_Order_Issue_Option_ID"><xsl:value-of select="$po_issue_option"/></wd:ID>
@@ -85,11 +82,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                     </wd:Bill_To_Address_Reference>
                 </wd:Bill_To_Address_Data> 
                 -->
-                
-                
-             
-
-         
                 <wd:Goods_Line_Replacement_Data>   
                 
              <wd:Storage_Location_Reference>
@@ -106,11 +98,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <wd:ID wd:type="Item_Description"><xsl:value-of select="$product_name"/></wd:ID>
                     </wd:Item_Description>
          
-         
+           --> 
                <wd:Resource_Category_Reference>                  
                    <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
                 </wd:Resource_Category_Reference>
-                  --> 
+          
                   
                   
                   
