@@ -10,7 +10,7 @@
 <Results>
             <location>
                 <xsl:copy-of
-                    select="wd:Report_Data/wd:Report_Entry[wd:Location[@wd:Descriptor =$location]]"
+                    select="wd:Report_Data/wd:Report_Entry[wd:Location]"
                 />
             </location>
 </Results>
