@@ -12,7 +12,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
  <!--  <xsl:param name="payment_type"/> 
   <xsl:param name="po_issue_option"/>  -->
   <xsl:param name="buyer_employee_ID"/>
-  <xsl:param name="location_ID"/>
+  <xsl:param name="location"/>
   <xsl:param name="bill_to_address"/>
    <xsl:param name="ship_to_address"/>
   <xsl:param name="unit_cost"/>
@@ -85,7 +85,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <wd:Goods_Line_Replacement_Data>   
                 
              <wd:Storage_Location_Reference>
-                        <wd:ID wd:type="Location_ID"><xsl:value-of select="$location_ID"/></wd:ID>
+                        <wd:ID wd:type="Location_ID"><xsl:value-of select="$location"/></wd:ID>
                     </wd:Storage_Location_Reference>
                          
                 <wd:Item_Description><xsl:value-of select="$product_name"/></wd:Item_Description>
