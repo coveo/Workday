@@ -57,7 +57,7 @@
                     <cc:expression>props['description'] = parts[0].xpath('/results/data/description')</cc:expression>
                     <cc:expression>props['buyer_employee_ID'] = parts[0].xpath('/results/data/buyer_employee_ID')</cc:expression>
                     <cc:expression>props['req_employee_ID'] = parts[0].xpath('/results/data/req_employee_ID')</cc:expression>
-                    <cc:expression>props['location'] = parts[0].xpath('/results/data/location')</cc:expression>
+                    <cc:expression>props['location_ID'] = parts[0].xpath('/results/data/location')</cc:expression>
                 </cc:eval>
                 <cc:store id="Store"/>
                 <cc:log id="Log">
@@ -142,11 +142,10 @@
                 </cc:log>
             </cc:steps>
         </cc:async-mediation>
-        <cc:workday-out-rest id="Location_RaaS" routes-response-to="AsyncMediation1" extra-path="@{intsys.reportService.getExtrapath('LocationID')}"/>
         <cc:async-mediation id="AsyncMediation1">
             <cc:steps>
-                <cc:xslt-plus id="Location" url="Location.xsl"/>
-                <cc:xslt-plus id="LocationP2" url="LocationP2.xsl"/>
+                <cc:xslt-plus id="Location" url="Location1.xsl"/>
+                <cc:xslt-plus id="LocationID" url="Location2.xsl"/>
                 <cc:eval id="Eval">
                     <cc:expression>props['location'] = parts[0].xpath('/Results/location')</cc:expression>
                 </cc:eval>
@@ -157,6 +156,7 @@
                 </cc:log>
             </cc:steps>
         </cc:async-mediation>
+        <cc:workday-out-rest id="Location_RaaS" routes-response-to="AsyncMediation1" extra-path="@{intsys.reportService.getExtrapath('LocationID')}"/>
 	</cc:assembly>
 
 </beans>
