@@ -8,9 +8,11 @@
 <Results>
             <location>
                 <xsl:value-of
-                     select="Results/location/wd:Report_Entry/wd:Location"
+                     select="Results/LocationID/wd:Report_Entry/wd:Location/wd:Descriptor"
                 />
-            </location>        
+            </location>
+        
+           
 </Results>
       </xsl:template>
           </xsl:stylesheet>
