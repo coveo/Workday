@@ -16,7 +16,9 @@
 	
 	<xsl:template match="/">
 	
-
+<xsl:text>Assigned to: </xsl:text>
+     <xsl:value-of select="$assigned_to"/>      
+     &#160;
 <xsl:text>  
 ** New report from ServiceNow, Details Below **
 &#160;

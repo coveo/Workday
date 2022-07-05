@@ -49,7 +49,7 @@
             <cc:set name="is.document.deliverable" value="'false'"/>
             <cc:set name="is.document.variable.name" value="'deliver.file'"/>
         </cc:local-out>
-        <cc:local-out id="PutIntegrationMessage3" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'sgordon@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mmalenfant@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mvanespen@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'afederico@coveo.com')" routes-response-to="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+        <cc:local-out id="PutIntegrationMessage3" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com')" routes-response-to="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
             <cc:set name="is.message.severity" value="'INFO'"/>
             <cc:set name="is.message.summary" value="'ServiceNow requisitions have been found'"/>
             <cc:set name="is.document.variable.name" value="'deliver.file'"/>
@@ -69,7 +69,7 @@
                     <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
                 </cc:eval>
                 <cc:xml-to-csv id="XmlToCsv" output="variable" output-variable="deliver.data" input="message" writeHeaderLine="true"/>
-                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}"/>
                 <cc:eval id="Eval">
                     <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
                     <cc:expression>props['parent'] = parts[0].xpath('/Request/data/parent')</cc:expression>
@@ -137,7 +137,7 @@
         <cc:local-in id="DataOlivia" routes-to="AsyncMediation"/>
         <cc:local-in id="DataOlivia2" routes-to="AsyncMediation10"/>
         <cc:local-out id="ConvertAnthony0" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/ConvertAnthony"/>
-        <cc:local-out id="DataOlivia0" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'sgordon@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mmalenfant@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'mvanespen@coveo.com') || (props['data'] != empty &amp;&amp; props['assignee']== 'afederico@coveo.com')" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia"/>
+        <cc:local-out id="DataOlivia0" execute-when="(props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com')" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia"/>
         <cc:local-out id="DataOlivia20" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataOlivia2"/>
         <cc:async-mediation id="AsyncMediation100" routes-to="PutIntegrationMessage_shawn">
             <cc:steps>
