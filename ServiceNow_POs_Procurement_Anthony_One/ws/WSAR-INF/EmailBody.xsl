@@ -17,8 +17,6 @@
 	<xsl:template match="/">
 	
 
-	<xsl:attribute name="fileName"></xsl:attribute>
-		
 <xsl:text>  
 ** New report from ServiceNow, Details Below **
 &#160;
