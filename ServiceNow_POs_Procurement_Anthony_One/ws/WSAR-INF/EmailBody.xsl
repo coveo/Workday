@@ -12,7 +12,7 @@
 	<xsl:param name="description"/>
 	<xsl:param name="assigned_to"/>
 	<xsl:param name="assigned_to_email"/>
-	<xsl:param name="link"/>
+
 	
 	<xsl:template match="/">
 	
