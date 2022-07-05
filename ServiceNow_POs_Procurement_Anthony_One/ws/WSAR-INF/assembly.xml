@@ -109,7 +109,7 @@
             <cc:set name="ie.event.wid" value="lp.isSet() ? lp.getIntegrationEventWID() : null"/>
         </cc:local-out>
         <cc:workday-in id="StartHere" routes-to="GetEventDocuments">
-            <cc:integration-system name="ServiceNow_POs_Procurement_Anthony">
+            <cc:integration-system name="ServiceNow_POs_Procurement_AnthonyOne">
         <cloud:attribute-map-service name="EmailOutEndpoint">
           <cloud:attribute name="Password">
             <cloud:type>
