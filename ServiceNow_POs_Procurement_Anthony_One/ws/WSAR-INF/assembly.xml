@@ -207,7 +207,7 @@
         <cc:local-out id="DataShawn40" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataMichele4"/>
         <cc:local-out id="DataMarion60" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataAnthony6"/>
         <cc:local-out id="DataMichele50" store-message="none" endpoint="vm://ServiceNow_POs_Procurement_Anthony_One/DataMarion5"/>
-        <cc:email-out id="EmailOut0" routes-response-to="DataOlivia0" endpoint="mailto:fsaadat@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="Create Contract for SNow" user="@{props['userid']}">
+        <cc:email-out id="EmailOut0" execute-when="props['data'] != empty &amp;&amp; props['assignee']== 'otraore@coveo.com'" routes-response-to="DataOlivia0" endpoint="mailto:fsaadat@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="Create Contract for SNow" user="@{props['userid']}">
             <cc:custom-headers/>
         </cc:email-out>
 	</cc:assembly>
