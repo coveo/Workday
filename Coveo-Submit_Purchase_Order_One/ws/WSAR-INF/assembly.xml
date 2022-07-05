@@ -21,6 +21,9 @@
           <cloud:report-alias description="EmployeeID" name="EmployeeID">
             <cloud:report-reference description="EmployeeID" type="WID">b5138668433201050cca6b2a14300000</cloud:report-reference>
           </cloud:report-alias>
+          <cloud:report-alias description="Location ID" name="LocationID">
+            <cloud:report-reference description="LocationID" type="WID">e927bbdebc6b101946a7cad79a870000</cloud:report-reference>
+          </cloud:report-alias>
         </cloud:report-service>
       </cc:integration-system>
         </cc:workday-in>
@@ -135,7 +138,7 @@
         </cc:async-mediation>
         <cc:local-out id="DataMapping0" routes-response-to="WriteSOAPMessage" endpoint="vm://Coveo-Submit_Purchase_Order_One/DataMapping"/>
         <cc:workday-out-rest id="Employee_RaaS" routes-response-to="AsyncMediation0" extra-path="@{intsys.reportService.getExtrapath('EmployeeID')}"/>
-        <cc:async-mediation id="AsyncMediation0">
+        <cc:async-mediation id="AsyncMediation0" routes-to="Location_RaaS">
             <cc:steps>
                 <cc:xslt-plus id="EmployeeXSLT" input="message" url="EmployeeSXLT.xsl"/>
                 <cc:log id="Log0">
@@ -152,6 +155,19 @@
                         <cc:message-content/>
                     </cc:log-message>
                 </cc:log>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:workday-out-rest id="Location_RaaS" routes-response-to="AsyncMediation1" extra-path="@{intsys.reportService.getExtrapath('LocationID')}"/>
+        <cc:async-mediation id="AsyncMediation1">
+            <cc:steps>
+                <cc:xslt-plus id="XsltPlus" url="LocationID.xsl"/>
+                <cc:xslt-plus id="XsltPlus0" url="location2.xsl"/>
+                <cc:eval id="Eval">
+                    <cc:expression>props['locationid'] = parts[0].xpath('/Results/locationid')</cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['locationid'] == empty" id="Eval0">
+                    <cc:expression>props['locationid'] = 'LOC_CANM'</cc:expression>
+                </cc:eval>
             </cc:steps>
         </cc:async-mediation>
 	</cc:assembly>
