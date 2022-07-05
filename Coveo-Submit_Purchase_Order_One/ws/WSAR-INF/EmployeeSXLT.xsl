@@ -8,11 +8,11 @@
      
     <xsl:template match="/">
 <Results>
-            <employeeid>
+            <req_employee_ID>
                 <xsl:copy-of
-                    select="wd:Report_Data/wd:Report_Entry[wd:req_employee_ID =$req_employee_ID]"
+                    select="wd:Report_Data/wd:Report_Entry[wd:employee_id =$req_employee_ID]"
                 />
-            </employeeid>
+            </req_employee_ID>
 </Results>
             </xsl:template>
           </xsl:stylesheet>

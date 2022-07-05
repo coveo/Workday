@@ -8,12 +8,12 @@
 <Results>
             <employee_id>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/wd:req_employee_ID"
+                     select="Results/req_employee_ID/wd:Report_Entry/wd:employee_id"
                 />
             </employee_id>
             <cost_center>
                 <xsl:value-of
-                     select="Results/employeeid/wd:Report_Entry/wd:Cost_Center/wd:ID[@wd:type ='Cost_Center_Reference_ID']"
+                     select="Results/req_employee_ID/wd:Report_Entry/wd:Cost_Center/wd:ID[@wd:type ='Cost_Center_Reference_ID']"
                 />
             </cost_center>
             
