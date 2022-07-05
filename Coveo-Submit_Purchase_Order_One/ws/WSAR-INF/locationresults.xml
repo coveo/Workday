@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?><Results>
+   <locationid>
+      <wd:Report_Entry xmlns:wd="urn:com.workday.report/LocationID">
+         <wd:ReferenceID>LOC_CANM</wd:ReferenceID>
+         <wd:Location>Montreal Office, Canada</wd:Location>
+      </wd:Report_Entry>
+   </locationid>
+</Results>
