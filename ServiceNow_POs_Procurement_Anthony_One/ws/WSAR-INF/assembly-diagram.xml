@@ -11,7 +11,7 @@
     <element href="assembly.xml#GetRetrievedFile"/>
   </visualProperties>
   <visualProperties>
-    <element href="assembly.xml#//@beans/@mixed.1/@mixed.21"/>
+    <element href="assembly.xml#//@beans/@mixed.1/@mixed.17"/>
   </visualProperties>
   <visualProperties>
     <element href="assembly.xml#PutIntegrationMessage1"/>
@@ -37,20 +37,11 @@
   <visualProperties>
     <element href="assembly.xml#PutIntegrationMessage_simon"/>
   </visualProperties>
-  <visualProperties>
-    <element href="assembly.xml#AsyncMediation10"/>
-  </visualProperties>
-  <visualProperties>
-    <element href="assembly.xml#PutIntegrationMessage_olivia"/>
-  </visualProperties>
   <visualProperties x="66" y="374">
     <element href="assembly.xml#ConvertAnthony"/>
   </visualProperties>
   <visualProperties x="71" y="585">
-    <element href="assembly.xml#DataOlivia"/>
-  </visualProperties>
-  <visualProperties x="71" y="762">
-    <element href="assembly.xml#DataOlivia2"/>
+    <element href="assembly.xml#DataAnthony"/>
   </visualProperties>
   <visualProperties x="495" y="170">
     <element href="assembly.xml#ConvertAnthony0"/>
@@ -59,55 +50,16 @@
     <element href="assembly.xml#DataOlivia0"/>
   </visualProperties>
   <visualProperties x="534" y="629">
-    <element href="assembly.xml#DataOlivia20"/>
-  </visualProperties>
-  <visualProperties x="783" y="784">
-    <element href="assembly.xml#AsyncMediation100"/>
-  </visualProperties>
-  <visualProperties x="956" y="811">
-    <element href="assembly.xml#PutIntegrationMessage_shawn"/>
-  </visualProperties>
-  <visualProperties x="589" y="793">
-    <element href="assembly.xml#DataShawn30"/>
-  </visualProperties>
-  <visualProperties x="793" y="796">
-    <element href="assembly.xml#DataShawn3"/>
-  </visualProperties>
-  <visualProperties x="145" y="1111">
-    <element href="assembly.xml#DataMarion5"/>
-  </visualProperties>
-  <visualProperties x="229" y="1130">
-    <element href="assembly.xml#AsyncMediation1000"/>
-  </visualProperties>
-  <visualProperties x="415" y="1157">
-    <element href="assembly.xml#PutIntegrationMessage_marion"/>
-  </visualProperties>
-  <visualProperties x="145" y="1284">
-    <element href="assembly.xml#DataMichele4"/>
-  </visualProperties>
-  <visualProperties x="234" y="1303">
-    <element href="assembly.xml#AsyncMediation10000"/>
-  </visualProperties>
-  <visualProperties x="420" y="1330">
-    <element href="assembly.xml#PutIntegrationMessage_michele"/>
+    <element href="assembly.xml#DataAnthony20"/>
   </visualProperties>
   <visualProperties x="145" y="1457">
-    <element href="assembly.xml#DataAnthony6"/>
+    <element href="assembly.xml#DataAnthony2"/>
   </visualProperties>
   <visualProperties x="239" y="1476">
     <element href="assembly.xml#AsyncMediation100000"/>
   </visualProperties>
   <visualProperties x="425" y="1503">
     <element href="assembly.xml#PutIntegrationMessage_anthony70"/>
-  </visualProperties>
-  <visualProperties x="618" y="984">
-    <element href="assembly.xml#DataShawn40"/>
-  </visualProperties>
-  <visualProperties x="642" y="1157">
-    <element href="assembly.xml#DataMarion60"/>
-  </visualProperties>
-  <visualProperties x="652" y="1330">
-    <element href="assembly.xml#DataMichele50"/>
   </visualProperties>
   <visualProperties x="1412" y="400">
     <element href="assembly.xml#EmailOut0"/>
@@ -121,7 +73,7 @@
     <target href="assembly.xml#GetRetrievedFile"/>
   </connections>
   <connections type="routesTo" sourceAnchorX="0.7078651685393258" sourceAnchorY="1.0" targetAnchorX="0.3548387096774194" targetAnchorY="0.32432432432432434">
-    <source href="assembly.xml#//@beans/@mixed.1/@mixed.21"/>
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.17"/>
     <target href="assembly.xml#PutIntegrationMessage1"/>
   </connections>
   <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.2608695652173913" targetAnchorX="0.4731182795698925" targetAnchorY="0.08666666666666667">
@@ -140,68 +92,20 @@
     <source href="assembly.xml#AsyncMediation"/>
     <target href="assembly.xml#PutIntegrationMessage_simon"/>
   </connections>
-  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.16304347826086957" targetAnchorX="0.1712707182320442" targetAnchorY="0.2972972972972973">
-    <source href="assembly.xml#AsyncMediation10"/>
-    <target href="assembly.xml#PutIntegrationMessage_olivia"/>
-  </connections>
   <connections type="routesTo" sourceAnchorX="0.7950819672131147" sourceAnchorY="1.0" targetAnchorX="0.08374384236453201" targetAnchorY="0.13043478260869565">
     <source href="assembly.xml#ConvertAnthony"/>
     <target href="assembly.xml#Convert_Data_To_XML"/>
   </connections>
   <connections type="routesTo" sourceAnchorX="0.6818181818181818" sourceAnchorY="1.0" targetAnchorX="0.2465753424657534" targetAnchorY="0.10869565217391304">
-    <source href="assembly.xml#DataOlivia"/>
+    <source href="assembly.xml#DataAnthony"/>
     <target href="assembly.xml#AsyncMediation"/>
-  </connections>
-  <connections type="routesTo" sourceAnchorX="0.6521739130434783" sourceAnchorY="1.0" targetAnchorX="0.10135135135135136" targetAnchorY="0.15217391304347827">
-    <source href="assembly.xml#DataOlivia2"/>
-    <target href="assembly.xml#AsyncMediation10"/>
   </connections>
   <connections type="routesTo" sourceAnchorX="0.8556701030927835" sourceAnchorY="1.0" targetAnchorX="0.06299212598425197" targetAnchorY="0.32432432432432434">
     <source href="assembly.xml#//@beans/@mixed.1/@route.0/@subRoute.0"/>
     <target href="assembly.xml#ConvertAnthony0"/>
   </connections>
-  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.40217391304347827" targetAnchorX="0.5027624309392266" targetAnchorY="0.2972972972972973">
-    <source href="assembly.xml#AsyncMediation100"/>
-    <target href="assembly.xml#PutIntegrationMessage_shawn"/>
-  </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.7556818181818182" sourceAnchorY="1.0" targetAnchorX="0.5083333333333333" targetAnchorY="0.5675675675675675">
-    <source href="assembly.xml#PutIntegrationMessage_olivia"/>
-    <target href="assembly.xml#DataShawn30"/>
-  </connections>
-  <connections type="routesTo" sourceAnchorX="0.6857142857142857" sourceAnchorY="1.0" targetAnchorX="0.3333333333333333" targetAnchorY="0.45652173913043476">
-    <source href="assembly.xml#DataShawn3"/>
-    <target href="assembly.xml#AsyncMediation100"/>
-  </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.6850828729281768" sourceAnchorY="1.0" targetAnchorX="0.31932773109243695" targetAnchorY="0.32432432432432434">
-    <source href="assembly.xml#PutIntegrationMessage_shawn"/>
-    <target href="assembly.xml#DataShawn40"/>
-  </connections>
-  <connections type="routesTo" sourceAnchorX="0.7798165137614679" sourceAnchorY="1.0" targetAnchorX="0.4429530201342282" targetAnchorY="0.7608695652173914">
-    <source href="assembly.xml#DataMarion5"/>
-    <target href="assembly.xml#AsyncMediation1000"/>
-  </connections>
-  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.1956521739130435" targetAnchorX="0.2896174863387978" targetAnchorY="0.4594594594594595">
-    <source href="assembly.xml#AsyncMediation1000"/>
-    <target href="assembly.xml#PutIntegrationMessage_marion"/>
-  </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.5191256830601093" sourceAnchorY="1.0" targetAnchorX="0.2894736842105263" targetAnchorY="0.7567567567567568">
-    <source href="assembly.xml#PutIntegrationMessage_marion"/>
-    <target href="assembly.xml#DataMarion60"/>
-  </connections>
-  <connections type="routesTo" sourceAnchorX="0.831858407079646" sourceAnchorY="1.0" targetAnchorX="0.34868421052631576" targetAnchorY="0.6086956521739131">
-    <source href="assembly.xml#DataMichele4"/>
-    <target href="assembly.xml#AsyncMediation10000"/>
-  </connections>
-  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.3695652173913043" targetAnchorY="0.08108108108108109">
-    <source href="assembly.xml#AsyncMediation10000"/>
-    <target href="assembly.xml#PutIntegrationMessage_michele"/>
-  </connections>
-  <connections type="routesResponseTo" sourceAnchorX="0.7473118279569892" sourceAnchorY="1.0" targetAnchorX="0.22033898305084745" targetAnchorY="0.24324324324324326">
-    <source href="assembly.xml#PutIntegrationMessage_michele"/>
-    <target href="assembly.xml#DataMichele50"/>
-  </connections>
   <connections type="routesTo" sourceAnchorX="0.6956521739130435" sourceAnchorY="1.0" targetAnchorX="0.48717948717948717" targetAnchorY="0.6413043478260869">
-    <source href="assembly.xml#DataAnthony6"/>
+    <source href="assembly.xml#DataAnthony2"/>
     <target href="assembly.xml#AsyncMediation100000"/>
   </connections>
   <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.2717391304347826" targetAnchorX="0.3401015228426396" targetAnchorY="0.4864864864864865">
@@ -222,10 +126,10 @@
   </connections>
   <connections type="routesResponseTo" sourceAnchorX="0.5810055865921788" sourceAnchorY="1.0" targetAnchorX="0.27522935779816515" targetAnchorY="0.35135135135135137">
     <source href="assembly.xml#PutIntegrationMessage_simon"/>
-    <target href="assembly.xml#DataOlivia20"/>
+    <target href="assembly.xml#DataAnthony20"/>
   </connections>
   <swimlanes name="GlobalErrorHandler" orientation="VERTICAL" topBorderColor="467382">
-    <elements href="assembly.xml#//@beans/@mixed.1/@mixed.21"/>
+    <elements href="assembly.xml#//@beans/@mixed.1/@mixed.17"/>
     <elements href="assembly.xml#PutIntegrationMessage1"/>
   </swimlanes>
   <swimlanes name="Main Program" topBorderColor="8851980">
@@ -246,39 +150,15 @@
     <elements href="assembly.xml#DataOlivia0"/>
   </swimlanes>
   <swimlanes name="SendData_Temp" topBorderColor="4301039">
-    <elements href="assembly.xml#DataOlivia"/>
+    <elements href="assembly.xml#DataAnthony"/>
     <elements href="assembly.xml#AsyncMediation"/>
     <elements href="assembly.xml#PutIntegrationMessage_simon"/>
-    <elements href="assembly.xml#DataOlivia20"/>
+    <elements href="assembly.xml#DataAnthony20"/>
   </swimlanes>
-  <swimlanes name="SendData_Perm">
-    <elements href="assembly.xml#DataOlivia2"/>
-    <elements href="assembly.xml#AsyncMediation10"/>
-    <elements href="assembly.xml#PutIntegrationMessage_olivia"/>
-    <elements href="assembly.xml#DataShawn30"/>
-  </swimlanes>
-  <swimlanes x="49" y="28" name="CreateTaskPO" orientation="VERTICAL" elements="//@swimlanes.1 //@swimlanes.2 //@swimlanes.3 //@swimlanes.6" topBorderColor="1"/>
-  <swimlanes x="871" y="725" name="Swimlane" orientation="VERTICAL" elements="//@swimlanes.4 //@swimlanes.7 //@swimlanes.9 //@swimlanes.8 //@swimlanes.10"/>
-  <swimlanes x="605" y="781" name="Swimlane">
-    <elements href="assembly.xml#DataShawn3"/>
-    <elements href="assembly.xml#AsyncMediation100"/>
-    <elements href="assembly.xml#PutIntegrationMessage_shawn"/>
-    <elements href="assembly.xml#DataShawn40"/>
-  </swimlanes>
-  <swimlanes x="1345" y="809" name="Swimlane">
-    <elements href="assembly.xml#DataMarion5"/>
-    <elements href="assembly.xml#AsyncMediation1000"/>
-    <elements href="assembly.xml#PutIntegrationMessage_marion"/>
-    <elements href="assembly.xml#DataMarion60"/>
-  </swimlanes>
-  <swimlanes x="701" y="1233" name="Swimlane">
-    <elements href="assembly.xml#DataMichele4"/>
-    <elements href="assembly.xml#AsyncMediation10000"/>
-    <elements href="assembly.xml#PutIntegrationMessage_michele"/>
-    <elements href="assembly.xml#DataMichele50"/>
-  </swimlanes>
+  <swimlanes x="49" y="28" name="CreateTaskPO" orientation="VERTICAL" elements="//@swimlanes.1 //@swimlanes.2 //@swimlanes.3 //@swimlanes.5" topBorderColor="1"/>
+  <swimlanes x="871" y="725" name="Swimlane" orientation="VERTICAL" elements="//@swimlanes.6"/>
   <swimlanes x="700" y="1411" name="Swimlane">
-    <elements href="assembly.xml#DataAnthony6"/>
+    <elements href="assembly.xml#DataAnthony2"/>
     <elements href="assembly.xml#AsyncMediation100000"/>
     <elements href="assembly.xml#PutIntegrationMessage_anthony70"/>
   </swimlanes>
