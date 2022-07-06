@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+     xmlns="http://www.springframework.org/schema/beans"
+     xmlns:beans="http://www.springframework.org/schema/beans"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:cc="http://www.capeclear.com/assembly/10"
+     xmlns:cloud="urn:com.workday/esb/cloud/10.0"
+     xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+     xmlns:pi="urn:com.workday/picof"
+     xmlns:wd="urn:com.workday/bsvc"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ 
+	<cc:assembly id="WorkdayAssembly" version="2021.51">
+        <cc:local-out id="PutIntegrationMessage_shawn" execute-when="props['assigned_to_email']== 'sgordon@coveo.com'" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Shawn'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.shawn'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.file.name" value="lp.getSequencedValue('Proc_File')"/>
+            <cc:set name="is.message.storage.enabled" value="true"/>
+            <cc:set name="is.document.owner.wid" value="'9824ca3ab85e01b69aec89bdc600598a'"/>
+            <cc:set name="is.document.labels" value="'Shawn'"/>
+        </cc:local-out>
+        <cc:async-mediation id="AsyncMediation1000" routes-to="PutIntegrationMessage_shawn">
+            <cc:steps>
+                <cc:store execute-when="props['assignee']== 'sgordon@coveo.com'" id="CreateDeliverableFile_shawn" output="variable" output-variable="deliver.shawn" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage_simon" routes-response-to="DataShawn20" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'Document sent to Simon'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.simon'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.file.name" value="lp.getSequencedValue('Proc_File')"/>
+            <cc:set name="is.message.storage.enabled" value="true"/>
+            <cc:set name="is.document.owner.wid" value="'f8fe1d2e54f8010c4ccda15e12013b0b'"/>
+        </cc:local-out>
+        <cc:async-mediation id="AsyncMediation" routes-to="PutIntegrationMessage_simon">
+            <cc:steps>
+                <cc:store id="CreateDeliverableFile_simon" output="variable" output-variable="deliver.simon" input="variable" input-variable="deliver.data" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}.csv"/>
+                <cc:eval id="Eval0">
+                    <cc:expression>parts[1].fileName = lp.getSequencedValue('Proc_File')</cc:expression>
+                </cc:eval>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage2" execute-when="props['data'] == empty" routes-response-to="EmailOut0" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'No requisitions available for Shawn'"/>
+            <cc:set name="is.document.deliverable" value="'false'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.file'"/>
+        </cc:local-out>
+        <cc:local-out id="PutIntegrationMessage3" execute-when="props['data'] != empty &amp;&amp; props['assigned_to_email']== 'sgordon@coveo.com'" routes-response-to="PutIntegrationMessage2" endpoint="vm://wcc/PutIntegrationMessage" clone-request="true">
+            <cc:set name="is.message.severity" value="'INFO'"/>
+            <cc:set name="is.message.summary" value="'ServiceNow requisitions have been found'"/>
+            <cc:set name="is.document.variable.name" value="'deliver.file'"/>
+            <cc:set name="is.document.deliverable" value="'true'"/>
+        </cc:local-out>
+        <cc:splitter id="Splitter">
+            <cc:sub-route name="SubRoute" routes-to="AsyncMediation20"/>
+            <cc:xml-stream-splitter xpath="/Root/Request/"/>
+        </cc:splitter>
+        <cc:async-mediation id="Convert_Data_To_XML" routes-to="Splitter">
+            <cc:steps>
+                <cc:copy id="GetDataJSON" input="variable" input-variable="wd.retrieve.variable"/>
+                <cc:json-to-xml id="JsonToXml"/>
+                <cc:xslt-plus id="XsltPlus" output="message" url="Transform.xsl"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:local-out id="PutIntegrationMessage1" endpoint="vm://wcc/PutIntegrationMessage">
+            <cc:set name="is.message.severity" value="'CRITICAL'"/>
+            <cc:set name="is.message.summary" value="'There is a critical error (Global Error Handler)'"/>
+            <cc:set name="is.message.detail" value="context.errorMessage"/>
+        </cc:local-out>
+        <cc:send-error id="GlobalError" routes-to="PutIntegrationMessage1"/>
+        <cc:route id="GetRetrievedFile">
+            <cc:doc-iterator/>
+            <cc:sub-route name="ProcessFile" routes-to="ConvertShawn0"/>
+        </cc:route>
+        <cc:local-out id="GetEventDocuments" routes-response-to="GetRetrievedFile" endpoint="vm://wcc/GetEventDocuments">
+            <cc:set name="ie.event.wid" value="lp.isSet() ? lp.getIntegrationEventWID() : null"/>
+        </cc:local-out>
+        <cc:workday-in id="StartHere" routes-to="GetEventDocuments">
+            <cc:integration-system name="ServiceNow_POs_Procurement_Shawn">
+        <cloud:sequence-generator-service name="PO_Proc_File">
+          <cloud:sequencer>Proc_File</cloud:sequencer>
+        </cloud:sequence-generator-service>
+      </cc:integration-system>
+        </cc:workday-in>
+        <cc:local-in id="ConvertShawn" routes-to="Convert_Data_To_XML"/>
+        <cc:local-in id="DataShawn" routes-to="AsyncMediation"/>
+        <cc:local-in id="DataShawn2" routes-to="AsyncMediation1000"/>
+        <cc:local-out id="ConvertShawn0" endpoint="vm://ServiceNow_POs_Procurement_Shawn/ConvertShawn"/>
+        <cc:local-out id="DataShawn0" execute-when="props['data'] != empty &amp;&amp; props['assigned_to_email']== 'sgordon@coveo.com'" endpoint="vm://ServiceNow_POs_Procurement_Shawn/DataShawn"/>
+        <cc:local-out id="DataShawn20" endpoint="vm://ServiceNow_POs_Procurement_Shawn/DataShawn2"/>
+        <cc:async-mediation id="AsyncMediation20" routes-to="PutIntegrationMessage3">
+            <cc:steps>
+                <cc:eval id="CreateParameter">
+                    <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['parent'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
+                    <cc:expression>props['requester'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['requester_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['description'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['assigned_to'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                </cc:eval>
+                <cc:xml-to-csv id="XmlToCsv" output="variable" output-variable="deliver.data" input="message" writeHeaderLine="true"/>
+                <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}"/>
+                <cc:eval id="Eval">
+                    <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
+                    <cc:expression>props['parent'] = parts[0].xpath('/Request/data/parent')</cc:expression>
+                    <cc:expression>props['requester'] = parts[0].xpath('/Request/data/requester')</cc:expression>
+                    <cc:expression>props['requester_email'] = parts[0].xpath('/Request/data/requester_email')</cc:expression>
+                    <cc:expression>props['assigned_to'] = parts[0].xpath('/Request/data/assigned_to')</cc:expression>
+                    <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
+                    <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/short_description')</cc:expression>
+                    <cc:expression>props['description'] = parts[0].xpath('/Request/data/description')</cc:expression>
+                    <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/customer_provided_info')</cc:expression>
+                </cc:eval>
+                <cc:xslt-plus id="XsltPlus" url="EmailBody.xsl"/>
+            </cc:steps>
+        </cc:async-mediation>
+        <cc:email-out id="EmailOut0" execute-when="props['assigned_to_email']== 'sgordon@coveo.com'" routes-response-to="DataShawn0" endpoint="mailto:fsaadat@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="Create Contract for ServiceNow" user="@{props['userid']}">
+            <cc:custom-headers/>
+        </cc:email-out>
+	</cc:assembly>
+
+</beans>
