@@ -121,7 +121,7 @@
                 <cc:xslt-plus id="XsltPlus" url="EmailBody.xsl"/>
             </cc:steps>
         </cc:async-mediation>
-        <cc:email-out id="EmailOut0" execute-when="props['assigned_to_email']== 'otraore@coveo.com'" routes-response-to="Send_Data_Olivia0" endpoint="mailto:fsaadat@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" port="25" subject="Create Contract for SNow">
+        <cc:email-out id="EmailOut0" execute-when="props['assigned_to_email']== 'otraore@coveo.com'" routes-response-to="Send_Data_Olivia0" endpoint="mailto:otraore@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" port="25" subject="Create Contract for SNow">
             <cc:custom-headers/>
         </cc:email-out>
 	</cc:assembly>
