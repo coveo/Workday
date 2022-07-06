@@ -86,9 +86,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 -->
                 
                 
+                
+                               
+                <wd:Bill_To_Contact_Detail> Marion Van Espen</wd:Bill_To_Contact_Detail>
+             <wd:Ship_To_Contact_Detail>Marion Van Espen</wd:Ship_To_Contact_Detail>
+                  
+                
              
-
-         
                 <wd:Goods_Line_Replacement_Data>   
                 
              <wd:Storage_Location_Reference>
@@ -111,8 +115,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 </wd:Resource_Category_Reference>
                  
                   
-                  
-                  
+    
               <wd:Unit_of_Measure_Reference>
                 <wd:ID wd:type="UN_CEFACT_Common_Code_ID">Unit</wd:ID>
                 </wd:Unit_of_Measure_Reference>         
@@ -121,7 +124,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 
                   <wd:Memo>This is the MEMO</wd:Memo>
                  <wd:Internal_Memo><xsl:value-of select="$snow_num"/></wd:Internal_Memo>
-                 <wd:Internal_Memo><xsl:value-of select="$unit_cost"/></wd:Internal_Memo>
+
                  
                 <wd:Prepaid>false</wd:Prepaid>
           </wd:Purchase_Order_Data>
