@@ -103,13 +103,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                  
         <!--          <wd:Item_Description>
                         <wd:ID wd:type="Item_Description"><xsl:value-of select="$product_name"/></wd:ID>
-                    </wd:Item_Description>
+                    </wd:Item_Description>  --> 
          
          
                <wd:Resource_Category_Reference>                  
                    <wd:ID wd:type="Spend_Category_ID"><xsl:value-of select="$spend_category"/></wd:ID>
                 </wd:Resource_Category_Reference>
-                  --> 
+                 
                   
                   
                   
