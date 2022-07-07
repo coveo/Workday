@@ -107,7 +107,7 @@
             <cc:steps>
                 <cc:xslt-plus id="SupplierXSLT" url="Supplier.xsl"/>
                 <cc:xslt-plus id="SupplierP2" url="Supplier_MappingV2.xsl"/>
-                <cc:eval execute-when="props['supplier'] != empty" id="Eval2">
+                <cc:eval execute-when="props['supplier'] = empty" id="Eval2">
                     <cc:expression>props['supplier'] = 'S-000202'</cc:expression>
                 </cc:eval>
                 <cc:eval id="SupplierParameters">
