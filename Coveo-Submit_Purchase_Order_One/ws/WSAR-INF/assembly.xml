@@ -58,6 +58,7 @@
                     <cc:expression>props['buyer_employee_ID'] = parts[0].xpath('/results/data/buyer_employee_ID')</cc:expression>
                     <cc:expression>props['req_employee_ID'] = parts[0].xpath('/results/data/req_employee_ID')</cc:expression>
                     <cc:expression>props['location'] = parts[0].xpath('/results/data/location')</cc:expression>
+                    <cc:expression>props['memo'] = parts[0].xpath('/results/data')</cc:expression>
                 </cc:eval>
                 <cc:store id="Store"/>
                 <cc:log id="Log">
@@ -106,6 +107,9 @@
             <cc:steps>
                 <cc:xslt-plus id="SupplierXSLT" url="Supplier.xsl"/>
                 <cc:xslt-plus id="SupplierP2" url="Supplier_MappingV2.xsl"/>
+                <cc:eval execute-when="props['supplier'] != empty" id="Eval2">
+                    <cc:expression>props['supplier'] = 'S-000202'</cc:expression>
+                </cc:eval>
                 <cc:eval id="SupplierParameters">
                     <cc:expression>props['supplier'] = parts[0].xpath('/Results/supplier')</cc:expression>
                     <cc:expression>props['supplier_category'] = parts[0].xpath('/Results/supplier_category')</cc:expression>
