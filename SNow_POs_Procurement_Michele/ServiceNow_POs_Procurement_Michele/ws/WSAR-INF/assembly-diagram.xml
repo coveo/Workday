@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wdnm:Diagram xmlns:wdnm="http://workday.com/studio/editors/notation">
+  <element href="assembly.xml#WorkdayAssembly"/>
+  <visualProperties>
+    <element href="assembly.xml#StartHere"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#GetEventDocuments"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#GetRetrievedFile"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#//@beans/@mixed.1/@mixed.19"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage1"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#Convert_Data_To_XML"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#Splitter"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage3"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage2"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#AsyncMediation"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage_simon"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#AsyncMediation1"/>
+  </visualProperties>
+  <visualProperties>
+    <element href="assembly.xml#PutIntegrationMessage_michele"/>
+  </visualProperties>
+  <visualProperties x="132" y="458">
+    <element href="assembly.xml#ConvertFileMichele"/>
+  </visualProperties>
+  <visualProperties x="549" y="232">
+    <element href="assembly.xml#ConvertFileMichele0"/>
+  </visualProperties>
+  <visualProperties x="130" y="690">
+    <element href="assembly.xml#SendDataMichele"/>
+  </visualProperties>
+  <visualProperties x="129" y="853">
+    <element href="assembly.xml#SendDataMichele2"/>
+  </visualProperties>
+  <visualProperties x="643" y="708">
+    <element href="assembly.xml#SendDataMichele20"/>
+  </visualProperties>
+  <visualProperties x="1330" y="482">
+    <element href="assembly.xml#SendDataMichele0"/>
+  </visualProperties>
+  <visualProperties x="1517" y="490">
+    <element href="assembly.xml#AsyncMediation20"/>
+  </visualProperties>
+  <visualProperties x="1566" y="490">
+    <element href="assembly.xml#EmailOut0"/>
+  </visualProperties>
+  <connections type="routesTo" sourceAnchorX="0.5416666666666666" sourceAnchorY="1.0" targetAnchorX="0.06382978723404255" targetAnchorY="0.5135135135135135">
+    <source href="assembly.xml#StartHere"/>
+    <target href="assembly.xml#GetEventDocuments"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5319148936170213" sourceAnchorY="1.0" targetAnchorX="0.03636363636363636" targetAnchorY="0.11333333333333333">
+    <source href="assembly.xml#GetEventDocuments"/>
+    <target href="assembly.xml#GetRetrievedFile"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7078651685393258" sourceAnchorY="1.0" targetAnchorX="0.3548387096774194" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#//@beans/@mixed.1/@mixed.19"/>
+    <target href="assembly.xml#PutIntegrationMessage1"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.2608695652173913" targetAnchorX="0.4731182795698925" targetAnchorY="0.08666666666666667">
+    <source href="assembly.xml#Convert_Data_To_XML"/>
+    <target href="assembly.xml#Splitter"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5806451612903226" sourceAnchorY="1.0" targetAnchorX="0.12258064516129032" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#PutIntegrationMessage3"/>
+    <target href="assembly.xml#PutIntegrationMessage2"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.18478260869565216" targetAnchorX="0.17419354838709677" targetAnchorY="0.2702702702702703">
+    <source href="assembly.xml#AsyncMediation"/>
+    <target href="assembly.xml#PutIntegrationMessage_simon"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="1.0" sourceAnchorY="0.20652173913043478" targetAnchorX="0.14594594594594595" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#AsyncMediation1"/>
+    <target href="assembly.xml#PutIntegrationMessage_michele"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.42962962962962964" sourceAnchorY="1.0" targetAnchorX="0.11822660098522167" targetAnchorY="0.06521739130434782">
+    <source href="assembly.xml#ConvertFileMichele"/>
+    <target href="assembly.xml#Convert_Data_To_XML"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.9690721649484536" sourceAnchorY="1.0" targetAnchorX="0.03571428571428571" targetAnchorY="0.2972972972972973">
+    <source href="assembly.xml#//@beans/@mixed.1/@route.0/@subRoute.0"/>
+    <target href="assembly.xml#ConvertFileMichele0"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.5348837209302325" sourceAnchorY="1.0" targetAnchorX="0.17123287671232876" targetAnchorY="0.10869565217391304">
+    <source href="assembly.xml#SendDataMichele"/>
+    <target href="assembly.xml#AsyncMediation"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7388059701492538" sourceAnchorY="1.0" targetAnchorX="0.15789473684210525" targetAnchorY="0.13043478260869565">
+    <source href="assembly.xml#SendDataMichele2"/>
+    <target href="assembly.xml#AsyncMediation1"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5363128491620112" sourceAnchorY="1.0" targetAnchorX="0.1510791366906475" targetAnchorY="0.32432432432432434">
+    <source href="assembly.xml#PutIntegrationMessage_simon"/>
+    <target href="assembly.xml#SendDataMichele20"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.6625" sourceAnchorY="1.0" targetAnchorX="0.1295774647887324" targetAnchorY="0.6956521739130435">
+    <source href="assembly.xml#//@beans/@mixed.1/@splitter.0/@subRoute.0"/>
+    <target href="assembly.xml#AsyncMediation20"/>
+  </connections>
+  <connections type="routesTo" sourceAnchorX="0.7746478873239436" sourceAnchorY="1.0" targetAnchorX="0.18064516129032257" targetAnchorY="0.5135135135135135">
+    <source href="assembly.xml#AsyncMediation20"/>
+    <target href="assembly.xml#PutIntegrationMessage3"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.5483870967741935" sourceAnchorY="1.0" targetAnchorX="0.4" targetAnchorY="0.40540540540540543">
+    <source href="assembly.xml#PutIntegrationMessage2"/>
+    <target href="assembly.xml#EmailOut0"/>
+  </connections>
+  <connections type="routesResponseTo" sourceAnchorX="0.64" sourceAnchorY="1.0" targetAnchorX="0.22388059701492538" targetAnchorY="0.24324324324324326">
+    <source href="assembly.xml#EmailOut0"/>
+    <target href="assembly.xml#SendDataMichele0"/>
+  </connections>
+  <swimlanes name="GlobalErrorHandler" orientation="VERTICAL" topBorderColor="467382">
+    <elements href="assembly.xml#//@beans/@mixed.1/@mixed.19"/>
+    <elements href="assembly.xml#PutIntegrationMessage1"/>
+  </swimlanes>
+  <swimlanes name="Main Program" topBorderColor="8851980">
+    <elements href="assembly.xml#StartHere"/>
+    <elements href="assembly.xml#GetEventDocuments"/>
+    <elements href="assembly.xml#GetRetrievedFile"/>
+    <elements href="assembly.xml#ConvertFileMichele0"/>
+    <elements href="#//@swimlanes.0"/>
+  </swimlanes>
+  <swimlanes name="ConvertData" topBorderColor="15554362">
+    <elements href="assembly.xml#ConvertFileMichele"/>
+    <elements href="assembly.xml#Convert_Data_To_XML"/>
+    <elements href="assembly.xml#Splitter"/>
+    <elements href="assembly.xml#AsyncMediation20"/>
+    <elements href="assembly.xml#PutIntegrationMessage3"/>
+    <elements href="assembly.xml#PutIntegrationMessage2"/>
+    <elements href="assembly.xml#EmailOut0"/>
+    <elements href="assembly.xml#SendDataMichele0"/>
+  </swimlanes>
+  <swimlanes name="SendData_Temp" topBorderColor="4301039">
+    <elements href="assembly.xml#SendDataMichele"/>
+    <elements href="assembly.xml#AsyncMediation"/>
+    <elements href="assembly.xml#PutIntegrationMessage_simon"/>
+    <elements href="assembly.xml#SendDataMichele20"/>
+  </swimlanes>
+  <swimlanes name="SendData_Perm">
+    <elements href="assembly.xml#SendDataMichele2"/>
+    <elements href="assembly.xml#AsyncMediation1"/>
+    <elements href="assembly.xml#PutIntegrationMessage_michele"/>
+  </swimlanes>
+  <swimlanes x="111" y="118" name="CreateTaskPO" orientation="VERTICAL" elements="//@swimlanes.1 //@swimlanes.2 //@swimlanes.3 //@swimlanes.4" topBorderColor="1"/>
+</wdnm:Diagram>
