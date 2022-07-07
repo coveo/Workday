@@ -61,11 +61,6 @@
                     <cc:expression>props['memo'] = parts[0].xpath('/results/data')</cc:expression>
                 </cc:eval>
                 <cc:store id="Store"/>
-                <cc:log id="Log">
-                    <cc:log-message>
-                        <cc:message-content/>
-                    </cc:log-message>
-                </cc:log>
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PutIntegrationMessage2"/>
         </cc:async-mediation>
@@ -73,11 +68,6 @@
         <cc:async-mediation id="WriteSOAPMessage" routes-to="WorkdayOutSoap" handle-downstream-errors="true">
             <cc:steps>
                 <cc:xslt-plus id="XsltPlus" url="SOAP_Request_rev2.xml"/>
-                <cc:log id="Log">
-                    <cc:log-message>
-                        <cc:message-content/>
-                    </cc:log-message>
-                </cc:log>
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PutIntegrationMessage4"/>
         </cc:async-mediation>
@@ -136,11 +126,6 @@
             <cc:steps>
                 <cc:xslt-plus id="EmployeeXSLT" input="message" url="EmployeeSXLT.xsl"/>
                 <cc:xslt-plus id="CostCenterXSLT" input="message" url="CostCenter.xsl"/>
-                <cc:log id="Log">
-                    <cc:log-message>
-                        <cc:message-content/>
-                    </cc:log-message>
-                </cc:log>
                 <cc:eval id="CostCenterParam">
                     <cc:expression>props['cost_center'] = parts[0].xpath('/Results/cost_center')   </cc:expression>
                 </cc:eval>
