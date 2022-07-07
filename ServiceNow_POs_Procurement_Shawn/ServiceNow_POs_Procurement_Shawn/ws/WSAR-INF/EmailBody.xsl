@@ -19,13 +19,18 @@
 
 <xsl:text>Assigned to: </xsl:text>
      <xsl:value-of select="$assigned_to"/>      
-     &#160;
+  
 <xsl:text>  
 ** New report from ServiceNow, Details Below **
 &#160;
 Follow this link to Create Supplier Contract:  
 </xsl:text>
 <uri>https://www.myworkday.com/coveo/d/task/2997$904.htmld</uri>
+
+<xsl:text>  
+Follow this link to Create Supplier Task:  
+</xsl:text>
+<uri>https://www.myworkday.com/coveo/d/task/2997$6499.htmld</uri>
 &#160;
 <xsl:text>  
 Create a contract for this requisition received from ServiceNow (IF APPLICABLE).
