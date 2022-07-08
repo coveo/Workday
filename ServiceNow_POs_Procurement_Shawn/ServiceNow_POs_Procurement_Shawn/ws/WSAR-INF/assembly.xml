@@ -94,17 +94,6 @@
         <cc:local-out id="DataShawn20" endpoint="vm://ServiceNow_POs_Procurement_Shawn/DataShawn2"/>
         <cc:async-mediation id="AsyncMediation20" routes-to="PutIntegrationMessage3">
             <cc:steps>
-                <cc:eval id="CreateParameter">
-                    <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['parent'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
-                    <cc:expression>props['requester'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['requester_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['description'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['assigned_to'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                </cc:eval>
                 <cc:xml-to-csv id="XmlToCsv" output="variable" output-variable="deliver.data" input="message" writeHeaderLine="true"/>
                 <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}"/>
                 <cc:eval id="Eval">
@@ -121,7 +110,7 @@
                 <cc:xslt-plus id="XsltPlus" url="EmailBody.xsl"/>
             </cc:steps>
         </cc:async-mediation>
-        <cc:email-out id="EmailOut0" execute-when="props['assigned_to_email']== 'sgordon@coveo.com'" routes-response-to="DataShawn0" endpoint="mailto:fsaadat@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="Create Contract for ServiceNow" user="@{props['userid']}">
+        <cc:email-out id="EmailOut0" execute-when="props['assigned_to_email']== 'sgordon@coveo.com'" routes-response-to="DataShawn0" endpoint="mailto:sgordon@coveo.com" from="coveo@myworkday.com" host="coveo-com.mail.protection.outlook.com" password="@{props['password']}" port="25" subject="Create Contract for ServiceNow" user="@{props['userid']}">
             <cc:custom-headers/>
         </cc:email-out>
 	</cc:assembly>

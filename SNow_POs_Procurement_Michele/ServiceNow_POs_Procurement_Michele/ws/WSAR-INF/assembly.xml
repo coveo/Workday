@@ -91,17 +91,6 @@
         <cc:local-out id="SendDataMichele0" execute-when="props['data'] != empty &amp;&amp; props['assigned_to_email']== 'mmalenfant@coveo.com'" endpoint="vm://ServiceNow_POs_Procurement_Michele/SendDataMichele"/>
         <cc:async-mediation id="AsyncMediation20" routes-to="PutIntegrationMessage3">
             <cc:steps>
-                <cc:eval id="CreateParameter">
-                    <cc:expression>props['number'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['parent'] = parts[0].xpath('/Request/data/assigned_to_email')</cc:expression>
-                    <cc:expression>props['requester'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['requester_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['description'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['assigned_to'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                    <cc:expression>props['assigned_to_email'] = parts[0].xpath('/Request/data/number')</cc:expression>
-                </cc:eval>
                 <cc:xml-to-csv id="XmlToCsv" output="variable" output-variable="deliver.data" input="message" writeHeaderLine="true"/>
                 <cc:store id="CreateDeliverableFile" output="variable" output-variable="deliver.file" input="message" createDocumentReference="false" title="@{lp.getSequencedValue('Proc_File')}"/>
                 <cc:eval id="Eval">
