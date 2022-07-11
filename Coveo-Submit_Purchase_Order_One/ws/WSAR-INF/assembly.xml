@@ -60,6 +60,9 @@
                     <cc:expression>props['location'] = parts[0].xpath('/results/data/location')</cc:expression>
                     <cc:expression>props['memo'] = parts[0].xpath('/results/data')</cc:expression>
                 </cc:eval>
+                <cc:eval execute-when="props['supplier'] == empty" id="Eval">
+                    <cc:expression>props['supplier'] = 'S-000202'</cc:expression>
+                </cc:eval>
                 <cc:store id="Store"/>
             </cc:steps>
             <cc:send-error id="SendError" routes-to="PutIntegrationMessage2"/>
@@ -97,9 +100,6 @@
             <cc:steps>
                 <cc:xslt-plus id="SupplierXSLT" url="Supplier.xsl"/>
                 <cc:xslt-plus id="SupplierP2" url="Supplier_MappingV2.xsl"/>
-                <cc:eval execute-when="props['supplier'] = empty" id="Eval2">
-                    <cc:expression>props['supplier'] = 'S-000202'</cc:expression>
-                </cc:eval>
                 <cc:eval id="SupplierParameters">
                     <cc:expression>props['supplier'] = parts[0].xpath('/Results/supplier')</cc:expression>
                     <cc:expression>props['supplier_category'] = parts[0].xpath('/Results/supplier_category')</cc:expression>
@@ -109,13 +109,16 @@
                     <cc:expression>props['spend_category'] = 'Office_supplies'</cc:expression>
                     <cc:expression>props['default_payment_type'] = parts[0].xpath('/Results/default_payment_type')</cc:expression>
                 </cc:eval>
-                <cc:eval id="Eval">
+                <cc:eval id="Eval2">
                     <cc:expression>props['company_restrictions'] = 'CSI' </cc:expression>
                 </cc:eval>
-                <cc:eval execute-when="props['currency'] == 'USD' &amp;&amp; props['default_payment_type'] == 'Credit_Card'" id="Eval0">
+                <cc:eval execute-when="props['currency'] == 'USD' &amp;&amp; props['default_payment_type'] == 'Credit_Card'" id="Eval3">
                     <cc:expression>props['company_restrictions'] = 'CSC' </cc:expression>
                 </cc:eval>
-                <cc:eval execute-when="props['default_payment_type'] == 'Manual_Wire'" id="Eval1">
+                <cc:eval execute-when="props['supplier'] == 'S-000202'" id="Eval">
+                    <cc:expression>props['company_restrictions'] = 'CSI' </cc:expression>
+                </cc:eval>
+                <cc:eval execute-when="props['default_payment_type'] == 'Manual_Wire'" id="Eval4">
                     <cc:expression>props['company_restrictions'] = 'CEBV' </cc:expression>
                 </cc:eval>
             </cc:steps>
