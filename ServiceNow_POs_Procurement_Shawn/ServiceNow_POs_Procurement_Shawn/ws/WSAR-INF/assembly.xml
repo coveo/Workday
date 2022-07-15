@@ -106,6 +106,7 @@
                     <cc:expression>props['short_description'] = parts[0].xpath('/Request/data/short_description')</cc:expression>
                     <cc:expression>props['description'] = parts[0].xpath('/Request/data/description')</cc:expression>
                     <cc:expression>props['customer_provided_info'] = parts[0].xpath('/Request/data/customer_provided_info')</cc:expression>
+                    <cc:expression>props['data'] = parts[0].xpath('/Request/data/number')</cc:expression>
                 </cc:eval>
                 <cc:xslt-plus id="XsltPlus" url="EmailBody.xsl"/>
             </cc:steps>
